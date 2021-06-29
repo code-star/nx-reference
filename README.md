@@ -2,6 +2,16 @@
 
 # NxStorybookAtomic
 
+
+yarn import
+rm package-lock.json
+yarn add --dev @nrwl/storybook
+nx g @nrwl/angular:storybook-configuration demo
+npx nx g @nrwl/angular:lib ui
+
+run storybook: `npm run nx storybook`
+
+
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>

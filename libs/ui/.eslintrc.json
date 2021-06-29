@@ -10,8 +10,8 @@
       ],
       "parserOptions": {
         "project": [
-          "apps/demo/tsconfig.*?.json",
-          "apps/demo/.storybook/tsconfig.json"
+          "libs/ui/tsconfig.*?.json",
+          "libs/ui/.storybook/tsconfig.json"
         ]
       },
       "rules": {
