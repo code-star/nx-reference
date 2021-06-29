@@ -1,15 +1,18 @@
-
-
 # NxStorybookAtomic
-
 
 yarn import
 rm package-lock.json
 yarn add --dev @nrwl/storybook
-nx g @nrwl/angular:storybook-configuration demo
-npx nx g @nrwl/angular:lib ui
+yarn nx g @nrwl/angular:storybook-configuration demo
+yarn nx g @nrwl/angular:lib ui
+yarn nx g @nrwl/angular:storybook-configuration ui
+yarn nx g @nrwl/angular:component button --project=ui --export
+yarn nx generate @nrwl/angular:stories --name=ui
 
-run storybook: `npm run nx storybook`
+No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
+Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
+
+run storybook: `yarn nx storybook`
 
 
 This project was generated using [Nx](https://nx.dev).
