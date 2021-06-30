@@ -1,15 +1,17 @@
 
+import { UiModule } from '@nx-storybook-atomic/ui';
 import { AppComponent } from './app.component';
 
 export default {
-  title: 'AppComponent'
+  title: 'AppComponent',
+  component: AppComponent
 }
 
-export const primary = () => ({
+export const Example = () => ({
   moduleMetadata: {
-    imports: []
+    imports: [UiModule]
   },
-  component: AppComponent,
+  // component: AppComponent,
   props: {
   }
 })
