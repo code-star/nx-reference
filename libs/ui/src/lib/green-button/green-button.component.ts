@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nx-storybook-atomic-green-button',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./green-button.component.scss']
 })
 export class GreenButtonComponent implements OnInit {
+  @Input() label: string;
 
   constructor() { }
 
