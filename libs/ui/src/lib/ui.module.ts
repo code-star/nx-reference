@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonComponent } from './button/button.component';
+import { GreenButtonComponent } from './green-button/green-button.component';
 
 @NgModule({
   imports: [CommonModule],
   declarations: [
-    ButtonComponent
+    GreenButtonComponent
   ],
   exports: [
-    ButtonComponent
+    GreenButtonComponent
   ],
 })
 export class UiModule {}

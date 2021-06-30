@@ -12,7 +12,8 @@ yarn nx generate @nrwl/angular:stories --name=ui
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
 
-run storybook: `yarn nx storybook`
+run storybook: `yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`
+so modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
 
 
 This project was generated using [Nx](https://nx.dev).
