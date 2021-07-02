@@ -21,7 +21,9 @@
     </button>
   </nav>
   <div class="root-column">
-    <header><h1>{{ title }}</h1></header>
+    <header>
+      <h1>{{ title }}</h1>
+    </header>
     <main>
       <section>
         <h2>Exchange rates</h2>
@@ -33,22 +35,9 @@
               (click)="getRate()"
             ></star-loading-button>
           </div>
-          
+
           <h3>Exchange rates</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Time</th>
-                <th>EUR / BTC</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let rate of rates">
-                <td>{{rate[0] | date:"HH:mm:ss"}}</td>
-                <td>{{rate[1]}}</td>
-              </tr>    
-            </tbody>
-          </table>
+          <star-rates-table [rates]="rates"></star-rates-table>
         </div>
       </section>
       <section>
