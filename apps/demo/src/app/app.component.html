@@ -25,8 +25,8 @@
       <h1>{{ title }}</h1>
     </header>
     <main>
-      <section>
-        <h2>Exchange rates</h2>
+      <star-paper
+        ><h2>Exchange rates</h2>
         <div>
           <div>
             <star-loading-button
@@ -37,16 +37,16 @@
           </div>
 
           <h3>Exchange rates</h3>
-          <star-rates-table [rates]="rates"></star-rates-table>
-        </div>
-      </section>
-      <section>
+          <star-rates-table [rates]="rates"></star-rates-table></div
+      ></star-paper>
+
+      <star-paper>
         <p style="margin-top: 0">
           A reference example monorepo with Nx + Storybook + Atomic Design in
           Angular
         </p>
         <h4>Made by <a href="http://code-star.github.io">Codestar</a></h4>
-      </section>
+      </star-paper>
     </main>
   </div>
 </div>

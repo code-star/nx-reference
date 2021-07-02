@@ -1,0 +1,21 @@
+:host {
+  --star-paper-bg: #001329;
+}
+
+section {
+  background-color: var(--star-paper-bg);
+  color: white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
+}
+
+
