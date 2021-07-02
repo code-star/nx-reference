@@ -1,0 +1,54 @@
+$star-spacing: 4px;
+
+:host {
+  --star-default-bg: #002042;
+  --star-card-bg: #001329;
+  --star-primary: #e87e00;
+  font-family: sans-serif;
+}
+
+.root {
+  background-color: var(--star-default-bg);
+  color: white;
+  display: flex;
+  height: 100vh;
+}
+
+.root-column {
+  flex-grow: 1;
+}
+
+a {
+  color: var(--star-primary);
+}
+
+nav {
+  background-color: var(--star-primary);
+  width: $star-spacing * 16;
+  padding-top: calc(#{$star-spacing * 24} + 1rem);
+
+  button {
+    border: none;
+    border-radius: $star-spacing;
+    background-color: darken(#e87e00, 5%);
+    padding: $star-spacing;
+    margin: ($star-spacing * 0.5) $star-spacing;
+    width: $star-spacing * 14;
+    height: $star-spacing * 14;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken(#e87e00, 10%);
+    }
+  }
+}
+
+header {
+  background-color: var(--star-card-bg);
+  height: calc(#{$star-spacing * 24} - 2rem);
+  padding: 1rem;
+
+  h1 {
+    margin: 0;
+  }
+}
