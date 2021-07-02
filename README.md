@@ -15,6 +15,8 @@ yarn add cors
 yarn add -D @types/cors
 yarn nx g @nrwl/express:application server
 yarn nx g @nrwl/node:library btc
+yarn nx g service BtcRate
+Note that modules (e.g. HttpClientModule or UiModule) need to be added to both app.module.ts and app.component.stories.ts
 
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command

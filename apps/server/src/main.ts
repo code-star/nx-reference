@@ -15,8 +15,12 @@ app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to server!' });
 });
 
+type BtcResponse = {
+  btc: number;
+}
+
 app.get('/api/btc', (req, res) => {
-  res.send({ message: btc() });
+  res.send({ btc: btc() } as BtcResponse);
 });
 
 const port = process.env.port || 3333;

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BtcRateService } from './btc-rate.service';
 
 /**
  * This is test documentation, part 1 TODO
@@ -13,15 +14,17 @@ import { Component } from '@angular/core';
  * This is test documentation, part 2 TODO
  */
 export class AppComponent {
-  title = 'demo';
+  title = 'Rx Reference';
   loading = false;
   rates = [];
 
+  constructor(private btcRateService: BtcRateService) {}
+
   getRate(): void {
     this.loading = true;
-    setTimeout(() => {
+    this.btcRateService.getRate().subscribe((rate) => {
+      this.rates.push(rate);
       this.loading = false;
-      this.rates.push(Math.random())
-    }, 1000);
+    });
   }
 }

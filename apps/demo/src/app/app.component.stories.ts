@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { UiModule } from '@star/ui';
 import { AppComponent } from './app.component';
 
@@ -11,7 +12,7 @@ export default {
 
 export const Example = () => ({
   moduleMetadata: {
-    imports: [UiModule],
+    imports: [UiModule, HttpClientModule],
   },
   // component: AppComponent,
   props: {},
