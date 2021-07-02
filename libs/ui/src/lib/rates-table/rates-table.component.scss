@@ -1,0 +1,25 @@
+table {
+  color: white;
+}
+
+table td {
+  width: 150px;
+}
+
+table th:first-child,
+table td:first-child {
+  text-align: left;
+}
+
+table th:last-child,
+table td:last-child {
+  text-align: right;
+}
+
+table th {
+  border-bottom: 2px solid white;
+}
+
+table tr:not(:last-child) td {
+  border-bottom: 1px solid white;
+}

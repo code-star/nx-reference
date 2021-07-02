@@ -1,14 +1,14 @@
 <table>
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>EUR / BTC</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rate of rates">
-        <td>{{rate[0] | date:"HH:mm:ss"}}</td>
-        <td>{{rate[1]}}</td>
-      </tr>    
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>EUR / BTC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let rate of rates">
+      <td>{{ rate[0] | date: 'HH:mm:ss' }}</td>
+      <td>{{ rate[1] }}</td>
+    </tr>
+  </tbody>
+</table>
