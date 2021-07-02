@@ -34,6 +34,9 @@
             ></star-loading-button>
           </div>
           exchange rate table:
+          <li *ngFor="let rate of rates">
+            {{rate}}
+          </li>
           <table>
             <tr>
               <td>timestamp</td>
