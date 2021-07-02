@@ -24,13 +24,13 @@ jobs:
       - name: Install and Build components 🔧
         run: |
           yarn install --frozen-lockfile
-          yarn build
+      # TODO not needed to build after install? yarn build
       # TODO - name: Validate ☑️
       #   run: yarn validate
       #   env:
       #     CI: false # true -> fails on warning
       - name: Build Storybook 📚
-        run: yarn build-storybook
+        run: yarn nx run demo:build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
