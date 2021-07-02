@@ -18,6 +18,10 @@ $star-spacing: 4px;
   flex-grow: 1;
 }
 
+a {
+  color: var(--star-primary);
+}
+
 nav {
   background-color: var(--star-primary);
   width: $star-spacing * 16;
@@ -54,6 +58,14 @@ section {
   margin: 1rem;
   padding: 1rem;
   border-radius: 8px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  h4 {
+    margin-bottom: 0;
+  }
 }
 
 // .gutter-left {
