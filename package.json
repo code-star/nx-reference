@@ -60,6 +60,7 @@
     "@nrwl/tao": "11.4.0",
     "@nrwl/workspace": "11.4.0",
     "@storybook/addon-essentials": "~6.3.0",
+    "@storybook/addon-storysource": "^6.3.2",
     "@storybook/addons": "^6.3.2",
     "@storybook/angular": "~6.3.0",
     "@storybook/builder-webpack5": "~6.3.0",

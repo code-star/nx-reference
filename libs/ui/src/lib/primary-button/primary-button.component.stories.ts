@@ -2,8 +2,13 @@ import { Story } from '@storybook/angular/types-6-0';
 import { PrimaryButtonComponent } from './primary-button.component';
 
 export default {
-  title: 'atoms/PrimaryButtonComponent',
+  title: 'atoms/PrimaryButton',
   component: PrimaryButtonComponent,
+  argTypes: {
+    onClick: {
+      action: 'clicked',
+    },
+  },
 };
 
 const Template: Story<PrimaryButtonComponent> = (args) => ({
@@ -14,7 +19,7 @@ export const Example = Template.bind({});
 
 Example.args = {
   // primary: true,
-  label: 'The Green Button',
+  label: 'Primary Button',
 };
 
 // export const primary = () => ({
