@@ -4,11 +4,11 @@ import { PrimaryButtonComponent } from './primary-button.component';
 export default {
   title: 'atoms/PrimaryButton',
   component: PrimaryButtonComponent,
-  argTypes: {
-    onClick: {
-      action: 'clicked',
-    },
-  },
+  // argTypes: {
+  //   onClick: {
+  //     action: 'clicked',
+  //   },
+  // },
 };
 
 const Template: Story<PrimaryButtonComponent> = (args) => ({
