@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GreenButtonComponent } from './green-button.component';
+import { PrimaryButtonComponent } from './primary-button.component';
 
-describe('GreenButtonComponent', () => {
-  let component: GreenButtonComponent;
-  let fixture: ComponentFixture<GreenButtonComponent>;
+describe('PrimaryButtonComponent', () => {
+  let component: PrimaryButtonComponent;
+  let fixture: ComponentFixture<PrimaryButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GreenButtonComponent ]
+      declarations: [ PrimaryButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GreenButtonComponent);
+    fixture = TestBed.createComponent(PrimaryButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

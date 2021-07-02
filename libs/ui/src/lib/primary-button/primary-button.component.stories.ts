@@ -1,12 +1,12 @@
 import { Story } from '@storybook/angular/types-6-0';
-import { GreenButtonComponent } from './green-button.component';
+import { PrimaryButtonComponent } from './primary-button.component';
 
 export default {
-  title: 'atoms/GreenButtonComponent',
-  component: GreenButtonComponent,
+  title: 'atoms/PrimaryButtonComponent',
+  component: PrimaryButtonComponent,
 };
 
-const Template: Story<GreenButtonComponent> = (args) => ({
+const Template: Story<PrimaryButtonComponent> = (args) => ({
   props: args,
 });
 
@@ -21,7 +21,7 @@ Example.args = {
 //   moduleMetadata: {
 //     imports: [],
 //   },
-//   component: GreenButtonComponent,
+//   component: PrimaryButtonComponent,
 //   props: {
 //     label: 'SomeLabel',
 //   },
