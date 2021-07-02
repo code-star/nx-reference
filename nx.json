@@ -29,12 +29,18 @@
     }
   },
   "projects": {
+    "btc": {
+      "tags": []
+    },
     "demo": {
       "tags": []
     },
     "demo-e2e": {
       "tags": [],
       "implicitDependencies": ["demo"]
+    },
+    "server": {
+      "tags": []
     },
     "ui": {
       "tags": []
