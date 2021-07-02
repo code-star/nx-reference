@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
+import { catchError, tap, map, delay } from 'rxjs/operators';
+import { Rate, BtcResponse } from '@star/shared/types';
 
-type Rate = number;
-
-type BtcResponse = {
-  btc: number;
-}
+type DateAndRate = [number, Rate];
 
 @Injectable({
   providedIn: 'root',
@@ -25,13 +22,14 @@ export class BtcRateService {
     console.log(message);
   }
 
-  getRate(): Observable<Rate> {
+  getRate(): Observable<DateAndRate> {
     // TODO fix for production
-    const url = `http://localhost:3333/${this.btcUrl}`
+    const url = `http://localhost:3333/${this.btcUrl}`;
     return this.http.get<BtcResponse>(url).pipe(
       tap((_) => this.log(`fetched rate`)),
-      map(({ btc }) => btc),
-      catchError(this.handleError<Rate>(`getRate`))
+      delay(1000),
+      map(({ btc }) => [Date.now(), btc] as DateAndRate),
+      catchError(this.handleError<DateAndRate>(`getRate`))
     );
   }
 

@@ -21,10 +21,10 @@
     </button>
   </nav>
   <div class="root-column">
-    <header><h1>Nx Reference</h1></header>
+    <header><h1>{{ title }}</h1></header>
     <main>
       <section>
-        <h2>Welcome to {{ title }}!</h2>
+        <h2>Exchange rates</h2>
         <div>
           <div>
             <star-loading-button
@@ -33,19 +33,21 @@
               (click)="getRate()"
             ></star-loading-button>
           </div>
-          exchange rate table:
-          <li *ngFor="let rate of rates">
-            {{rate}}
-          </li>
+          
+          <h3>Exchange rates</h3>
           <table>
-            <tr>
-              <td>timestamp</td>
-              <td>1 BTC</td>
-            </tr>
-            <tr>
-              <td>timestamp</td>
-              <td>EUR</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>EUR / BTC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rate of rates">
+                <td>{{rate[0] | date:"HH:mm:ss"}}</td>
+                <td>{{rate[1]}}</td>
+              </tr>    
+            </tbody>
           </table>
         </div>
       </section>

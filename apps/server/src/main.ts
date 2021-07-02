@@ -6,6 +6,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import { btc } from '@star/btc';
+import { BtcResponse } from '@star/shared/types';
 
 const app = express();
 
@@ -14,10 +15,6 @@ app.use(cors());
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to server!' });
 });
-
-type BtcResponse = {
-  btc: number;
-}
 
 app.get('/api/btc', (req, res) => {
   res.send({ btc: btc() } as BtcResponse);

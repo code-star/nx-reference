@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@star/btc": ["libs/btc/src/index.ts"],
-      "@star/ui": ["libs/ui/src/index.ts"]
+      "@star/ui": ["libs/ui/src/index.ts"],
+      "@star/shared/types": ["libs/shared/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
