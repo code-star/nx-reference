@@ -14,4 +14,8 @@ export class PrimaryButtonComponent {
    * The label to display on the button
    */
   @Input() label: string;
+  /**
+   * When true, clicking the button has no effect
+   */
+  @Input() disabled: boolean;
 }

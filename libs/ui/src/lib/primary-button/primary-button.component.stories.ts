@@ -18,8 +18,8 @@ const Template: Story<PrimaryButtonComponent> = (args) => ({
 export const Example = Template.bind({});
 
 Example.args = {
-  // primary: true,
   label: 'Primary Button',
+  disabled: false,
 };
 
 // export const primary = () => ({
