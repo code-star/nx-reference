@@ -143,7 +143,8 @@
             "port": 4400,
             "config": {
               "configFolder": "apps/demo/.storybook"
-            }
+            },
+            "staticDir": "public"
           },
           "configurations": {
             "ci": {
