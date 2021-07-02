@@ -1,5 +1,5 @@
 
-import { UiModule } from '@nx-storybook-atomic/ui';
+import { UiModule } from '@star/ui';
 import { AppComponent } from './app.component';
 
 export default {

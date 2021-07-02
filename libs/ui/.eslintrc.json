@@ -19,7 +19,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "nx-storybook-atomic",
+            "prefix": "star",
             "style": "camelCase"
           }
         ],
@@ -27,7 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "nx-storybook-atomic",
+            "prefix": "star",
             "style": "kebab-case"
           }
         ]

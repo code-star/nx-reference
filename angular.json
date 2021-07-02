@@ -36,7 +36,7 @@
       "projectType": "application",
       "root": "apps/demo",
       "sourceRoot": "apps/demo/src",
-      "prefix": "nx-storybook-atomic",
+      "prefix": "star",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -178,7 +178,7 @@
       "projectType": "library",
       "root": "libs/ui",
       "sourceRoot": "libs/ui/src",
-      "prefix": "nx-storybook-atomic",
+      "prefix": "star",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",

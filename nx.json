@@ -13,7 +13,7 @@
   "affected": {
     "defaultBase": "master"
   },
-  "npmScope": "nx-storybook-atomic",
+  "npmScope": "star",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",

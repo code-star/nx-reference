@@ -1,5 +1,6 @@
 {
-  "name": "nx-storybook-atomic",
+  "name": "nx-reference",
+  "description": "Example Nx monorepo for reference",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {

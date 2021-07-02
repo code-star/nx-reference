@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'nx-storybook-atomic-root',
+  selector: 'star-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { UiModule } from '@nx-storybook-atomic/ui';
+import { UiModule } from '@star/ui';
 
 import { AppComponent } from './app.component';
 
