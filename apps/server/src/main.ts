@@ -4,11 +4,19 @@
  */
 
 import * as express from 'express';
+import * as cors from 'cors';
+import { btc } from '@star/btc';
 
 const app = express();
 
+app.use(cors());
+
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to server!' });
+});
+
+app.get('/api/btc', (req, res) => {
+  res.send({ message: btc() });
 });
 
 const port = process.env.port || 3333;

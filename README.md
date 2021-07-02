@@ -7,14 +7,21 @@ yarn nx g @nrwl/angular:storybook-configuration demo
 yarn nx g @nrwl/angular:lib ui
 yarn nx g @nrwl/angular:storybook-configuration ui
 yarn nx g @nrwl/angular:component button --project=ui --export
-yarn nx generate @nrwl/angular:stories --name=ui
+yarn nx g @nrwl/angular:stories --name=ui
+yarn nx g @nrwl/angular:component LoadingButton --project=ui --export
+yarn nx g @nrwl/angular:stories --name=ui
+yarn add -D @nrwl/express
+yarn add cors
+yarn add -D @types/cors
+yarn nx g @nrwl/express:application server
+yarn nx g @nrwl/node:library btc
 
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
 
-run storybook: `yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`
-so modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
-
+Run storybook: `yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
+So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
+Also run `yarn nx serve server`.
 
 This project was generated using [Nx](https://nx.dev).
 
