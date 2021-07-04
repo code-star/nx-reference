@@ -1,8 +1,8 @@
 <star-primary-button label="{{ label }}" [disabled]="loading">
   <div class="flex">
-    <star-icon *ngIf="loading" class="img-spin" type="loading"></star-icon>
     <div>
       <ng-content></ng-content>
     </div>
+    <star-icon *ngIf="loading" class="img-spin" type="loading"></star-icon>
   </div>
 </star-primary-button>
