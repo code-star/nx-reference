@@ -3,11 +3,9 @@
     ><h2>Exchange rates</h2>
     <div>
       <div>
-        <star-loading-button
-          label="get new exchange rate"
-          [loading]="loading"
-          (click)="getRate()"
-        ></star-loading-button>
+        <star-loading-button [loading]="loading" (click)="getRate()"
+          >get new exchange rate</star-loading-button
+        >
       </div>
 
       <h3>Exchange rates</h3>

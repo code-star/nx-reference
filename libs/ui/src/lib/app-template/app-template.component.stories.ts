@@ -4,6 +4,9 @@ import { AppTemplateComponent } from './app-template.component';
 export default {
   title: 'templates/AppTemplate',
   component: AppTemplateComponent,
+  parameters: {
+    layout: 'fullscreen',
+  },
 };
 
 const Template: Story<AppTemplateComponent> = (args) => ({

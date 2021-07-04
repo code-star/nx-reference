@@ -15,6 +15,7 @@ export default {
 
 const Template: Story<LoadingButtonComponent> = (args) => ({
   props: args,
+  template: '<star-loading-button>Example Button</star-loading-button>',
 });
 
 export const Example = Template.bind({ UiModule });

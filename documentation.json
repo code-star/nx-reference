@@ -413,7 +413,7 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-1059454548056c7857884ca8e2f41433",
+            "id": "component-IconComponent-825e2927021fcd84128b6918ca5bb3b7",
             "file": "libs/ui/src/lib/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -429,7 +429,14 @@
                 "./icon.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
+            "inputsClass": [
+                {
+                    "name": "type",
+                    "description": "<p>Name of the icon to display</p>\n",
+                    "line": 13,
+                    "type": "\"loading\" | \"home\""
+                }
+            ],
             "outputsClass": [],
             "propertiesClass": [],
             "methodsClass": [],
@@ -438,7 +445,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  // TODO support 4 icons. Dynamically switch template urls?\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -447,7 +454,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<svg focusable=\"false\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n  <path\n    d=\"M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z\"\n  ></path>\n</svg>\n"
+            "templateData": "<svg *ngIf=\"type === 'loading'\" focusable=\"false\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n  <path\n    d=\"M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z\"\n  ></path>\n</svg>\n"
         },
         {
             "name": "LoadingButtonComponent",
@@ -1236,7 +1243,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 7,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -1427,9 +1434,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "IconComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
             },
             {
                 "filePath": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",

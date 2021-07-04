@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'star-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss'],
 })
-export class IconComponent {}
+export class IconComponent {
+  /**
+   * Name of the icon to display
+   */
+  @Input() type: 'loading' | 'home' | 'code' | 'star';
+}
