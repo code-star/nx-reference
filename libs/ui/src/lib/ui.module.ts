@@ -5,6 +5,7 @@ import { LoadingButtonComponent } from './loading-button/loading-button.componen
 import { RatesTableComponent } from './rates-table/rates-table.component';
 import { PaperComponent } from './paper/paper.component';
 import { AppTemplateComponent } from './app-template/app-template.component';
+import { IconComponent } from './icon/icon.component';
 
 @NgModule({
   imports: [CommonModule],
@@ -13,14 +14,16 @@ import { AppTemplateComponent } from './app-template/app-template.component';
     LoadingButtonComponent,
     RatesTableComponent,
     PaperComponent,
-    AppTemplateComponent
+    AppTemplateComponent,
+    IconComponent
   ],
   exports: [
     PrimaryButtonComponent,
     LoadingButtonComponent,
     RatesTableComponent,
     PaperComponent,
-    AppTemplateComponent
+    AppTemplateComponent,
+    IconComponent
   ],
 })
 export class UiModule {}
