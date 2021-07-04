@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 /**
  * Some primary button documentation. This is an atom, a UI component. Presentational, without state.
- * Usage: <star-primary-button label="my label" />
+ * Usage: <star-primary-button>my label</star-primary-button>
  */
 @Component({
   selector: 'star-primary-button',
@@ -10,10 +10,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./primary-button.component.scss'],
 })
 export class PrimaryButtonComponent {
-  /**
-   * The label to display on the button
-   */
-  @Input() label: string;
   /**
    * When true, clicking the button has no effect
    */
