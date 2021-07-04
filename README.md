@@ -17,11 +17,15 @@ yarn nx g @nrwl/express:application server
 yarn nx g @nrwl/node:library btc
 yarn nx g service BtcRate
 Note that modules (e.g. HttpClientModule or UiModule) need to be added to both app.module.ts and app.component.stories.ts
+yarn nx g @nrwl/workspace:lib shared/types
+yarn add -D @compodoc/compodoc
+Add to package.json: "docs:json": "compodoc -p ./tsconfig.base.json -e json -d ." 
+yarn docs:json // TODO this now needs to be run manually after each type change, then also storybook needs to be restarted
 
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
 
-Run storybook: `yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
+Run storybook: `yarn docs:json && yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
 So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
 Also run `yarn nx serve server`.
 

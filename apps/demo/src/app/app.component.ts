@@ -3,16 +3,13 @@ import { Rate } from '@star/shared/types';
 import { BtcRateService } from './btc-rate.service';
 
 /**
- * This is test documentation, part 1 TODO
+ * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*
  */
 @Component({
   selector: 'star-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-/**
- * This is test documentation, part 2 TODO
- */
 export class AppComponent implements OnInit {
   title = 'Rx Reference';
   loading = false;

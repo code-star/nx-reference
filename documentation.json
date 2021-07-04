@@ -1,0 +1,1552 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "BtcResponse",
+            "id": "interface-BtcResponse-5784c1469b9131dc6598684d2742f475",
+            "file": "libs/shared/types/src/lib/shared-types.ts",
+            "type": "interface",
+            "sourceCode": "export type Rate = number;\n\nexport interface BtcResponse {\n  btc: Rate;\n}",
+            "properties": [
+                {
+                    "name": "btc",
+                    "type": "Rate",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Chainable",
+            "id": "interface-Chainable-18a4949074175452550ac7042867edc2",
+            "file": "apps/demo-e2e/src/support/commands.ts",
+            "type": "interface",
+            "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 152,
+            "methods": [
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "jsdoctags": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Chainable",
+            "id": "interface-Chainable-18a4949074175452550ac7042867edc2-1",
+            "file": "apps/ui-e2e/src/support/commands.ts",
+            "type": "interface",
+            "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 152,
+            "methods": [
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "jsdoctags": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "Chainable-1"
+        }
+    ],
+    "injectables": [
+        {
+            "name": "BtcRateService",
+            "id": "injectable-BtcRateService-b61b9d758b3154860e06bc5d55885ed3",
+            "file": "apps/demo/src/app/btc-rate.service.ts",
+            "properties": [
+                {
+                    "name": "btcUrl",
+                    "defaultValue": "'api/btc'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "httpOptions",
+                    "defaultValue": "{\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  }",
+                    "type": "object",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getRate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<DateAndRate>",
+                    "typeParameters": [],
+                    "line": 25
+                },
+                {
+                    "name": "handleError",
+                    "args": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "defaultValue": "'operation'"
+                        },
+                        {
+                            "name": "result",
+                            "type": "T",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "(error: any) => any",
+                    "typeParameters": [
+                        "T"
+                    ],
+                    "line": 45,
+                    "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1150,
+                                "end": 1159,
+                                "flags": 0,
+                                "escapedText": "operation"
+                            },
+                            "type": "string",
+                            "defaultValue": "'operation'",
+                            "tagName": {
+                                "pos": 1144,
+                                "end": 1149,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>name of the operation that failed</li>\n</ul>\n"
+                        },
+                        {
+                            "name": {
+                                "pos": 1208,
+                                "end": 1214,
+                                "flags": 0,
+                                "escapedText": "result"
+                            },
+                            "type": "T",
+                            "optional": true,
+                            "tagName": {
+                                "pos": 1202,
+                                "end": 1207,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<ul>\n<li>optional value to return as the observable result</li>\n</ul>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "log",
+                    "args": [
+                        {
+                            "name": "message",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "message",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(private http: HttpClient) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    console.log(message);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    // TODO fix for production\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `/${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-18e1c645c84ff2835c8f000034ebc0bc",
+            "file": "apps/demo/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "rates",
+                    "defaultValue": "[]",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Rx Reference'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getRate",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 28
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*</p>\n",
+            "rawdescription": "AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from './btc-rate.service';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  constructor(private btcRateService: BtcRateService) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$star-spacing: 4px;\n\n:host {\n  --star-default-bg: #002042;\n  --star-card-bg: #001329;\n  --star-primary: #e87e00;\n  font-family: sans-serif;\n}\n\n.root {\n  background-color: var(--star-default-bg);\n  color: white;\n  display: flex;\n  height: 100vh;\n}\n\n.root-column {\n  flex-grow: 1;\n}\n\na {\n  color: var(--star-primary);\n}\n\nnav {\n  background-color: var(--star-primary);\n  width: $star-spacing * 16;\n  padding-top: calc(#{$star-spacing * 24} + 1rem);\n\n  button {\n    border: none;\n    border-radius: $star-spacing;\n    background-color: darken(#e87e00, 5%);\n    padding: $star-spacing;\n    margin: ($star-spacing * 0.5) $star-spacing;\n    width: $star-spacing * 14;\n    height: $star-spacing * 14;\n    cursor: pointer;\n\n    &:hover {\n      background-color: darken(#e87e00, 10%);\n    }\n  }\n}\n\nheader {\n  background-color: var(--star-card-bg);\n  height: calc(#{$star-spacing * 24} - 2rem);\n  padding: 1rem;\n\n  h1 {\n    margin: 0;\n  }\n}\n\n// .gutter-left {\n//   margin-left: 9px;\n// }\n\n// .col-span-2 {\n//   grid-column: span 2;\n// }\n\n// .flex {\n//   display: flex;\n//   align-items: center;\n//   justify-content: center;\n// }\n\n// header {\n//   background-color: #143055;\n//   color: white;\n//   padding: 5px;\n//   border-radius: 3px;\n// }\n\n// main {\n//   padding: 0 36px;\n// }\n\n// p {\n//   text-align: center;\n// }\n\n// h1 {\n//   text-align: center;\n//   margin-left: 18px;\n//   font-size: 24px;\n// }\n\n// h2 {\n//   text-align: center;\n//   font-size: 20px;\n//   margin: 40px 0 10px 0;\n// }\n\n// .resources {\n//   text-align: center;\n//   list-style: none;\n//   padding: 0;\n//   display: grid;\n//   grid-gap: 9px;\n//   grid-template-columns: 1fr 1fr;\n// }\n\n// .resource {\n//   color: #0094ba;\n//   height: 36px;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   border-radius: 4px;\n//   padding: 3px 9px;\n//   text-decoration: none;\n// }\n\n// .resource:hover {\n//   background-color: rgba(68, 138, 255, 0.04);\n// }\n\n// pre {\n//   padding: 9px;\n//   border-radius: 4px;\n//   background-color: black;\n//   color: #eee;\n// }\n\n// details {\n//   border-radius: 4px;\n//   color: #333;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   padding: 3px 9px;\n//   margin-bottom: 9px;\n// }\n\n// summary {\n//   cursor: pointer;\n//   outline: none;\n//   height: 36px;\n//   line-height: 36px;\n// }\n\n// .github-star-container {\n//   margin-top: 12px;\n//   line-height: 20px;\n// }\n\n// .github-star-container a {\n//   display: flex;\n//   align-items: center;\n//   text-decoration: none;\n//   color: #333;\n// }\n\n// .github-star-badge {\n//   color: #24292e;\n//   display: flex;\n//   align-items: center;\n//   font-size: 12px;\n//   padding: 3px 10px;\n//   border: 1px solid rgba(27, 31, 35, 0.2);\n//   border-radius: 3px;\n//   background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);\n//   margin-left: 4px;\n//   font-weight: 600;\n// }\n\n// .github-star-badge:hover {\n//   background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);\n//   border-color: rgba(27, 31, 35, 0.35);\n//   background-position: -0.5em;\n// }\n// .github-star-badge .material-icons {\n//   height: 16px;\n//   width: 16px;\n//   margin-right: 4px;\n// }\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "btcRateService",
+                        "type": "BtcRateService"
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "btcRateService",
+                        "type": "BtcRateService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button\n          label=\"get new exchange rate\"\n          [loading]=\"loading\"\n          (click)=\"getRate()\"\n        ></star-loading-button>\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table></div\n  ></star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+        },
+        {
+            "name": "AppTemplateComponent",
+            "id": "component-AppTemplateComponent-b64645e67fbe0a733fbc4abd7576edea",
+            "file": "libs/ui/src/lib/app-template/app-template.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-app-template",
+            "styleUrls": [
+                "./app-template.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app-template.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "title",
+                    "line": 9,
+                    "type": "string"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-app-template',\n  templateUrl: './app-template.component.html',\n  styleUrls: ['./app-template.component.scss'],\n})\nexport class AppTemplateComponent {\n  @Input() title: string;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "$star-spacing: 4px;\n\n:host {\n  --star-default-bg: #002042;\n  --star-card-bg: #001329;\n  --star-primary: #e87e00;\n  font-family: sans-serif;\n}\n\n.root {\n  background-color: var(--star-default-bg);\n  color: white;\n  display: flex;\n  height: 100vh;\n}\n\n.root-column {\n  flex-grow: 1;\n}\n\na {\n  color: var(--star-primary);\n}\n\nnav {\n  background-color: var(--star-primary);\n  width: $star-spacing * 16;\n  padding-top: calc(#{$star-spacing * 24} + 1rem);\n\n  button {\n    border: none;\n    border-radius: $star-spacing;\n    background-color: darken(#e87e00, 5%);\n    padding: $star-spacing;\n    margin: ($star-spacing * 0.5) $star-spacing;\n    width: $star-spacing * 14;\n    height: $star-spacing * 14;\n    cursor: pointer;\n\n    &:hover {\n      background-color: darken(#e87e00, 10%);\n    }\n  }\n}\n\nheader {\n  background-color: var(--star-card-bg);\n  height: calc(#{$star-spacing * 24} - 2rem);\n  padding: 1rem;\n\n  h1 {\n    margin: 0;\n  }\n}\n",
+                    "styleUrl": "./app-template.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"root\">\n  <nav>\n    <button title=\"home\">\n      <svg viewBox=\"0 0 24 24\">\n        <path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"></path>\n      </svg>\n    </button>\n    <button title=\"code\">\n      <svg viewBox=\"0 0 24 24\">\n        <path\n          d=\"M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z\"\n        ></path>\n      </svg>\n    </button>\n    <button title=\"star\">\n      <svg viewBox=\"0 0 24 24\">\n        <path\n          d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"\n        ></path>\n      </svg>\n    </button>\n  </nav>\n  <div class=\"root-column\">\n    <header>\n      <h1>{{ title }}</h1>\n    </header>\n    <main>\n      <ng-content></ng-content>\n    </main>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "IconComponent",
+            "id": "component-IconComponent-1059454548056c7857884ca8e2f41433",
+            "file": "libs/ui/src/lib/icon/icon.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-icon",
+            "styleUrls": [
+                "./icon.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./icon.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./icon.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<svg focusable=\"false\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n  <path\n    d=\"M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z\"\n  ></path>\n</svg>\n"
+        },
+        {
+            "name": "LoadingButtonComponent",
+            "id": "component-LoadingButtonComponent-693b112246b6f98a188b24fe2e8cc6b5",
+            "file": "libs/ui/src/lib/loading-button/loading-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-loading-button",
+            "styleUrls": [
+                "./loading-button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./loading-button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "label",
+                    "description": "<p>The label to display on the button</p>\n",
+                    "line": 34,
+                    "type": "string"
+                },
+                {
+                    "name": "loading",
+                    "description": "<p>When loading is true, the button is disabled and a loading animation is displayed.</p>\n",
+                    "line": 18,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "_label_orig",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "modifierKind": [
+                        112
+                    ]
+                },
+                {
+                    "name": "_loading",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 13,
+                    "modifierKind": [
+                        112
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Button with a loading state, to show when an an action is keeping this button disabled.</p>\n",
+            "rawdescription": "Button with a loading state, to show when an an action is keeping this button disabled.",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  private _label_orig: string;\n  private _loading: boolean;\n\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() set loading(value: boolean) {\n    this._loading = value;\n\n    if (this.label !== 'Loading...') {\n      this._label_orig = this.label;\n    }\n\n    this.label = value ? 'Loading...' : this._label_orig;\n  }\n  get loading(): boolean {\n    return this._loading;\n  }\n\n  /**\n   * The label to display on the button\n   */\n  @Input() label: string;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// .img-spin {\n//   position: absolute;\n//   width: 20px;\n//   height: 20px;\n// }\n// .img-spin \n.img-spin {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 20px;\n  height: 20px;\n  margin: -60px 0 0 -60px;\n  // -webkit-animation:spin 4s linear infinite;\n  // -moz-animation:spin 4s linear infinite;\n  animation: spin 4s linear infinite;\n}\n// @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }\n// @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }\n@keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n",
+                    "styleUrl": "./loading-button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "loading": {
+                    "name": "loading",
+                    "setSignature": {
+                        "name": "loading",
+                        "type": "void",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "boolean"
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 18,
+                        "description": "<p>When loading is true, the button is disabled and a loading animation is displayed.</p>\n",
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "boolean",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    },
+                    "getSignature": {
+                        "name": "loading",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 27
+                    }
+                }
+            },
+            "templateData": "<star-primary-button label=\"{{ label }}\" [disabled]=\"loading\">\n  <!-- <div *ngIf=\"loading\" class=\"img-spin\">\n    <star-icon class=\"img-spin\"></star-icon>\n  </div> -->\n  <star-icon  *ngIf=\"loading\" class=\"img-spin\"></star-icon>\n  <div>\n    <ng-content></ng-content>\n  </div>\n</star-primary-button>\n"
+        },
+        {
+            "name": "PaperComponent",
+            "id": "component-PaperComponent-aced910d30574096488944606a475cd9",
+            "file": "libs/ui/src/lib/paper/paper.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-paper",
+            "styleUrls": [
+                "./paper.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./paper.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'star-paper',\n  templateUrl: './paper.component.html',\n  styleUrls: ['./paper.component.scss']\n})\nexport class PaperComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ":host {\n  --star-paper-bg: #001329;\n}\n\nsection {\n  background-color: var(--star-paper-bg);\n  color: white;\n  margin: 1rem;\n  padding: 1rem;\n  border-radius: 8px;\n\n  h2 {\n    margin-top: 0;\n  }\n\n  h4 {\n    margin-bottom: 0;\n  }\n}\n\n\n",
+                    "styleUrl": "./paper.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<section>\n    <ng-content></ng-content>\n</section>"
+        },
+        {
+            "name": "PrimaryButtonComponent",
+            "id": "component-PrimaryButtonComponent-17b991ecd9d566119d25c4139b083ba2",
+            "file": "libs/ui/src/lib/primary-button/primary-button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-primary-button",
+            "styleUrls": [
+                "./primary-button.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./primary-button.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "description": "<p>When true, clicking the button has no effect</p>\n",
+                    "line": 16,
+                    "type": "boolean"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "<p>Some primary button documentation. This is an atom, a UI component. Presentational, without state.\nUsage: <star-primary-button>my label</star-primary-button></p>\n",
+            "rawdescription": "Some primary button documentation. This is an atom, a UI component. Presentational, without state.\nUsage: <star-primary-button>my label</star-primary-button>",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * Usage: <star-primary-button>my label</star-primary-button>\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled: boolean;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "button {\n    background: #e87e00;\n    border: none;\n    border-radius: 4px;\n    cursor: pointer;\n    color: black;\n    padding: 0.5rem 1rem;\n    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);\n    text-transform: uppercase;\n    font-weight: bold;\n\n    &:disabled {\n        background: #533106;\n        cursor: not-allowed;\n    }\n}",
+                    "styleUrl": "./primary-button.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<button [disabled]=\"disabled\">\n  <ng-content></ng-content>\n</button>\n"
+        },
+        {
+            "name": "RatesTableComponent",
+            "id": "component-RatesTableComponent-10560068ba19b8c4161d6a113157b436",
+            "file": "libs/ui/src/lib/rates-table/rates-table.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-rates-table",
+            "styleUrls": [
+                "./rates-table.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./rates-table.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "rates",
+                    "defaultValue": "[]",
+                    "description": "<p>A list of tuples of dates (in milliseconds since epoch) and rates (number)</p>\n",
+                    "line": 13,
+                    "type": "[]"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Rate } from '@star/shared/types';\n\n@Component({\n  selector: 'star-rates-table',\n  templateUrl: './rates-table.component.html',\n  styleUrls: ['./rates-table.component.scss'],\n})\nexport class RatesTableComponent {\n  /**\n   * A list of tuples of dates (in milliseconds since epoch) and rates (number)\n   */\n  @Input() rates: [number, Rate][] = [];\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "table {\n  color: white;\n}\n\ntable td {\n  width: 150px;\n}\n\ntable th:first-child,\ntable td:first-child {\n  text-align: left;\n}\n\ntable th:last-child,\ntable td:last-child {\n  text-align: right;\n}\n\ntable th {\n  border-bottom: 2px solid white;\n}\n\ntable tr:not(:last-child) td {\n  border-bottom: 1px solid white;\n}\n",
+                    "styleUrl": "./rates-table.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<table>\n  <thead>\n    <tr>\n      <th>Time</th>\n      <th>EUR / BTC</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let rate of rates\">\n      <td>{{ rate[0] | date: 'HH:mm:ss' }}</td>\n      <td>{{ rate[1] }}</td>\n    </tr>\n  </tbody>\n</table>\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "UiModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "UiModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppTemplateComponent"
+                        },
+                        {
+                            "name": "IconComponent"
+                        },
+                        {
+                            "name": "LoadingButtonComponent"
+                        },
+                        {
+                            "name": "PaperComponent"
+                        },
+                        {
+                            "name": "PrimaryButtonComponent"
+                        },
+                        {
+                            "name": "RatesTableComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "AppTemplateComponent"
+                        },
+                        {
+                            "name": "IconComponent"
+                        },
+                        {
+                            "name": "LoadingButtonComponent"
+                        },
+                        {
+                            "name": "PaperComponent"
+                        },
+                        {
+                            "name": "PrimaryButtonComponent"
+                        },
+                        {
+                            "name": "RatesTableComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "app",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/server/src/main.ts",
+                "type": "",
+                "defaultValue": "express()"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/demo/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/demo/src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/server/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/server/src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n}"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/demo/src/app/app.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [UiModule, HttpClientModule],\n  },\n  // component: AppComponent,\n  props: {},\n})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({ UiModule })"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "getGreeting",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/demo-e2e/src/support/app.po.ts",
+                "type": "",
+                "defaultValue": "() => cy.get('h1')"
+            },
+            {
+                "name": "port",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/server/src/main.ts",
+                "type": "",
+                "defaultValue": "process.env.port || 3333"
+            },
+            {
+                "name": "primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                "type": "",
+                "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: []\n  },\n  component: IconComponent,\n  props: {\n  }\n})"
+            },
+            {
+                "name": "server",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/server/src/main.ts",
+                "type": "",
+                "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                "type": "Story<AppTemplateComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                "type": "Story<LoadingButtonComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-loading-button>Example Button</star-loading-button>',\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                "type": "Story<PaperComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>',\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                "type": "Story<PrimaryButtonComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  // TODO content should be configurable with the control, without TS error\n  template: `<star-primary-button>${args.label}</star-primary-button>`,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                "type": "Story<RatesTableComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n})"
+            }
+        ],
+        "functions": [
+            {
+                "name": "btc",
+                "file": "libs/btc/src/lib/btc.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "description": "",
+                "args": [],
+                "returnType": "Rate"
+            }
+        ],
+        "typealiases": [
+            {
+                "name": "DateAndRate",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "[number, Rate]",
+                "file": "apps/demo/src/app/btc-rate.service.ts",
+                "description": "",
+                "kind": 167
+            },
+            {
+                "name": "Rate",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "number",
+                "file": "libs/shared/types/src/lib/shared-types.ts",
+                "description": "",
+                "kind": 134
+            }
+        ],
+        "enumerations": [],
+        "groupedVariables": {
+            "apps/server/src/main.ts": [
+                {
+                    "name": "app",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/server/src/main.ts",
+                    "type": "",
+                    "defaultValue": "express()"
+                },
+                {
+                    "name": "port",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/server/src/main.ts",
+                    "type": "",
+                    "defaultValue": "process.env.port || 3333"
+                },
+                {
+                    "name": "server",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/server/src/main.ts",
+                    "type": "",
+                    "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
+                }
+            ],
+            "apps/demo/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "apps/demo/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
+                }
+            ],
+            "apps/server/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/server/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "apps/server/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/server/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
+                }
+            ],
+            "apps/demo/src/app/app.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo/src/app/app.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [UiModule, HttpClientModule],\n  },\n  // component: AppComponent,\n  props: {},\n})"
+                }
+            ],
+            "libs/ui/src/lib/app-template/app-template.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                    "type": "Story<AppTemplateComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
+                }
+            ],
+            "libs/ui/src/lib/loading-button/loading-button.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({ UiModule })"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                    "type": "Story<LoadingButtonComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-loading-button>Example Button</star-loading-button>',\n})"
+                }
+            ],
+            "libs/ui/src/lib/paper/paper.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                    "type": "Story<PaperComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>',\n})"
+                }
+            ],
+            "libs/ui/src/lib/primary-button/primary-button.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                    "type": "Story<PrimaryButtonComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  // TODO content should be configurable with the control, without TS error\n  template: `<star-primary-button>${args.label}</star-primary-button>`,\n})"
+                }
+            ],
+            "libs/ui/src/lib/rates-table/rates-table.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                    "type": "Story<RatesTableComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n})"
+                }
+            ],
+            "apps/demo-e2e/src/support/app.po.ts": [
+                {
+                    "name": "getGreeting",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo-e2e/src/support/app.po.ts",
+                    "type": "",
+                    "defaultValue": "() => cy.get('h1')"
+                }
+            ],
+            "libs/ui/src/lib/icon/icon.component.stories.ts": [
+                {
+                    "name": "primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: []\n  },\n  component: IconComponent,\n  props: {\n  }\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {
+            "libs/btc/src/lib/btc.ts": [
+                {
+                    "name": "btc",
+                    "file": "libs/btc/src/lib/btc.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "description": "",
+                    "args": [],
+                    "returnType": "Rate"
+                }
+            ]
+        },
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {
+            "apps/demo/src/app/btc-rate.service.ts": [
+                {
+                    "name": "DateAndRate",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "[number, Rate]",
+                    "file": "apps/demo/src/app/btc-rate.service.ts",
+                    "description": "",
+                    "kind": 167
+                }
+            ],
+            "libs/shared/types/src/lib/shared-types.ts": [
+                {
+                    "name": "Rate",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "number",
+                    "file": "libs/shared/types/src/lib/shared-types.ts",
+                    "description": "",
+                    "kind": 134
+                }
+            ]
+        }
+    },
+    "routes": [],
+    "coverage": {
+        "count": 7,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "apps/demo-e2e/src/support/app.po.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getGreeting",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo-e2e/src/support/commands.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Chainable",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/app/app.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/app/btc-rate.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "BtcRateService",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/server/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/server/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/server/src/main.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "app",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/server/src/main.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "port",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/server/src/main.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "server",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/ui-e2e/src/support/commands.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Chainable",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/btc/src/lib/btc.ts",
+                "type": "function",
+                "linksubtype": "function",
+                "name": "btc",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/types/src/lib/shared-types.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "BtcResponse",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/app-template/app-template.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppTemplateComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/icon/icon.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IconComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/loading-button/loading-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoadingButtonComponent",
+                "coveragePercent": 60,
+                "coverageCount": "3/5",
+                "status": "good"
+            },
+            {
+                "filePath": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/paper/paper.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/paper/paper.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PaperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/primary-button/primary-button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PrimaryButtonComponent",
+                "coveragePercent": 100,
+                "coverageCount": "2/2",
+                "status": "very-good"
+            },
+            {
+                "filePath": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/rates-table/rates-table.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RatesTableComponent",
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
+            }
+        ]
+    }
+}
