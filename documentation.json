@@ -365,7 +365,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button\n          label=\"get new exchange rate\"\n          [loading]=\"loading\"\n          (click)=\"getRate()\"\n        ></star-loading-button>\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table></div\n  ></star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table></div\n  ></star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
@@ -409,11 +409,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"root\">\n  <nav>\n    <button title=\"home\">\n      <svg viewBox=\"0 0 24 24\">\n        <path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"></path>\n      </svg>\n    </button>\n    <button title=\"code\">\n      <svg viewBox=\"0 0 24 24\">\n        <path\n          d=\"M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z\"\n        ></path>\n      </svg>\n    </button>\n    <button title=\"star\">\n      <svg viewBox=\"0 0 24 24\">\n        <path\n          d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"\n        ></path>\n      </svg>\n    </button>\n  </nav>\n  <div class=\"root-column\">\n    <header>\n      <h1>{{ title }}</h1>\n    </header>\n    <main>\n      <ng-content></ng-content>\n    </main>\n  </div>\n</div>\n"
+            "templateData": "<div class=\"root\">\n  <nav>\n    <button title=\"home\">\n      <star-icon type=\"home\"></star-icon>\n    </button>\n    <button title=\"code\">\n      <star-icon type=\"code\"></star-icon>\n    </button>\n    <button title=\"star\">\n      <star-icon type=\"star\"></star-icon>\n    </button>\n  </nav>\n  <div class=\"root-column\">\n    <header>\n      <h1>{{ title }}</h1>\n    </header>\n    <main>\n      <ng-content></ng-content>\n    </main>\n  </div>\n</div>\n"
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-825e2927021fcd84128b6918ca5bb3b7",
+            "id": "component-IconComponent-04779c973d80869da1d7c69b64cd783f",
             "file": "libs/ui/src/lib/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -433,8 +433,8 @@
                 {
                     "name": "type",
                     "description": "<p>Name of the icon to display</p>\n",
-                    "line": 13,
-                    "type": "\"loading\" | \"home\""
+                    "line": 12,
+                    "type": "\"loading\" | \"home\" | \"code\" | \"star\""
                 }
             ],
             "outputsClass": [],
@@ -445,7 +445,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  // TODO support 4 icons. Dynamically switch template urls?\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home' | 'code' | 'star';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -454,7 +454,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<svg *ngIf=\"type === 'loading'\" focusable=\"false\" viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n  <path\n    d=\"M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z\"\n  ></path>\n</svg>\n"
+            "templateData": "<svg *ngIf=\"type === 'loading'\" focusable=\"false\" viewBox=\"0 0 24 24\" aria-hidden=\"true\" width=\"100%\">\n  <path\n    d=\"M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z\"\n  ></path>\n</svg>\n\n<svg *ngIf=\"type === 'home'\" viewBox=\"0 0 24 24\" width=\"100%\">\n  <path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"></path>\n</svg>\n\n<svg *ngIf=\"type === 'code'\" viewBox=\"0 0 24 24\" width=\"100%\">\n  <path\n    d=\"M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z\"\n  ></path>\n</svg>\n\n<svg *ngIf=\"type === 'star'\" viewBox=\"0 0 24 24\" width=\"100%\">\n  <path\n    d=\"M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z\"\n  ></path>\n</svg>"
         },
         {
             "name": "LoadingButtonComponent",
@@ -521,7 +521,7 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// .img-spin {\n//   position: absolute;\n//   width: 20px;\n//   height: 20px;\n// }\n// .img-spin \n.img-spin {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  width: 20px;\n  height: 20px;\n  margin: -60px 0 0 -60px;\n  // -webkit-animation:spin 4s linear infinite;\n  // -moz-animation:spin 4s linear infinite;\n  animation: spin 4s linear infinite;\n}\n// @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }\n// @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }\n@keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n",
+                    "data": ".flex {\n  display: flex;\n  gap: 0.4rem;\n}\n\n.img-spin {\n  width: 15px;\n  height: 15px;\n  animation: spin 2s linear infinite;\n  transform-origin: center;\n}\n\n@keyframes spin {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n",
                     "styleUrl": "./loading-button.component.scss"
                 }
             ],
@@ -559,7 +559,7 @@
                     }
                 }
             },
-            "templateData": "<star-primary-button label=\"{{ label }}\" [disabled]=\"loading\">\n  <!-- <div *ngIf=\"loading\" class=\"img-spin\">\n    <star-icon class=\"img-spin\"></star-icon>\n  </div> -->\n  <star-icon  *ngIf=\"loading\" class=\"img-spin\"></star-icon>\n  <div>\n    <ng-content></ng-content>\n  </div>\n</star-primary-button>\n"
+            "templateData": "<star-primary-button label=\"{{ label }}\" [disabled]=\"loading\">\n  <div class=\"flex\">\n    <div>\n      <ng-content></ng-content>\n    </div>\n    <star-icon *ngIf=\"loading\" class=\"img-spin\" type=\"loading\"></star-icon>\n  </div>\n</star-primary-button>\n"
         },
         {
             "name": "PaperComponent",
@@ -881,6 +881,14 @@
                 "name": "Example",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
                 "type": "",
                 "defaultValue": "Template.bind({ UiModule })"
@@ -926,14 +934,6 @@
                 "defaultValue": "process.env.port || 3333"
             },
             {
-                "name": "primary",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
-                "type": "",
-                "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: []\n  },\n  component: IconComponent,\n  props: {\n  }\n})"
-            },
-            {
                 "name": "server",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -948,6 +948,14 @@
                 "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
                 "type": "Story<AppTemplateComponent>",
                 "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                "type": "Story<IconComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n  template:\n    `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
             },
             {
                 "name": "Template",
@@ -1109,6 +1117,24 @@
                     "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
                 }
             ],
+            "libs/ui/src/lib/icon/icon.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                    "type": "Story<IconComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n  template:\n    `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
+                }
+            ],
             "libs/ui/src/lib/loading-button/loading-button.component.stories.ts": [
                 {
                     "name": "Example",
@@ -1190,16 +1216,6 @@
                     "type": "",
                     "defaultValue": "() => cy.get('h1')"
                 }
-            ],
-            "libs/ui/src/lib/icon/icon.component.stories.ts": [
-                {
-                    "name": "primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
-                    "type": "",
-                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: []\n  },\n  component: IconComponent,\n  props: {\n  }\n})"
-                }
             ]
         },
         "groupedFunctions": {
@@ -1243,7 +1259,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 9,
+        "count": 8,
         "status": "low",
         "files": [
             {
@@ -1424,7 +1440,17 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "primary",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/icon/icon.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

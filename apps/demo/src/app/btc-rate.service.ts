@@ -23,10 +23,9 @@ export class BtcRateService {
   }
 
   getRate(): Observable<DateAndRate> {
-    // TODO fix for production
     const url =
       window.location.hostname === 'code-star.github.io'
-        ? `/${this.btcUrl}`
+        ? `nx-reference/${this.btcUrl}`
         : `http://localhost:3333/${this.btcUrl}`;
     return this.http.get<BtcResponse>(url).pipe(
       tap(() => this.log(`fetched rate`)),
