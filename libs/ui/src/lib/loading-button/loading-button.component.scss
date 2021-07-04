@@ -1,0 +1,17 @@
+.flex {
+  display: flex;
+}
+
+.img-spin {
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
