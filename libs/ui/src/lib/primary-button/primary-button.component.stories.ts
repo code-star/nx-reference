@@ -11,8 +11,12 @@ export default {
   // },
 };
 
-const Template: Story<PrimaryButtonComponent> = (args) => ({
-  props: args,
+const Template: Story<PrimaryButtonComponent & { label: string }> = ({
+  label,
+  ...props
+}) => ({
+  props,
+  template: `<star-primary-button>${label}</star-primary-button>`,
 });
 
 export const Example = Template.bind({});

@@ -23,7 +23,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-18a4949074175452550ac7042867edc2",
-            "file": "apps/demo-e2e/src/support/commands.ts",
+            "file": "apps/ui-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -68,7 +68,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-18a4949074175452550ac7042867edc2-1",
-            "file": "apps/ui-e2e/src/support/commands.ts",
+            "file": "apps/demo-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -117,7 +117,7 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-b61b9d758b3154860e06bc5d55885ed3",
+            "id": "injectable-BtcRateService-c24c929e3d7a74244cf1fd176efe36b4",
             "file": "apps/demo/src/app/btc-rate.service.ts",
             "properties": [
                 {
@@ -168,7 +168,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 45,
+                    "line": 44,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -176,16 +176,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1150,
-                                "end": 1159,
+                                "pos": 1118,
+                                "end": 1127,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1144,
-                                "end": 1149,
+                                "pos": 1112,
+                                "end": 1117,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -193,16 +193,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1208,
-                                "end": 1214,
+                                "pos": 1176,
+                                "end": 1182,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1202,
-                                "end": 1207,
+                                "pos": 1170,
+                                "end": 1175,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -237,7 +237,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(private http: HttpClient) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    console.log(message);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    // TODO fix for production\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `/${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(private http: HttpClient) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    console.log(message);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
