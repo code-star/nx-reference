@@ -23,7 +23,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-18a4949074175452550ac7042867edc2",
-            "file": "apps/ui-e2e/src/support/commands.ts",
+            "file": "apps/demo-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -68,7 +68,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-18a4949074175452550ac7042867edc2-1",
-            "file": "apps/demo-e2e/src/support/commands.ts",
+            "file": "apps/ui-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -563,7 +563,7 @@
         },
         {
             "name": "PaperComponent",
-            "id": "component-PaperComponent-aced910d30574096488944606a475cd9",
+            "id": "component-PaperComponent-256dd2a43df216750e6244af7d04896f",
             "file": "libs/ui/src/lib/paper/paper.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -582,22 +582,13 @@
             "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 12
-                }
-            ],
+            "methodsClass": [],
             "hostBindings": [],
             "hostListeners": [],
-            "description": "",
-            "rawdescription": "",
+            "description": "<p>A Card to group other components together. This is an atom, a UI component. Presentational, without state.</p>\n<p>Usage: <code>&lt;star-paper&gt;&lt;h1&gt;Card Title&lt;/h1&gt;&lt;p&gt;card content&lt;/p&gt;&lt;/star-paper&gt;</code></p>\n",
+            "rawdescription": "A Card to group other components together. This is an atom, a UI component. Presentational, without state.\n\nUsage: `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'star-paper',\n  templateUrl: './paper.component.html',\n  styleUrls: ['./paper.component.scss']\n})\nexport class PaperComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n/**\n * A Card to group other components together. This is an atom, a UI component. Presentational, without state.\n *\n * Usage: `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n *\n * @example `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n */\n@Component({\n  selector: 'star-paper',\n  templateUrl: './paper.component.html',\n  styleUrls: ['./paper.component.scss'],\n})\nexport class PaperComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -606,20 +597,32 @@
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "args": [],
-                "line": 8
-            },
-            "implements": [
-                "OnInit"
+            "jsdoctags": [
+                {
+                    "pos": 243,
+                    "end": 252,
+                    "flags": 0,
+                    "kind": 288,
+                    "atToken": {
+                        "pos": 243,
+                        "end": 244,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 244,
+                        "end": 251,
+                        "flags": 0,
+                        "escapedText": "example"
+                    },
+                    "comment": "`<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`"
+                }
             ],
             "templateData": "<section>\n    <ng-content></ng-content>\n</section>"
         },
         {
             "name": "PrimaryButtonComponent",
-            "id": "component-PrimaryButtonComponent-17b991ecd9d566119d25c4139b083ba2",
+            "id": "component-PrimaryButtonComponent-f45cdadcacf71fd61edfe9efc2342606",
             "file": "libs/ui/src/lib/primary-button/primary-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -639,7 +642,7 @@
                 {
                     "name": "disabled",
                     "description": "<p>When true, clicking the button has no effect</p>\n",
-                    "line": 16,
+                    "line": 20,
                     "type": "boolean"
                 }
             ],
@@ -648,10 +651,10 @@
             "methodsClass": [],
             "hostBindings": [],
             "hostListeners": [],
-            "description": "<p>Some primary button documentation. This is an atom, a UI component. Presentational, without state.\nUsage: <star-primary-button>my label</star-primary-button></p>\n",
-            "rawdescription": "Some primary button documentation. This is an atom, a UI component. Presentational, without state.\nUsage: <star-primary-button>my label</star-primary-button>",
+            "description": "<p>Some primary button documentation. This is an atom, a UI component. Presentational, without state.</p>\n<p>Usage: <code>&lt;star-primary-button&gt;label&lt;/star-primary-button&gt;</code></p>\n",
+            "rawdescription": "Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n\nUsage: `<star-primary-button>label</star-primary-button>`",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * Usage: <star-primary-button>my label</star-primary-button>\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled: boolean;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * \n * Usage: `<star-primary-button>label</star-primary-button>`\n * \n * @example\n * `<star-primary-button>label</star-primary-button>`\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled: boolean;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -660,6 +663,27 @@
                 }
             ],
             "stylesData": "",
+            "jsdoctags": [
+                {
+                    "pos": 229,
+                    "end": 239,
+                    "flags": 0,
+                    "kind": 288,
+                    "atToken": {
+                        "pos": 229,
+                        "end": 230,
+                        "flags": 0,
+                        "kind": 57
+                    },
+                    "tagName": {
+                        "pos": 230,
+                        "end": 237,
+                        "flags": 0,
+                        "escapedText": "example"
+                    },
+                    "comment": "`<star-primary-button>label</star-primary-button>`"
+                }
+            ],
             "templateData": "<button [disabled]=\"disabled\">\n  <ng-content></ng-content>\n</button>\n"
         },
         {
@@ -978,8 +1002,8 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
-                "type": "Story<PrimaryButtonComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n  // TODO content should be configurable with the control, without TS error\n  template: `<star-primary-button>${args.label}</star-primary-button>`,\n})"
+                "type": "Story<>",
+                "defaultValue": "({\n  label,\n  ...props\n}) => ({\n  props,\n  template: `<star-primary-button>${label}</star-primary-button>`,\n})"
             },
             {
                 "name": "Template",
@@ -1185,8 +1209,8 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
-                    "type": "Story<PrimaryButtonComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n  // TODO content should be configurable with the control, without TS error\n  template: `<star-primary-button>${args.label}</star-primary-button>`,\n})"
+                    "type": "Story<>",
+                    "defaultValue": "({\n  label,\n  ...props\n}) => ({\n  props,\n  template: `<star-primary-button>${label}</star-primary-button>`,\n})"
                 }
             ],
             "libs/ui/src/lib/rates-table/rates-table.component.stories.ts": [
@@ -1259,7 +1283,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 8,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -1518,9 +1542,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "PaperComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
+                "coveragePercent": 100,
+                "coverageCount": "1/1",
+                "status": "very-good"
             },
             {
                 "filePath": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",

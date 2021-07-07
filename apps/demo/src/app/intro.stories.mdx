@@ -4,10 +4,41 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Nx Reference
 
-A reference example monorepo with Nx + Storybook + Atomic Design in Angular
+A reference example monorepo with [Nx](https://nx.dev) + [Storybook](https://storybook.js.org) + [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) in [Angular](https://angular.io/)
 
 Made by [Codestar](https://code-star.github.io) powered by [Ordina](https://www.ordina.nl)
+
+Note in the menu that the components are organized first by their Atomic Design level (atoms, molecules, organisms, etc).
 
 Elements use the `star` prefix, e.g.: `<star-primary-button>`
 
 Imports use the `@star` namespace, e.g.: `import { Rate, BtcResponse } from '@star/shared/types';`
+
+
+## Getting started
+
+You can clone this repo from [Github](https://github.com/code-star/nx-reference)
+
+* Use Node 15, and run `yarn install`
+* Start storybook locally with `yarn docs:json && yarn nx storybook`
+* Open [http://localhost:4400](http://localhost:4400)
+
+## Long form documentation example
+
+MDX files are useful for long form documentation and to explain non-visual packages, e.g. a randomizer util:
+
+```ts
+import { Rate } from '@star/shared/types';
+
+export function someRandomValue(): Rate {
+  return Math.random() * 100000;
+}
+```
+
+And how to call it in another component:
+
+```ts
+import someRandomValue from '@star/someRandomValue';
+
+console.log(someRandomValue());
+```
