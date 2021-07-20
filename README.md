@@ -21,6 +21,9 @@ yarn nx g service BtcRate
 Note that modules (e.g. HttpClientModule or UiModule) need to be added to both app.module.ts and app.component.stories.ts
 
 yarn nx g @nrwl/workspace:lib shared/types
+yarn nx g @nrwl/angular:lib shared/services
+yarn nx g @nrwl/angular:service Message --project=shared-services --export
+yarn nx g @nrwl/angular:lib shared/data-access
 
 Docs in Storybook
 https://github.com/storybookjs/storybook/blob/master/addons/docs/angular/README.md
