@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class MessageService {
   messages: string[] = [];
 
-  // TODO allow setting severity and to list the messages somewhere
+  // TODO allow setting severity
   add(message: string) {
     this.messages.push(message);
   }

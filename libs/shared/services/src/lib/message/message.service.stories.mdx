@@ -5,3 +5,15 @@ import { Meta } from '@storybook/addon-docs/blocks';
 # Message Service
 
 Store warnings and errors
+
+Add an error:
+
+```ts
+this.messageService.add(`MyService: ${message}`);
+```
+
+Show errors:
+
+```ts
+<div *ngFor="let message of messageService.messages" style="color: red;">{{ message }}</div>
+```

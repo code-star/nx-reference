@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '@star/shared/services';
 import { Rate } from '@star/shared/types';
 import { BtcRateService } from './btc-rate.service';
 
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
   loading = false;
   rates: [number, Rate][] = [];
 
-  constructor(private btcRateService: BtcRateService) {}
+  constructor(public messageService: MessageService, private btcRateService: BtcRateService) {}
 
   getRate(): void {
     this.loading = true;

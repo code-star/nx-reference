@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map, delay } from 'rxjs/operators';
 import { Rate, BtcResponse } from '@star/shared/types';
+import { MessageService } from '@star/shared/services';
 
 type DateAndRate = [number, Rate];
 
@@ -10,7 +11,12 @@ type DateAndRate = [number, Rate];
   providedIn: 'root',
 })
 export class BtcRateService {
-  constructor(private http: HttpClient) {}
+  // Add a message service here. However, the message service implementation will be in "App/Demo" and this service could be in "lib"
+  // Could work to use @Optional() messageService: MessageService
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
 
   private btcUrl = 'api/btc';
 
@@ -20,6 +26,7 @@ export class BtcRateService {
 
   private log(message: string) {
     console.log(message);
+    this.messageService.add(`BtcRateService: ${message}`);
   }
 
   getRate(): Observable<DateAndRate> {

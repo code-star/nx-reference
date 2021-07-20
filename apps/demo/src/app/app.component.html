@@ -9,8 +9,11 @@
       </div>
 
       <h3>Exchange rates</h3>
-      <star-rates-table [rates]="rates"></star-rates-table></div
-  ></star-paper>
+      <star-rates-table [rates]="rates"></star-rates-table>
+    </div>
+    <!-- TODO message component should be a separate component in libs/ui -->
+    <div *ngFor="let message of messageService.messages" style="color: red;">{{ message }}</div>
+  </star-paper>
 
   <star-paper>
     <p style="margin-top: 0">
