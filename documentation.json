@@ -117,7 +117,7 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-c24c929e3d7a74244cf1fd176efe36b4",
+            "id": "injectable-BtcRateService-59022a7520041c4a30b7ef5957eebd25",
             "file": "apps/demo/src/app/btc-rate.service.ts",
             "properties": [
                 {
@@ -126,7 +126,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 15,
+                    "line": 17,
                     "modifierKind": [
                         112
                     ]
@@ -137,7 +137,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 19
                 }
             ],
             "methods": [
@@ -147,7 +147,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 25
+                    "line": 28
                 },
                 {
                     "name": "handleError",
@@ -168,7 +168,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 44,
+                    "line": 47,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -176,16 +176,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1118,
-                                "end": 1127,
+                                "pos": 1362,
+                                "end": 1371,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1112,
-                                "end": 1117,
+                                "pos": 1356,
+                                "end": 1361,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -193,16 +193,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1176,
-                                "end": 1182,
+                                "pos": 1420,
+                                "end": 1426,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1170,
-                                "end": 1175,
+                                "pos": 1414,
+                                "end": 1419,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -221,7 +221,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 23,
                     "modifierKind": [
                         112
                     ],
@@ -237,7 +237,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(private http: HttpClient) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    console.log(message);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  // Add a message service here. However, the message service implementation will be in \"App/Demo\" and this service could be in \"lib\"\n  // Could work to use @Optional() messageService: MessageService\n  constructor(private http: HttpClient) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    // TODO: log message to message service\n    console.log(message);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -266,7 +266,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-18e1c645c84ff2835c8f000034ebc0bc",
+            "id": "component-AppComponent-8022e57daa92177f790416ef778ca0a7",
             "file": "apps/demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -317,7 +317,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20
+                    "line": 21
                 },
                 {
                     "name": "ngOnInit",
@@ -325,7 +325,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28
+                    "line": 29
                 }
             ],
             "hostBindings": [],
@@ -333,7 +333,7 @@
             "description": "<p>AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*</p>\n",
             "rawdescription": "AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from './btc-rate.service';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  constructor(private btcRateService: BtcRateService) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from './btc-rate.service';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  // Take message service here and list the messages in the template\n  constructor(private btcRateService: BtcRateService) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {

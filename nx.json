@@ -30,6 +30,7 @@
     "server": { "tags": [] },
     "ui": { "tags": [] },
     "ui-e2e": { "tags": [], "implicitDependencies": ["ui"] },
-    "shared-types": { "tags": [] }
+    "shared-types": { "tags": [] },
+    "shared-services": { "tags": [] }
   }
 }
