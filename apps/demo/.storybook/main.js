@@ -11,6 +11,7 @@ rootMain.stories.push(
 // Aggregate other storybook instances into App storybook
 rootMain.stories.push(
   ...['../../../libs/ui/src/lib/**/*.stories.mdx', '../../../libs/ui/src/lib/**/*.stories.@(js|jsx|ts|tsx)'],
+  ...['../../../libs/shared/**/src/lib/**/*.stories.mdx', '../../../libs/shared/**/src/lib/**/*.stories.@(js|jsx|ts|tsx)'],
 );
 
 
