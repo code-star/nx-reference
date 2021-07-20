@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/ui',
     '<rootDir>/libs/shared/types',
     '<rootDir>/libs/shared/services',
+    '<rootDir>/libs/shared/data-access',
   ],
 };
