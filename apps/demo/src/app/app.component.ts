@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '@star/shared/services';
 import { Rate } from '@star/shared/types';
-import { BtcRateService } from './btc-rate.service';
+import { BtcRateService } from '@star/shared/data-access';
 
 /**
  * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*
@@ -16,7 +16,10 @@ export class AppComponent implements OnInit {
   loading = false;
   rates: [number, Rate][] = [];
 
-  constructor(public messageService: MessageService, private btcRateService: BtcRateService) {}
+  constructor(
+    public messageService: MessageService,
+    private btcRateService: BtcRateService
+  ) {}
 
   getRate(): void {
     this.loading = true;
