@@ -2,8 +2,8 @@
     "pipes": [
         {
             "name": "BySeverityPipe",
-            "id": "pipe-BySeverityPipe-9ba3eba5897ecc85798493f320255fbd",
-            "file": "apps/demo/src/app/by-severity.pipe.ts",
+            "id": "pipe-BySeverityPipe-5d979b83a9490063ff3d0de5155c15e0",
+            "file": "libs/ui/src/lib/by-severity.pipe.ts",
             "type": "pipe",
             "description": "",
             "properties": [],
@@ -23,7 +23,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 6,
+                    "line": 9,
                     "jsdoctags": [
                         {
                             "name": "value",
@@ -42,58 +42,9 @@
                     ]
                 }
             ],
+            "pure": false,
             "ngname": "bySeverity",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({ name: 'bySeverity' })\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => {\n      console.log(item, severity);\n      return item.severity === severity;\n    });\n  }\n}\n"
-        },
-        {
-            "name": "BySeverityPipe",
-            "id": "pipe-BySeverityPipe-00ee70971be984d17569bfb653f3b6ae-1",
-            "file": "libs/ui/src/lib/by-severity.pipe.ts",
-            "type": "pipe",
-            "description": "",
-            "properties": [],
-            "methods": [
-                {
-                    "name": "transform",
-                    "args": [
-                        {
-                            "name": "value",
-                            "type": "unknown"
-                        },
-                        {
-                            "name": "args",
-                            "type": "unknown[]",
-                            "dotDotDotToken": true
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "unknown",
-                    "typeParameters": [],
-                    "line": 8,
-                    "jsdoctags": [
-                        {
-                            "name": "value",
-                            "type": "unknown",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "args",
-                            "type": "unknown[]",
-                            "dotDotDotToken": true,
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "ngname": "bySeverity",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\n@Pipe({\n  name: 'bySeverity'\n})\nexport class BySeverityPipe implements PipeTransform {\n\n  transform(value: unknown, ...args: unknown[]): unknown {\n    return null;\n  }\n\n}\n",
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "BySeverityPipe-1"
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n  pure: false, // TODO Fix: when this is false, the list of log messages is not updated\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
         }
     ],
     "interfaces": [
@@ -239,7 +190,7 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-0f0c0fbfcc78872629130f05f49412fd",
+            "id": "injectable-BtcRateService-4be4f46fa7152541cbeca60cc7c858f9",
             "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
             "properties": [
                 {
@@ -269,7 +220,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 29
+                    "line": 31
                 },
                 {
                     "name": "handleError",
@@ -290,7 +241,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 48,
+                    "line": 50,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -298,16 +249,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1314,
-                                "end": 1323,
+                                "pos": 1468,
+                                "end": 1477,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1308,
-                                "end": 1313,
+                                "pos": 1462,
+                                "end": 1467,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -315,16 +266,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1372,
-                                "end": 1378,
+                                "pos": 1526,
+                                "end": 1532,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1366,
-                                "end": 1371,
+                                "pos": 1520,
+                                "end": 1525,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -370,7 +321,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity } from '@star/shared/types';\nimport { MessageService } from '@star/shared/services';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: MessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity, IMessageService } from '@star/shared/types';\n// import { MessageService } from '@star/shared/services';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    console.log(message); // TODO remove\n    console.log(this.messageService); // TODO this should not be IMessageService in Runtime\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -381,7 +332,7 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "MessageService"
+                        "type": "IMessageService"
                     }
                 ],
                 "line": 13,
@@ -395,7 +346,7 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "MessageService",
+                        "type": "IMessageService",
                         "tagName": {
                             "text": "param"
                         }
@@ -437,12 +388,12 @@
         },
         {
             "name": "MessageService",
-            "id": "injectable-MessageService-947dac7bd3de0e0ef17801794d4c5597",
+            "id": "injectable-MessageService-841dd8725528df7e31bd35f4bcf57eeb",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
                     "name": "logs",
-                    "defaultValue": "[\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ]",
+                    "defaultValue": "[]",
                     "type": "LogItem[]",
                     "optional": false,
                     "description": "",
@@ -456,7 +407,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26
+                    "line": 17
                 },
                 {
                     "name": "log",
@@ -473,7 +424,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 19,
+                    "line": 10,
                     "jsdoctags": [
                         {
                             "name": "message",
@@ -493,7 +444,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
             "type": "injectable"
         }
     ],
@@ -502,7 +453,7 @@
     "components": [
         {
             "name": "AlertComponent",
-            "id": "component-AlertComponent-cda068e38401bd7f3e2136c1d9950b80",
+            "id": "component-AlertComponent-38c565f8e1b80cf53b6c734bca112b69",
             "file": "libs/ui/src/lib/alert/alert.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -528,22 +479,31 @@
             ],
             "outputsClass": [],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "getPrefix",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 15
+                }
+            ],
             "hostBindings": [],
             "hostListeners": [],
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem;\n\n  getPrefix() {\n      return this.item.severity.toUpperCase();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".error {\n    color: rgb(250,179,174);\n    background-color: rgb(24, 6, 5);\n    padding: 1rem;\n}\n\n.info {\n    color: rgb(166, 213, 250);\n    background-color: rgb(3, 14, 24);\n    padding: 1rem;\n}\n\nspan {\n    font-weight: bold;\n}",
                     "styleUrl": "./alert.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<p>alert works!</p>\n"
+            "templateData": "<div [ngClass]=\"item.severity\"><span>{{getPrefix()}}</span> {{item.message}}</div>\n"
         },
         {
             "name": "AppComponent",
@@ -667,7 +627,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <!-- <div *ngFor=\"let logItem of getFoo()\" style=\"color: red;\">{{ logItem.message }}</div> -->\n    <!-- TODO message component should be a separate component in libs/ui -->\n    <!-- <div *ngFor=\"let logItem of messageService.logs\" style=\"color: red;\">{{ logItem.message }}</div> -->\n    <!-- TODO use filter on ngFor, to filter and group by severity -->\n    <!-- <div *ngFor=\"let logItem of messageService.logs\" style=\"color: blue;\">{{ logItem.message }}</div> -->\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity:'error'\" style=\"color: red;\">{{ logItem.message }}</div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity:'info'\" style=\"color: blue;\">{{ logItem.message }}</div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <div\n      *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\"\n      style=\"color: red\"\n    >\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n    <div\n      *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\"\n      style=\"color: blue\"\n    >\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
@@ -988,9 +948,6 @@
                     "elements": [
                         {
                             "name": "AppComponent"
-                        },
-                        {
-                            "name": "BySeverityPipe"
                         }
                     ]
                 },
@@ -1142,6 +1099,9 @@
                             "name": "AppTemplateComponent"
                         },
                         {
+                            "name": "BySeverityPipe"
+                        },
+                        {
                             "name": "IconComponent"
                         },
                         {
@@ -1217,7 +1177,7 @@
                 "subtype": "variable",
                 "file": "apps/demo/src/app/app.component.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent, BySeverityPipe],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+                "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent],\n    providers: [{ provide: IMessageService, useExisting: MessageService }],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
             },
             {
                 "name": "Example",
@@ -1471,7 +1431,7 @@
                     "subtype": "variable",
                     "file": "apps/demo/src/app/app.component.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent, BySeverityPipe],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+                    "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent],\n    providers: [{ provide: IMessageService, useExisting: MessageService }],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
                 }
             ],
             "libs/ui/src/lib/alert/alert.component.stories.ts": [
@@ -1705,15 +1665,6 @@
                 "status": "low"
             },
             {
-                "filePath": "apps/demo/src/app/by-severity.pipe.ts",
-                "type": "pipe",
-                "linktype": "pipe",
-                "name": "BySeverityPipe",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "apps/demo/src/environments/environment.prod.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1871,8 +1822,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AlertComponent",
-                "coveragePercent": 50,
-                "coverageCount": "1/2",
+                "coveragePercent": 33,
+                "coverageCount": "1/3",
                 "status": "medium"
             },
             {

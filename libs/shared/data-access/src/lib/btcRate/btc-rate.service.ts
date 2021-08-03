@@ -1,9 +1,8 @@
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map, delay } from 'rxjs/operators';
-import { Rate, BtcResponse, Severity } from '@star/shared/types';
-import { IMessageService } from '@star/shared/types';
+import { Rate, BtcResponse, Severity, IMessageService } from '@star/shared/types';
 
 type DateAndRate = [number, Rate];
 
@@ -13,8 +12,7 @@ type DateAndRate = [number, Rate];
 export class BtcRateService {
   constructor(
     private http: HttpClient,
-    // TODO remove optional?
-    @Optional() private messageService: IMessageService
+    private messageService: IMessageService
   ) {}
 
   private btcUrl = 'api/btc';
@@ -24,8 +22,6 @@ export class BtcRateService {
   };
 
   private log(message: string, severity: Severity) {
-    console.log(message); // TODO remove
-    console.log(this.messageService); // TODO this should not be IMessageService in Runtime
     this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);
   }
 
