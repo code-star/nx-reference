@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "BySeverityPipe",
-            "id": "pipe-BySeverityPipe-f79a8b9b2b67506cc4b2223aa0cc42dc",
+            "id": "pipe-BySeverityPipe-0f6ce1ab21ec9110b350c64016243d74",
             "file": "libs/ui/src/lib/by-severity.pipe.ts",
             "type": "pipe",
             "description": "",
@@ -43,16 +43,16 @@
                 }
             ],
             "ngname": "bySeverity",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
+            "sourceCode": "import { Pipe, PipeTransform } from \"@angular/core\";\nimport { LogItem, Severity } from \"@star/shared/types\";\n\n@Pipe({\n    name: \"bySeverity\",\n})\nexport class BySeverityPipe implements PipeTransform {\n    transform(value: LogItem[], severity: Severity) {\n        return value.filter((item) => item.severity === severity);\n    }\n}\n"
         }
     ],
     "interfaces": [
         {
             "name": "BtcResponse",
-            "id": "interface-BtcResponse-5784c1469b9131dc6598684d2742f475",
+            "id": "interface-BtcResponse-2d7881181bd82ca3b6642b34524e7b60",
             "file": "libs/shared/types/src/lib/shared-types.ts",
             "type": "interface",
-            "sourceCode": "export type Rate = number;\n\nexport interface BtcResponse {\n  btc: Rate;\n}",
+            "sourceCode": "export type Rate = number;\n\nexport interface BtcResponse {\n    btc: Rate;\n}\n",
             "properties": [
                 {
                     "name": "btc",
@@ -68,10 +68,10 @@
         },
         {
             "name": "Chainable",
-            "id": "interface-Chainable-18a4949074175452550ac7042867edc2",
+            "id": "interface-Chainable-664fb54ae922d8bb0e8759784dddfc17",
             "file": "apps/demo-e2e/src/support/commands.ts",
             "type": "interface",
-            "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
+            "sourceCode": "declare namespace Cypress {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    interface Chainable<Subject> {\n        login(email: string, password: string): void;\n    }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add(\"login\", (email, password) => {\n    console.log(\"Custom command example: Login\", email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
             "indexSignatures": [],
             "kind": 152,
@@ -113,10 +113,10 @@
         },
         {
             "name": "Chainable",
-            "id": "interface-Chainable-18a4949074175452550ac7042867edc2-1",
+            "id": "interface-Chainable-664fb54ae922d8bb0e8759784dddfc17-1",
             "file": "apps/ui-e2e/src/support/commands.ts",
             "type": "interface",
-            "sourceCode": "declare namespace Cypress {\n  // eslint-disable-next-line @typescript-eslint/no-unused-vars\n  interface Chainable<Subject> {\n    login(email: string, password: string): void;\n  }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add('login', (email, password) => {\n  console.log('Custom command example: Login', email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
+            "sourceCode": "declare namespace Cypress {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    interface Chainable<Subject> {\n        login(email: string, password: string): void;\n    }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add(\"login\", (email, password) => {\n    console.log(\"Custom command example: Login\", email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
             "indexSignatures": [],
             "kind": 152,
@@ -161,10 +161,10 @@
         },
         {
             "name": "LogItem",
-            "id": "interface-LogItem-a7746897422d4e18461892dceb80d77e",
+            "id": "interface-LogItem-c30d342a0ea94b4fc541969ea7c34e13",
             "file": "libs/shared/types/src/lib/imessage.service.ts",
             "type": "interface",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n  severity: string;\n  message: string;\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport abstract class IMessageService {\n  abstract logs: LogItem[];\n  abstract log: (msg: string, severity: Severity) => void;\n}",
+            "sourceCode": "import { Injectable } from \"@angular/core\";\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n    severity: string;\n    message: string;\n}\n\n@Injectable({\n    providedIn: \"root\",\n})\nexport abstract class IMessageService {\n    abstract logs: LogItem[];\n    abstract log: (msg: string, severity: Severity) => void;\n}\n",
             "properties": [
                 {
                     "name": "message",
@@ -189,27 +189,27 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-e294164bf15b98e15e2aa77776d3a5b2",
+            "id": "injectable-BtcRateService-348b3a631341a6de9317df317c09ded2",
             "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
             "properties": [
                 {
                     "name": "btcUrl",
-                    "defaultValue": "'api/btc'",
+                    "defaultValue": "\"api/btc\"",
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 18,
+                    "line": 23,
                     "modifierKind": [
                         112
                     ]
                 },
                 {
                     "name": "httpOptions",
-                    "defaultValue": "{\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  }",
+                    "defaultValue": "{\n        headers: new HttpHeaders({ \"Content-Type\": \"application/json\" }),\n    }",
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 20
+                    "line": 25
                 }
             ],
             "methods": [
@@ -219,7 +219,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 28
+                    "line": 33
                 },
                 {
                     "name": "handleError",
@@ -227,7 +227,7 @@
                         {
                             "name": "operation",
                             "type": "string",
-                            "defaultValue": "'operation'"
+                            "defaultValue": "\"operation\""
                         },
                         {
                             "name": "result",
@@ -240,7 +240,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 47,
+                    "line": 52,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -248,16 +248,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1276,
-                                "end": 1285,
+                                "pos": 1395,
+                                "end": 1404,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
-                            "defaultValue": "'operation'",
+                            "defaultValue": "\"operation\"",
                             "tagName": {
-                                "pos": 1270,
-                                "end": 1275,
+                                "pos": 1389,
+                                "end": 1394,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -265,16 +265,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1334,
-                                "end": 1340,
+                                "pos": 1455,
+                                "end": 1461,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1328,
-                                "end": 1333,
+                                "pos": 1449,
+                                "end": 1454,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -297,7 +297,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24,
+                    "line": 29,
                     "modifierKind": [
                         112
                     ],
@@ -320,7 +320,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity, IMessageService } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from \"@angular/core\";\nimport { HttpClient, HttpHeaders } from \"@angular/common/http\";\nimport { Observable, of } from \"rxjs\";\nimport { catchError, tap, map, delay } from \"rxjs/operators\";\nimport {\n    Rate,\n    BtcResponse,\n    Severity,\n    IMessageService,\n} from \"@star/shared/types\";\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n    providedIn: \"root\",\n})\nexport class BtcRateService {\n    constructor(\n        private http: HttpClient,\n        private messageService: IMessageService\n    ) {}\n\n    private btcUrl = \"api/btc\";\n\n    httpOptions = {\n        headers: new HttpHeaders({ \"Content-Type\": \"application/json\" }),\n    };\n\n    private log(message: string, severity: Severity) {\n        this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n    }\n\n    getRate(): Observable<DateAndRate> {\n        const url =\n            window.location.hostname === \"code-star.github.io\"\n                ? `${this.btcUrl}`\n                : `http://localhost:3333/${this.btcUrl}`;\n        return this.http.get<BtcResponse>(url).pipe(\n            tap(() => this.log(`fetched rate`, \"info\")),\n            delay(1000),\n            map(({ btc }) => [Date.now(), btc] as DateAndRate),\n            catchError(this.handleError<DateAndRate>(`getRate`))\n        );\n    }\n\n    /**\n     * Handle Http operation that failed.\n     * Let the app continue.\n     * @param operation - name of the operation that failed\n     * @param result - optional value to return as the observable result\n     */\n    private handleError<T>(operation = \"operation\", result?: T) {\n        return (error: Error): Observable<T> => {\n            this.log(`${operation} failed: ${error.message}`, \"error\");\n            return of(result as T);\n        };\n    }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -334,7 +334,7 @@
                         "type": "IMessageService"
                     }
                 ],
-                "line": 12,
+                "line": 17,
                 "jsdoctags": [
                     {
                         "name": "http",
@@ -356,7 +356,7 @@
         },
         {
             "name": "IMessageService",
-            "id": "injectable-IMessageService-a7746897422d4e18461892dceb80d77e",
+            "id": "injectable-IMessageService-c30d342a0ea94b4fc541969ea7c34e13",
             "file": "libs/shared/types/src/lib/imessage.service.ts",
             "properties": [
                 {
@@ -382,12 +382,12 @@
             ],
             "methods": [],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n  severity: string;\n  message: string;\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport abstract class IMessageService {\n  abstract logs: LogItem[];\n  abstract log: (msg: string, severity: Severity) => void;\n}",
+            "sourceCode": "import { Injectable } from \"@angular/core\";\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n    severity: string;\n    message: string;\n}\n\n@Injectable({\n    providedIn: \"root\",\n})\nexport abstract class IMessageService {\n    abstract logs: LogItem[];\n    abstract log: (msg: string, severity: Severity) => void;\n}\n",
             "type": "injectable"
         },
         {
             "name": "MessageService",
-            "id": "injectable-MessageService-77763f53b1af87606b20c97dbd30d2f9",
+            "id": "injectable-MessageService-e5fbed17066320ae53e287c6802c61c2",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
@@ -443,7 +443,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    // Do not push to the array, but create a new one, to make it possible to use a pure pipe\n    this.logs = [\n      ...this.logs,\n      {\n        message,\n        severity,\n      },\n    ];\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from \"@angular/core\";\nimport { IMessageService, LogItem, Severity } from \"@star/shared/types\";\n\n@Injectable({\n    providedIn: \"root\",\n})\nexport class MessageService implements IMessageService {\n    logs: LogItem[] = [];\n\n    log(message: string, severity: Severity) {\n        // Do not push to the array, but create a new one, to make it possible to use a pure pipe\n        this.logs = [\n            ...this.logs,\n            {\n                message,\n                severity,\n            },\n        ];\n    }\n\n    clear() {\n        this.logs = [];\n    }\n}\n",
             "type": "injectable"
         }
     ],
@@ -452,7 +452,7 @@
     "components": [
         {
             "name": "AlertComponent",
-            "id": "component-AlertComponent-30d152ebfff6667330057dd743b4a8cd",
+            "id": "component-AlertComponent-b8c84d511a8f20a78603ce38be8115fc",
             "file": "libs/ui/src/lib/alert/alert.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -471,7 +471,7 @@
             "inputsClass": [
                 {
                     "name": "item",
-                    "defaultValue": "{ message: '', severity: 'info' }",
+                    "defaultValue": "{ message: \"\", severity: \"info\" }",
                     "description": "<p>LogItem contains the message and severity to show in an alert block</p>\n",
                     "line": 13,
                     "type": "LogItem"
@@ -494,7 +494,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert[item]',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem = { message: '', severity: 'info' };\n\n  getPrefix() {\n    return this.item.severity.toUpperCase();\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { LogItem } from \"@star/shared/types\";\n\n@Component({\n    selector: \"star-alert[item]\",\n    templateUrl: \"./alert.component.html\",\n    styleUrls: [\"./alert.component.scss\"],\n})\nexport class AlertComponent {\n    /**\n     * LogItem contains the message and severity to show in an alert block\n     */\n    @Input() item: LogItem = { message: \"\", severity: \"info\" };\n\n    getPrefix() {\n        return this.item.severity.toUpperCase();\n    }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -507,7 +507,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-6035d44cfe39f4bc30ea2ed1a42d6b8b",
+            "id": "component-AppComponent-6dd12cd9dac541fbb6d2e13ac6a05b05",
             "file": "apps/demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -554,7 +554,7 @@
                 },
                 {
                     "name": "title",
-                    "defaultValue": "'Rx Reference'",
+                    "defaultValue": "\"Rx Reference\"",
                     "type": "string",
                     "optional": false,
                     "description": "",
@@ -584,7 +584,7 @@
             "description": "<p>AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*</p>\n",
             "rawdescription": "AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { MessageService } from '@star/shared/services';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from '@star/shared/data-access';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  constructor(\n    public messageService: MessageService,\n    private btcRateService: BtcRateService\n  ) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from \"@angular/core\";\nimport { MessageService } from \"@star/shared/services\";\nimport { Rate } from \"@star/shared/types\";\nimport { BtcRateService } from \"@star/shared/data-access\";\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n    selector: \"star-root\",\n    templateUrl: \"./app.component.html\",\n    styleUrls: [\"./app.component.scss\"],\n})\nexport class AppComponent implements OnInit {\n    title = \"Rx Reference\";\n    loading = false;\n    rates: [number, Rate][] = [];\n\n    constructor(\n        public messageService: MessageService,\n        private btcRateService: BtcRateService\n    ) {}\n\n    getRate(): void {\n        this.loading = true;\n        this.btcRateService.getRate().subscribe((item) => {\n            this.rates.push(item);\n            this.loading = false;\n        });\n    }\n\n    ngOnInit(): void {\n        this.getRate();\n    }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -627,11 +627,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\">\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\">\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n    <star-paper\n        ><h2>Exchange rates</h2>\n        <div>\n            <div>\n                <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n                    >get new exchange rate</star-loading-button\n                >\n            </div>\n\n            <h3>Exchange rates</h3>\n            <star-rates-table [rates]=\"rates\"></star-rates-table>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n    </star-paper>\n\n    <star-paper>\n        <p style=\"margin-top: 0\">\n            A reference example monorepo with Nx + Storybook + Atomic Design in\n            Angular\n        </p>\n        <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n    </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
-            "id": "component-AppTemplateComponent-c0b5ad294df30b286c824cf341ef08fa",
+            "id": "component-AppTemplateComponent-b7fc68021a0428546bab55ae1b01ac4d",
             "file": "libs/ui/src/lib/app-template/app-template.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -650,7 +650,7 @@
             "inputsClass": [
                 {
                     "name": "title",
-                    "defaultValue": "''",
+                    "defaultValue": "\"\"",
                     "line": 9
                 }
             ],
@@ -662,7 +662,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-app-template[title]',\n  templateUrl: './app-template.component.html',\n  styleUrls: ['./app-template.component.scss'],\n})\nexport class AppTemplateComponent {\n  @Input() title = '';\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\n\n@Component({\n    selector: \"star-app-template[title]\",\n    templateUrl: \"./app-template.component.html\",\n    styleUrls: [\"./app-template.component.scss\"],\n})\nexport class AppTemplateComponent {\n    @Input() title = \"\";\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -675,14 +675,14 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-8b0a9c3ba482bbc8806bcdf03c264369",
+            "id": "component-IconComponent-3edfe6ff96ba65f4547424a4c06cd869",
             "file": "libs/ui/src/lib/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "star-icon[item]",
+            "selector": "star-icon[type]",
             "styleUrls": [
                 "./icon.component.scss"
             ],
@@ -694,7 +694,7 @@
             "inputsClass": [
                 {
                     "name": "type",
-                    "defaultValue": "'home'",
+                    "defaultValue": "\"home\"",
                     "description": "<p>Name of the icon to display</p>\n",
                     "line": 12,
                     "type": "\"loading\" | \"home\" | \"code\" | \"star\""
@@ -708,7 +708,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon[item]',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home' | 'code' | 'star' = 'home';\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\n\n@Component({\n    selector: \"star-icon[type]\",\n    templateUrl: \"./icon.component.html\",\n    styleUrls: [\"./icon.component.scss\"],\n})\nexport class IconComponent {\n    /**\n     * Name of the icon to display\n     */\n    @Input() type: \"loading\" | \"home\" | \"code\" | \"star\" = \"home\";\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -721,7 +721,7 @@
         },
         {
             "name": "LoadingButtonComponent",
-            "id": "component-LoadingButtonComponent-2e315979956fe55aa252ca483f80e6af",
+            "id": "component-LoadingButtonComponent-33e478d39ec39198ad800de622370af0",
             "file": "libs/ui/src/lib/loading-button/loading-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -753,7 +753,7 @@
             "description": "<p>Button with a loading state, to show when an an action is keeping this button disabled.</p>\n",
             "rawdescription": "Button with a loading state, to show when an an action is keeping this button disabled.",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() loading = false;\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n    selector: \"star-loading-button\",\n    templateUrl: \"./loading-button.component.html\",\n    styleUrls: [\"./loading-button.component.scss\"],\n})\nexport class LoadingButtonComponent {\n    /**\n     * When loading is true, the button is disabled and a loading animation is displayed.\n     */\n    @Input() loading = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -766,7 +766,7 @@
         },
         {
             "name": "PaperComponent",
-            "id": "component-PaperComponent-256dd2a43df216750e6244af7d04896f",
+            "id": "component-PaperComponent-10daf84f47c918c43a222333298ff73c",
             "file": "libs/ui/src/lib/paper/paper.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -791,7 +791,7 @@
             "description": "<p>A Card to group other components together. This is an atom, a UI component. Presentational, without state.</p>\n<p>Usage: <code>&lt;star-paper&gt;&lt;h1&gt;Card Title&lt;/h1&gt;&lt;p&gt;card content&lt;/p&gt;&lt;/star-paper&gt;</code></p>\n",
             "rawdescription": "A Card to group other components together. This is an atom, a UI component. Presentational, without state.\n\nUsage: `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n/**\n * A Card to group other components together. This is an atom, a UI component. Presentational, without state.\n *\n * Usage: `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n *\n * @example `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n */\n@Component({\n  selector: 'star-paper',\n  templateUrl: './paper.component.html',\n  styleUrls: ['./paper.component.scss'],\n})\nexport class PaperComponent {}\n",
+            "sourceCode": "import { Component } from \"@angular/core\";\n\n/**\n * A Card to group other components together. This is an atom, a UI component. Presentational, without state.\n *\n * Usage: `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n *\n * @example `<star-paper><h1>Card Title</h1><p>card content</p></star-paper>`\n */\n@Component({\n    selector: \"star-paper\",\n    templateUrl: \"./paper.component.html\",\n    styleUrls: [\"./paper.component.scss\"],\n})\nexport class PaperComponent {}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -825,7 +825,7 @@
         },
         {
             "name": "PrimaryButtonComponent",
-            "id": "component-PrimaryButtonComponent-100289b59ea083f788df46c92371655c",
+            "id": "component-PrimaryButtonComponent-4ee03c4ec935892654f9cd429993cf48",
             "file": "libs/ui/src/lib/primary-button/primary-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -857,7 +857,7 @@
             "description": "<p>Some primary button documentation. This is an atom, a UI component. Presentational, without state.</p>\n<p>Usage: <code>&lt;star-primary-button&gt;label&lt;/star-primary-button&gt;</code></p>\n",
             "rawdescription": "Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n\nUsage: `<star-primary-button>label</star-primary-button>`",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * \n * Usage: `<star-primary-button>label</star-primary-button>`\n * \n * @example\n * `<star-primary-button>label</star-primary-button>`\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled = false;\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n *\n * Usage: `<star-primary-button>label</star-primary-button>`\n *\n * @example\n * `<star-primary-button>label</star-primary-button>`\n */\n@Component({\n    selector: \"star-primary-button\",\n    templateUrl: \"./primary-button.component.html\",\n    styleUrls: [\"./primary-button.component.scss\"],\n})\nexport class PrimaryButtonComponent {\n    /**\n     * When true, clicking the button has no effect\n     */\n    @Input() disabled = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -868,19 +868,19 @@
             "stylesData": "",
             "jsdoctags": [
                 {
-                    "pos": 229,
-                    "end": 239,
+                    "pos": 227,
+                    "end": 237,
                     "flags": 0,
                     "kind": 288,
                     "atToken": {
-                        "pos": 229,
-                        "end": 230,
+                        "pos": 227,
+                        "end": 228,
                         "flags": 0,
                         "kind": 57
                     },
                     "tagName": {
-                        "pos": 230,
-                        "end": 237,
+                        "pos": 228,
+                        "end": 235,
                         "flags": 0,
                         "escapedText": "example"
                     },
@@ -891,7 +891,7 @@
         },
         {
             "name": "RatesTableComponent",
-            "id": "component-RatesTableComponent-10560068ba19b8c4161d6a113157b436",
+            "id": "component-RatesTableComponent-63c312e1f87bb12b2acf4eb8626cf9c1",
             "file": "libs/ui/src/lib/rates-table/rates-table.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -924,7 +924,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Rate } from '@star/shared/types';\n\n@Component({\n  selector: 'star-rates-table',\n  templateUrl: './rates-table.component.html',\n  styleUrls: ['./rates-table.component.scss'],\n})\nexport class RatesTableComponent {\n  /**\n   * A list of tuples of dates (in milliseconds since epoch) and rates (number)\n   */\n  @Input() rates: [number, Rate][] = [];\n}\n",
+            "sourceCode": "import { Component, Input } from \"@angular/core\";\nimport { Rate } from \"@star/shared/types\";\n\n@Component({\n    selector: \"star-rates-table\",\n    templateUrl: \"./rates-table.component.html\",\n    styleUrls: [\"./rates-table.component.scss\"],\n})\nexport class RatesTableComponent {\n    /**\n     * A list of tuples of dates (in milliseconds since epoch) and rates (number)\n     */\n    @Input() rates: [number, Rate][] = [];\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1146,7 +1146,7 @@
                 "subtype": "variable",
                 "file": "apps/demo/src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
+                "defaultValue": "{\n    production: true,\n}"
             },
             {
                 "name": "environment",
@@ -1154,7 +1154,7 @@
                 "subtype": "variable",
                 "file": "apps/demo/src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n}"
+                "defaultValue": "{\n    production: false,\n}"
             },
             {
                 "name": "environment",
@@ -1162,7 +1162,7 @@
                 "subtype": "variable",
                 "file": "apps/server/src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
+                "defaultValue": "{\n    production: true,\n}"
             },
             {
                 "name": "environment",
@@ -1170,7 +1170,7 @@
                 "subtype": "variable",
                 "file": "apps/server/src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n}"
+                "defaultValue": "{\n    production: false,\n}"
             },
             {
                 "name": "Example",
@@ -1178,7 +1178,7 @@
                 "subtype": "variable",
                 "file": "apps/demo/src/app/app.component.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent],\n    providers: [{ provide: IMessageService, useExisting: MessageService }],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+                "defaultValue": "() => ({\n    moduleMetadata: {\n        declarations: [AppComponent],\n        providers: [{ provide: IMessageService, useExisting: MessageService }],\n        imports: [UiModule, HttpClientModule],\n        // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n        // imports: [AppModule]\n    },\n    props: {},\n})"
             },
             {
                 "name": "Example",
@@ -1242,7 +1242,7 @@
                 "subtype": "variable",
                 "file": "apps/demo-e2e/src/support/app.po.ts",
                 "type": "",
-                "defaultValue": "() => cy.get('h1')"
+                "defaultValue": "() => cy.get(\"h1\")"
             },
             {
                 "name": "port",
@@ -1258,7 +1258,7 @@
                 "subtype": "variable",
                 "file": "apps/server/src/main.ts",
                 "type": "",
-                "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
+                "defaultValue": "app.listen(port, () => {\n    console.log(`Listening at http://localhost:${port}/api`);\n})"
             },
             {
                 "name": "Template",
@@ -1266,7 +1266,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
                 "type": "Story<AlertComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1274,7 +1274,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
                 "type": "Story<AppTemplateComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n    template:\n        '<star-app-template title=\"Overwrite with title control\"><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
             },
             {
                 "name": "Template",
@@ -1282,7 +1282,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
                 "type": "Story<IconComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n  template:\n    `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n    template: `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
             },
             {
                 "name": "Template",
@@ -1290,7 +1290,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
                 "type": "Story<LoadingButtonComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-loading-button>Example Button</star-loading-button>',\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n    template: \"<star-loading-button>Example Button</star-loading-button>\",\n})"
             },
             {
                 "name": "Template",
@@ -1298,7 +1298,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
                 "type": "Story<PaperComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>',\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n    template: \"<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>\",\n})"
             },
             {
                 "name": "Template",
@@ -1306,7 +1306,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
                 "type": "Story<>",
-                "defaultValue": "({\n  label,\n  ...props\n}) => ({\n  props,\n  template: `<star-primary-button>${label}</star-primary-button>`,\n})"
+                "defaultValue": "({\n    label,\n    ...props\n}) => ({\n    props,\n    template: `<star-primary-button>${label}</star-primary-button>`,\n})"
             },
             {
                 "name": "Template",
@@ -1314,7 +1314,7 @@
                 "subtype": "variable",
                 "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
                 "type": "Story<RatesTableComponent>",
-                "defaultValue": "(args) => ({\n  props: args,\n})"
+                "defaultValue": "(args) => ({\n    props: args,\n})"
             }
         ],
         "functions": [
@@ -1382,7 +1382,7 @@
                     "subtype": "variable",
                     "file": "apps/server/src/main.ts",
                     "type": "",
-                    "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
+                    "defaultValue": "app.listen(port, () => {\n    console.log(`Listening at http://localhost:${port}/api`);\n})"
                 }
             ],
             "apps/demo/src/environments/environment.prod.ts": [
@@ -1392,7 +1392,7 @@
                     "subtype": "variable",
                     "file": "apps/demo/src/environments/environment.prod.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: true,\n}"
+                    "defaultValue": "{\n    production: true,\n}"
                 }
             ],
             "apps/demo/src/environments/environment.ts": [
@@ -1402,7 +1402,7 @@
                     "subtype": "variable",
                     "file": "apps/demo/src/environments/environment.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: false,\n}"
+                    "defaultValue": "{\n    production: false,\n}"
                 }
             ],
             "apps/server/src/environments/environment.prod.ts": [
@@ -1412,7 +1412,7 @@
                     "subtype": "variable",
                     "file": "apps/server/src/environments/environment.prod.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: true,\n}"
+                    "defaultValue": "{\n    production: true,\n}"
                 }
             ],
             "apps/server/src/environments/environment.ts": [
@@ -1422,7 +1422,7 @@
                     "subtype": "variable",
                     "file": "apps/server/src/environments/environment.ts",
                     "type": "object",
-                    "defaultValue": "{\n  production: false,\n}"
+                    "defaultValue": "{\n    production: false,\n}"
                 }
             ],
             "apps/demo/src/app/app.component.stories.ts": [
@@ -1432,7 +1432,7 @@
                     "subtype": "variable",
                     "file": "apps/demo/src/app/app.component.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent],\n    providers: [{ provide: IMessageService, useExisting: MessageService }],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+                    "defaultValue": "() => ({\n    moduleMetadata: {\n        declarations: [AppComponent],\n        providers: [{ provide: IMessageService, useExisting: MessageService }],\n        imports: [UiModule, HttpClientModule],\n        // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n        // imports: [AppModule]\n    },\n    props: {},\n})"
                 }
             ],
             "libs/ui/src/lib/alert/alert.component.stories.ts": [
@@ -1450,7 +1450,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
                     "type": "Story<AlertComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n})"
                 }
             ],
             "libs/ui/src/lib/app-template/app-template.component.stories.ts": [
@@ -1468,7 +1468,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
                     "type": "Story<AppTemplateComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-app-template><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n    template:\n        '<star-app-template title=\"Overwrite with title control\"><h1>Some Title</h1><p>Some Content</p></star-app-template>',\n})"
                 }
             ],
             "libs/ui/src/lib/icon/icon.component.stories.ts": [
@@ -1486,7 +1486,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/icon/icon.component.stories.ts",
                     "type": "Story<IconComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n  template:\n    `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n    template: `<div style=\"display: flex; background-color: #ddd; gap: 20px; padding: 1rem;\">\n    <div style=\"width: 50px;\">Loading: <star-icon type=\"loading\"></star-icon></div>\n    <div style=\"width: 50px;\">Home: <star-icon type=\"home\"></star-icon></div>\n    <div style=\"width: 50px;\">Code: <star-icon type=\"code\"></star-icon></div>\n    <div style=\"width: 50px;\">Star: <star-icon type=\"star\"></star-icon></div>\n    </div>`,\n})"
                 }
             ],
             "libs/ui/src/lib/loading-button/loading-button.component.stories.ts": [
@@ -1504,7 +1504,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/loading-button/loading-button.component.stories.ts",
                     "type": "Story<LoadingButtonComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-loading-button>Example Button</star-loading-button>',\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n    template: \"<star-loading-button>Example Button</star-loading-button>\",\n})"
                 }
             ],
             "libs/ui/src/lib/paper/paper.component.stories.ts": [
@@ -1522,7 +1522,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/paper/paper.component.stories.ts",
                     "type": "Story<PaperComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n  template: '<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>',\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n    template: \"<star-paper><h1>Some Title</h1><p>Some Content</p></star-paper>\",\n})"
                 }
             ],
             "libs/ui/src/lib/primary-button/primary-button.component.stories.ts": [
@@ -1540,7 +1540,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/primary-button/primary-button.component.stories.ts",
                     "type": "Story<>",
-                    "defaultValue": "({\n  label,\n  ...props\n}) => ({\n  props,\n  template: `<star-primary-button>${label}</star-primary-button>`,\n})"
+                    "defaultValue": "({\n    label,\n    ...props\n}) => ({\n    props,\n    template: `<star-primary-button>${label}</star-primary-button>`,\n})"
                 }
             ],
             "libs/ui/src/lib/rates-table/rates-table.component.stories.ts": [
@@ -1558,7 +1558,7 @@
                     "subtype": "variable",
                     "file": "libs/ui/src/lib/rates-table/rates-table.component.stories.ts",
                     "type": "Story<RatesTableComponent>",
-                    "defaultValue": "(args) => ({\n  props: args,\n})"
+                    "defaultValue": "(args) => ({\n    props: args,\n})"
                 }
             ],
             "apps/demo-e2e/src/support/app.po.ts": [
@@ -1568,7 +1568,7 @@
                     "subtype": "variable",
                     "file": "apps/demo-e2e/src/support/app.po.ts",
                     "type": "",
-                    "defaultValue": "() => cy.get('h1')"
+                    "defaultValue": "() => cy.get(\"h1\")"
                 }
             ]
         },
