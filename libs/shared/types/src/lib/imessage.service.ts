@@ -1,16 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 export type Severity = "info" | "error";
 
 export interface LogItem {
-  severity: string;
-  message: string;
+    severity: string;
+    message: string;
 }
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root",
 })
 export abstract class IMessageService {
-  abstract logs: LogItem[];
-  abstract log: (msg: string, severity: Severity) => void;
+    abstract logs: LogItem[];
+    abstract log: (msg: string, severity: Severity) => void;
 }

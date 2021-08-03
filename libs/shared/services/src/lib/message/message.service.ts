@@ -1,24 +1,24 @@
-import { Injectable } from '@angular/core';
-import { IMessageService, LogItem, Severity } from '@star/shared/types';
+import { Injectable } from "@angular/core";
+import { IMessageService, LogItem, Severity } from "@star/shared/types";
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: "root",
 })
 export class MessageService implements IMessageService {
-  logs: LogItem[] = [];
+    logs: LogItem[] = [];
 
-  log(message: string, severity: Severity) {
-    // Do not push to the array, but create a new one, to make it possible to use a pure pipe
-    this.logs = [
-      ...this.logs,
-      {
-        message,
-        severity,
-      },
-    ];
-  }
+    log(message: string, severity: Severity) {
+        // Do not push to the array, but create a new one, to make it possible to use a pure pipe
+        this.logs = [
+            ...this.logs,
+            {
+                message,
+                severity,
+            },
+        ];
+    }
 
-  clear() {
-    this.logs = [];
-  }
+    clear() {
+        this.logs = [];
+    }
 }

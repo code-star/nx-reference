@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { MinimalLoggerService } from './minimal-logger.service';
+import { MinimalLoggerService } from "./minimal-logger.service";
 
-describe('MinimalLoggerService', () => {
-  let service: MinimalLoggerService;
+describe("MinimalLoggerService", () => {
+    let service: MinimalLoggerService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(MinimalLoggerService);
-  });
+    beforeEach(() => {
+        TestBed.configureTestingModule({});
+        service = TestBed.inject(MinimalLoggerService);
+    });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+    it("should be created", () => {
+        expect(service).toBeTruthy();
+    });
 });

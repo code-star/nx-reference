@@ -43,6 +43,7 @@ Run storybook: `yarn docs:json && yarn nx storybook` (does nx run demo:storybook
 So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
 Also run `yarn nx serve server`.
 To build storybook run: `yarn nx run demo:build-storybook`
+Run lint on all projects: `yarn nx run-many --all --target=lint` (with `yarn nx lint` only the default project is linted)
 
 This project was generated using [Nx](https://nx.dev).
 
