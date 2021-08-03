@@ -36,8 +36,8 @@ export class BtcRateService {
                 ? `${this.btcUrl}`
                 : `http://localhost:3333/${this.btcUrl}`;
         return this.http.get<BtcResponse>(url).pipe(
-            tap(() => this.log(`fetched rate`, "info")),
             delay(1000),
+            tap(() => this.log(`fetched rate`, "info")),
             map(({ btc }) => [Date.now(), btc] as DateAndRate),
             catchError(this.handleError<DateAndRate>(`getRate`))
         );

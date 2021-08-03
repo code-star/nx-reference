@@ -1022,11 +1022,7 @@
                 },
                 {
                     "type": "declarations",
-                    "elements": [
-                        {
-                            "name": "MessageService"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "imports",
@@ -1034,11 +1030,7 @@
                 },
                 {
                     "type": "exports",
-                    "elements": [
-                        {
-                            "name": "MessageService"
-                        }
-                    ]
+                    "elements": []
                 },
                 {
                     "type": "bootstrap",
