@@ -12,5 +12,5 @@ export class LoadingButtonComponent {
   /**
    * When loading is true, the button is disabled and a loading animation is displayed.
    */
-  @Input() loading: boolean;
+  @Input() loading = false;
 }

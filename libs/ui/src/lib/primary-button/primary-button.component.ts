@@ -17,5 +17,5 @@ export class PrimaryButtonComponent {
   /**
    * When true, clicking the button has no effect
    */
-  @Input() disabled: boolean;
+  @Input() disabled = false;
 }

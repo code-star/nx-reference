@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "BySeverityPipe",
-            "id": "pipe-BySeverityPipe-5d979b83a9490063ff3d0de5155c15e0",
+            "id": "pipe-BySeverityPipe-fd069cef9c00fbab933ac897c4052966",
             "file": "libs/ui/src/lib/by-severity.pipe.ts",
             "type": "pipe",
             "description": "",
@@ -42,9 +42,8 @@
                     ]
                 }
             ],
-            "pure": false,
             "ngname": "bySeverity",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n  pure: false, // TODO Fix: when this is false, the list of log messages is not updated\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n  // pure: false, // TODO Fix: when this is false, the list of log messages is not updated\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
         }
     ],
     "interfaces": [
@@ -190,7 +189,7 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-4be4f46fa7152541cbeca60cc7c858f9",
+            "id": "injectable-BtcRateService-e294164bf15b98e15e2aa77776d3a5b2",
             "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
             "properties": [
                 {
@@ -199,7 +198,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 19,
+                    "line": 18,
                     "modifierKind": [
                         112
                     ]
@@ -210,7 +209,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 21
+                    "line": 20
                 }
             ],
             "methods": [
@@ -220,7 +219,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 31
+                    "line": 28
                 },
                 {
                     "name": "handleError",
@@ -241,7 +240,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 50,
+                    "line": 47,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -249,16 +248,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1468,
-                                "end": 1477,
+                                "pos": 1276,
+                                "end": 1285,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1462,
-                                "end": 1467,
+                                "pos": 1270,
+                                "end": 1275,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -266,16 +265,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1526,
-                                "end": 1532,
+                                "pos": 1334,
+                                "end": 1340,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1520,
-                                "end": 1525,
+                                "pos": 1328,
+                                "end": 1333,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -298,7 +297,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25,
+                    "line": 24,
                     "modifierKind": [
                         112
                     ],
@@ -321,7 +320,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity, IMessageService } from '@star/shared/types';\n// import { MessageService } from '@star/shared/services';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    console.log(message); // TODO remove\n    console.log(this.messageService); // TODO this should not be IMessageService in Runtime\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity, IMessageService } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -335,7 +334,7 @@
                         "type": "IMessageService"
                     }
                 ],
-                "line": 13,
+                "line": 12,
                 "jsdoctags": [
                     {
                         "name": "http",
@@ -388,7 +387,7 @@
         },
         {
             "name": "MessageService",
-            "id": "injectable-MessageService-841dd8725528df7e31bd35f4bcf57eeb",
+            "id": "injectable-MessageService-6c5b2c0bd547b3a0e1e3012628435f23",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
@@ -407,7 +406,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 17
+                    "line": 24
                 },
                 {
                     "name": "log",
@@ -444,7 +443,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    // this.logs.push({\n    //   message,\n    //   severity,\n    // });\n    this.logs = [\n      ...this.logs,\n      {\n        message,\n        severity,\n      },\n    ];\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
             "type": "injectable"
         }
     ],
@@ -453,14 +452,14 @@
     "components": [
         {
             "name": "AlertComponent",
-            "id": "component-AlertComponent-38c565f8e1b80cf53b6c734bca112b69",
+            "id": "component-AlertComponent-30d152ebfff6667330057dd743b4a8cd",
             "file": "libs/ui/src/lib/alert/alert.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "star-alert",
+            "selector": "star-alert[item]",
             "styleUrls": [
                 "./alert.component.scss"
             ],
@@ -472,6 +471,7 @@
             "inputsClass": [
                 {
                     "name": "item",
+                    "defaultValue": "{ message: '', severity: 'info' }",
                     "description": "<p>LogItem contains the message and severity to show in an alert block</p>\n",
                     "line": 13,
                     "type": "LogItem"
@@ -494,7 +494,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem;\n\n  getPrefix() {\n      return this.item.severity.toUpperCase();\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert[item]',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem = { message: '', severity: 'info' };\n\n  getPrefix() {\n    return this.item.severity.toUpperCase();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -627,18 +627,18 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <div\n      *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\"\n      style=\"color: red\"\n    >\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n    <div\n      *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\"\n      style=\"color: blue\"\n    >\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\">\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\">\n      <star-alert [item]=\"logItem\"></star-alert>\n    </div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
-            "id": "component-AppTemplateComponent-b64645e67fbe0a733fbc4abd7576edea",
+            "id": "component-AppTemplateComponent-c0b5ad294df30b286c824cf341ef08fa",
             "file": "libs/ui/src/lib/app-template/app-template.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "star-app-template",
+            "selector": "star-app-template[title]",
             "styleUrls": [
                 "./app-template.component.scss"
             ],
@@ -650,8 +650,8 @@
             "inputsClass": [
                 {
                     "name": "title",
-                    "line": 9,
-                    "type": "string"
+                    "defaultValue": "''",
+                    "line": 9
                 }
             ],
             "outputsClass": [],
@@ -662,7 +662,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-app-template',\n  templateUrl: './app-template.component.html',\n  styleUrls: ['./app-template.component.scss'],\n})\nexport class AppTemplateComponent {\n  @Input() title: string;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-app-template[title]',\n  templateUrl: './app-template.component.html',\n  styleUrls: ['./app-template.component.scss'],\n})\nexport class AppTemplateComponent {\n  @Input() title = '';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -675,14 +675,14 @@
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-04779c973d80869da1d7c69b64cd783f",
+            "id": "component-IconComponent-8b0a9c3ba482bbc8806bcdf03c264369",
             "file": "libs/ui/src/lib/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "star-icon",
+            "selector": "star-icon[item]",
             "styleUrls": [
                 "./icon.component.scss"
             ],
@@ -694,6 +694,7 @@
             "inputsClass": [
                 {
                     "name": "type",
+                    "defaultValue": "'home'",
                     "description": "<p>Name of the icon to display</p>\n",
                     "line": 12,
                     "type": "\"loading\" | \"home\" | \"code\" | \"star\""
@@ -707,7 +708,7 @@
             "description": "",
             "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home' | 'code' | 'star';\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'star-icon[item]',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  /**\n   * Name of the icon to display\n   */\n  @Input() type: 'loading' | 'home' | 'code' | 'star' = 'home';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -720,7 +721,7 @@
         },
         {
             "name": "LoadingButtonComponent",
-            "id": "component-LoadingButtonComponent-2db78e3d8e7dcf087918cb1f338b6902",
+            "id": "component-LoadingButtonComponent-2e315979956fe55aa252ca483f80e6af",
             "file": "libs/ui/src/lib/loading-button/loading-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -739,9 +740,9 @@
             "inputsClass": [
                 {
                     "name": "loading",
+                    "defaultValue": "false",
                     "description": "<p>When loading is true, the button is disabled and a loading animation is displayed.</p>\n",
-                    "line": 15,
-                    "type": "boolean"
+                    "line": 15
                 }
             ],
             "outputsClass": [],
@@ -752,7 +753,7 @@
             "description": "<p>Button with a loading state, to show when an an action is keeping this button disabled.</p>\n",
             "rawdescription": "Button with a loading state, to show when an an action is keeping this button disabled.",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() loading: boolean;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() loading = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -824,7 +825,7 @@
         },
         {
             "name": "PrimaryButtonComponent",
-            "id": "component-PrimaryButtonComponent-f45cdadcacf71fd61edfe9efc2342606",
+            "id": "component-PrimaryButtonComponent-100289b59ea083f788df46c92371655c",
             "file": "libs/ui/src/lib/primary-button/primary-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -843,9 +844,9 @@
             "inputsClass": [
                 {
                     "name": "disabled",
+                    "defaultValue": "false",
                     "description": "<p>When true, clicking the button has no effect</p>\n",
-                    "line": 20,
-                    "type": "boolean"
+                    "line": 20
                 }
             ],
             "outputsClass": [],
@@ -856,7 +857,7 @@
             "description": "<p>Some primary button documentation. This is an atom, a UI component. Presentational, without state.</p>\n<p>Usage: <code>&lt;star-primary-button&gt;label&lt;/star-primary-button&gt;</code></p>\n",
             "rawdescription": "Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n\nUsage: `<star-primary-button>label</star-primary-button>`",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * \n * Usage: `<star-primary-button>label</star-primary-button>`\n * \n * @example\n * `<star-primary-button>label</star-primary-button>`\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled: boolean;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Some primary button documentation. This is an atom, a UI component. Presentational, without state.\n * \n * Usage: `<star-primary-button>label</star-primary-button>`\n * \n * @example\n * `<star-primary-button>label</star-primary-button>`\n */\n@Component({\n  selector: 'star-primary-button',\n  templateUrl: './primary-button.component.html',\n  styleUrls: ['./primary-button.component.scss'],\n})\nexport class PrimaryButtonComponent {\n  /**\n   * When true, clicking the button has no effect\n   */\n  @Input() disabled = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1143,17 +1144,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/demo/src/environments/environment.prod.ts",
+                "file": "apps/demo/src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
+                "defaultValue": "{\n  production: false,\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/demo/src/environments/environment.ts",
+                "file": "apps/demo/src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n}"
+                "defaultValue": "{\n  production: true,\n}"
             },
             {
                 "name": "environment",
@@ -1384,16 +1385,6 @@
                     "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
                 }
             ],
-            "apps/demo/src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "apps/demo/src/environments/environment.prod.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true,\n}"
-                }
-            ],
             "apps/demo/src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -1402,6 +1393,16 @@
                     "file": "apps/demo/src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: false,\n}"
+                }
+            ],
+            "apps/demo/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n}"
                 }
             ],
             "apps/server/src/environments/environment.prod.ts": [

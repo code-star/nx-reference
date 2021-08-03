@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "resolveJsonModule": true,
+    "strict": true,
     "paths": {
       "@star/btc": ["libs/btc/src/index.ts"],
       "@star/ui": ["libs/ui/src/index.ts"],
