@@ -6,6 +6,8 @@ import { RatesTableComponent } from './rates-table/rates-table.component';
 import { PaperComponent } from './paper/paper.component';
 import { AppTemplateComponent } from './app-template/app-template.component';
 import { IconComponent } from './icon/icon.component';
+import { AlertComponent } from './alert/alert.component';
+import { BySeverityPipe } from './by-severity.pipe';
 
 @NgModule({
   imports: [CommonModule],
@@ -15,7 +17,9 @@ import { IconComponent } from './icon/icon.component';
     RatesTableComponent,
     PaperComponent,
     AppTemplateComponent,
-    IconComponent
+    IconComponent,
+    AlertComponent,
+    BySeverityPipe
   ],
   exports: [
     PrimaryButtonComponent,
@@ -23,7 +27,9 @@ import { IconComponent } from './icon/icon.component';
     RatesTableComponent,
     PaperComponent,
     AppTemplateComponent,
-    IconComponent
+    IconComponent,
+    AlertComponent,
+    BySeverityPipe
   ],
 })
 export class UiModule {}
