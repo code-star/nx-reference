@@ -11,8 +11,18 @@
       <h3>Exchange rates</h3>
       <star-rates-table [rates]="rates"></star-rates-table>
     </div>
-    <div *ngFor="let logItem of (messageService.logs | bySeverity:'error')" style="color: red;">{{ logItem.message }}</div>
-    <div *ngFor="let logItem of (messageService.logs | bySeverity:'info')" style="color: blue;">{{ logItem.message }}</div>
+    <div
+      *ngFor="let logItem of messageService.logs | bySeverity: 'error'"
+      style="color: red"
+    >
+      <star-alert [item]="logItem"></star-alert>
+    </div>
+    <div
+      *ngFor="let logItem of messageService.logs | bySeverity: 'info'"
+      style="color: blue"
+    >
+      <star-alert [item]="logItem"></star-alert>
+    </div>
   </star-paper>
 
   <star-paper>
