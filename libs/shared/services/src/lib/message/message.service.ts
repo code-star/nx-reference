@@ -8,10 +8,14 @@ export class MessageService implements IMessageService {
   logs: LogItem[] = [];
 
   log(message: string, severity: Severity) {
-    this.logs.push({
-      message,
-      severity,
-    });
+    // Do not push to the array, but create a new one, to make it possible to use a pure pipe
+    this.logs = [
+      ...this.logs,
+      {
+        message,
+        severity,
+      },
+    ];
   }
 
   clear() {
