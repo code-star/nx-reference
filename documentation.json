@@ -2,7 +2,7 @@
     "pipes": [
         {
             "name": "BySeverityPipe",
-            "id": "pipe-BySeverityPipe-fd069cef9c00fbab933ac897c4052966",
+            "id": "pipe-BySeverityPipe-f79a8b9b2b67506cc4b2223aa0cc42dc",
             "file": "libs/ui/src/lib/by-severity.pipe.ts",
             "type": "pipe",
             "description": "",
@@ -23,7 +23,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 9,
+                    "line": 8,
                     "jsdoctags": [
                         {
                             "name": "value",
@@ -43,7 +43,7 @@
                 }
             ],
             "ngname": "bySeverity",
-            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n  // pure: false, // TODO Fix: when this is false, the list of log messages is not updated\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({\n  name: 'bySeverity',\n})\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => item.severity === severity);\n  }\n}\n"
         }
     ],
     "interfaces": [
@@ -387,7 +387,7 @@
         },
         {
             "name": "MessageService",
-            "id": "injectable-MessageService-6c5b2c0bd547b3a0e1e3012628435f23",
+            "id": "injectable-MessageService-77763f53b1af87606b20c97dbd30d2f9",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
@@ -406,7 +406,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24
+                    "line": 21
                 },
                 {
                     "name": "log",
@@ -443,7 +443,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    // this.logs.push({\n    //   message,\n    //   severity,\n    // });\n    this.logs = [\n      ...this.logs,\n      {\n        message,\n        severity,\n      },\n    ];\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [];\n\n  log(message: string, severity: Severity) {\n    // Do not push to the array, but create a new one, to make it possible to use a pure pipe\n    this.logs = [\n      ...this.logs,\n      {\n        message,\n        severity,\n      },\n    ];\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
             "type": "injectable"
         }
     ],
@@ -1144,17 +1144,17 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/demo/src/environments/environment.ts",
+                "file": "apps/demo/src/environments/environment.prod.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: false,\n}"
+                "defaultValue": "{\n  production: true,\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "apps/demo/src/environments/environment.prod.ts",
+                "file": "apps/demo/src/environments/environment.ts",
                 "type": "object",
-                "defaultValue": "{\n  production: true,\n}"
+                "defaultValue": "{\n  production: false,\n}"
             },
             {
                 "name": "environment",
@@ -1385,16 +1385,6 @@
                     "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
                 }
             ],
-            "apps/demo/src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "apps/demo/src/environments/environment.ts",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false,\n}"
-                }
-            ],
             "apps/demo/src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -1403,6 +1393,16 @@
                     "file": "apps/demo/src/environments/environment.prod.ts",
                     "type": "object",
                     "defaultValue": "{\n  production: true,\n}"
+                }
+            ],
+            "apps/demo/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/demo/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n}"
                 }
             ],
             "apps/server/src/environments/environment.prod.ts": [

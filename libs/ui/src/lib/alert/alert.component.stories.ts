@@ -14,7 +14,7 @@ export const Example = Template.bind({});
 
 Example.args = {
   item: {
-    message: 'hoi',
+    message: 'Example error message',
     severity: 'error',
   },
 };

@@ -21,6 +21,5 @@ const Template: Story<LoadingButtonComponent> = (args) => ({
 export const Example = Template.bind({ UiModule });
 
 Example.args = {
-  label: 'Example Button',
   loading: false
 };
