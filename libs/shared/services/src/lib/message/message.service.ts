@@ -5,16 +5,7 @@ import { IMessageService, LogItem, Severity } from '@star/shared/types';
   providedIn: 'root',
 })
 export class MessageService implements IMessageService {
-  logs: LogItem[] = [
-    {
-      message: 'test-info',
-      severity: 'info',
-    },
-    {
-      message: 'test-error',
-      severity: 'error',
-    },
-  ];
+  logs: LogItem[] = [];
 
   log(message: string, severity: Severity) {
     this.logs.push({
