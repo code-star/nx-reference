@@ -23,7 +23,12 @@ Note that modules (e.g. HttpClientModule or UiModule) need to be added to both a
 yarn nx g @nrwl/workspace:lib shared/types
 yarn nx g @nrwl/angular:lib shared/services
 yarn nx g @nrwl/angular:service Message --project=shared-services --export
+manually export from services/lib/index.ts
 yarn nx g @nrwl/angular:lib shared/data-access
+yarn nx g @nrwl/angular:service btcRate/BtcRate --project=shared-data-access --export
+manually export from data-access/lib/index.ts
+yarn nx g @nrwl/angular:service MinimalLogger --project=shared-types --export
+yarn nx g @nrwl/angular:component Alert --project=ui --export
 
 Docs in Storybook
 https://github.com/storybookjs/storybook/blob/master/addons/docs/angular/README.md
