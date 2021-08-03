@@ -11,10 +11,8 @@
       <h3>Exchange rates</h3>
       <star-rates-table [rates]="rates"></star-rates-table>
     </div>
-    <!-- TODO message component should be a separate component in libs/ui -->
-    <div *ngFor="let logItem of messageService.logs" style="color: red;">{{ logItem.message }}</div>
-    <!-- TODO use filter on ngFor, to filter and group by severity -->
-    <div *ngFor="let logItem of messageService.logs" style="color: blue;">{{ logItem.message }}</div>
+    <div *ngFor="let logItem of (messageService.logs | bySeverity:'error')" style="color: red;">{{ logItem.message }}</div>
+    <div *ngFor="let logItem of (messageService.logs | bySeverity:'info')" style="color: blue;">{{ logItem.message }}</div>
   </star-paper>
 
   <star-paper>

@@ -1,4 +1,3 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Component, Input } from '@angular/core';
 import { LogItem } from '@star/shared/types';
 

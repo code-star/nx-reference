@@ -7,6 +7,8 @@ import { SharedDataAccessModule } from '@star/shared/data-access';
 
 import { AppComponent } from './app.component';
 
+
+// Note: also update the imports in app.component.stories.ts
 @NgModule({
   declarations: [AppComponent],
   imports: [

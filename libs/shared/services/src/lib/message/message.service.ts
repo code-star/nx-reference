@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IMessageService, LogItem, Severity } from '@star/shared/types';
+
 @Injectable({
   providedIn: 'root',
 })

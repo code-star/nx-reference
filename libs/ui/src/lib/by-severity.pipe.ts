@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { LogItem, Severity } from '@star/shared/types';
 
 @Pipe({
-  name: 'bySeverity'
+  name: 'bySeverity',
+  pure: false, // TODO Fix: when this is false, the list of log messages is not updated
 })
 export class BySeverityPipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: LogItem[], severity: Severity) {
+    return value.filter((item) => item.severity === severity);
   }
-
 }

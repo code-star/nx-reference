@@ -13,8 +13,10 @@ export default {
 
 export const Example = () => ({
   moduleMetadata: {
+    declarations: [AppComponent],
     imports: [UiModule, HttpClientModule],
+    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)
+    // imports: [AppModule]
   },
-  // component: AppComponent,
   props: {},
 });

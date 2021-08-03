@@ -1,5 +1,101 @@
 {
-    "pipes": [],
+    "pipes": [
+        {
+            "name": "BySeverityPipe",
+            "id": "pipe-BySeverityPipe-9ba3eba5897ecc85798493f320255fbd",
+            "file": "apps/demo/src/app/by-severity.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "LogItem[]"
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 6,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "LogItem[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "bySeverity",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\nimport { LogItem, Severity } from '@star/shared/types';\n\n@Pipe({ name: 'bySeverity' })\nexport class BySeverityPipe implements PipeTransform {\n  transform(value: LogItem[], severity: Severity) {\n    return value.filter((item) => {\n      console.log(item, severity);\n      return item.severity === severity;\n    });\n  }\n}\n"
+        },
+        {
+            "name": "BySeverityPipe",
+            "id": "pipe-BySeverityPipe-00ee70971be984d17569bfb653f3b6ae-1",
+            "file": "libs/ui/src/lib/by-severity.pipe.ts",
+            "type": "pipe",
+            "description": "",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "unknown"
+                        },
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "dotDotDotToken": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "unknown",
+                    "typeParameters": [],
+                    "line": 8,
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "unknown",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "args",
+                            "type": "unknown[]",
+                            "dotDotDotToken": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "ngname": "bySeverity",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\n\n@Pipe({\n  name: 'bySeverity'\n})\nexport class BySeverityPipe implements PipeTransform {\n\n  transform(value: unknown, ...args: unknown[]): unknown {\n    return null;\n  }\n\n}\n",
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "BySeverityPipe-1"
+        }
+    ],
     "interfaces": [
         {
             "name": "BtcResponse",
@@ -143,7 +239,7 @@
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-6cf3106ace837aba832e3f77b14bd955",
+            "id": "injectable-BtcRateService-0f0c0fbfcc78872629130f05f49412fd",
             "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
             "properties": [
                 {
@@ -152,7 +248,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 19,
                     "modifierKind": [
                         112
                     ]
@@ -163,7 +259,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 22
+                    "line": 21
                 }
             ],
             "methods": [
@@ -173,7 +269,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 32
+                    "line": 29
                 },
                 {
                     "name": "handleError",
@@ -194,7 +290,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 51,
+                    "line": 48,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -202,16 +298,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1497,
-                                "end": 1506,
+                                "pos": 1314,
+                                "end": 1323,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1491,
-                                "end": 1496,
+                                "pos": 1308,
+                                "end": 1313,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -219,16 +315,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1555,
-                                "end": 1561,
+                                "pos": 1372,
+                                "end": 1378,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1549,
-                                "end": 1554,
+                                "pos": 1366,
+                                "end": 1371,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -251,7 +347,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 26,
+                    "line": 25,
                     "modifierKind": [
                         112
                     ],
@@ -274,7 +370,7 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable, Optional } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity } from '@star/shared/types';\nimport { IMessageService } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    // TODO remove optional?\n    @Optional() private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    console.log(message); // TODO remove\n    console.log(this.messageService); // TODO this should not be IMessageService in Runtime\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity } from '@star/shared/types';\nimport { MessageService } from '@star/shared/services';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    private messageService: MessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -285,7 +381,7 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "IMessageService"
+                        "type": "MessageService"
                     }
                 ],
                 "line": 13,
@@ -299,7 +395,7 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "IMessageService",
+                        "type": "MessageService",
                         "tagName": {
                             "text": "param"
                         }
@@ -341,7 +437,7 @@
         },
         {
             "name": "MessageService",
-            "id": "injectable-MessageService-42bec7d1befea9a2c32b35d325a8a6fd",
+            "id": "injectable-MessageService-947dac7bd3de0e0ef17801794d4c5597",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
@@ -350,7 +446,7 @@
                     "type": "LogItem[]",
                     "optional": false,
                     "description": "",
-                    "line": 7
+                    "line": 8
                 }
             ],
             "methods": [
@@ -360,7 +456,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 25
+                    "line": 26
                 },
                 {
                     "name": "log",
@@ -377,7 +473,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 19,
                     "jsdoctags": [
                         {
                             "name": "message",
@@ -397,13 +493,58 @@
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
             "type": "injectable"
         }
     ],
     "classes": [],
     "directives": [],
     "components": [
+        {
+            "name": "AlertComponent",
+            "id": "component-AlertComponent-cda068e38401bd7f3e2136c1d9950b80",
+            "file": "libs/ui/src/lib/alert/alert.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-alert",
+            "styleUrls": [
+                "./alert.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./alert.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "item",
+                    "description": "<p>LogItem contains the message and severity to show in an alert block</p>\n",
+                    "line": 13,
+                    "type": "LogItem"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { LogItem } from '@star/shared/types';\n\n@Component({\n  selector: 'star-alert',\n  templateUrl: './alert.component.html',\n  styleUrls: ['./alert.component.scss'],\n})\nexport class AlertComponent {\n  /**\n   * LogItem contains the message and severity to show in an alert block\n   */\n  @Input() item: LogItem;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./alert.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<p>alert works!</p>\n"
+        },
         {
             "name": "AppComponent",
             "id": "component-AppComponent-6035d44cfe39f4bc30ea2ed1a42d6b8b",
@@ -526,7 +667,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <!-- TODO message component should be a separate component in libs/ui -->\n    <div *ngFor=\"let logItem of messageService.logs\" style=\"color: red;\">{{ logItem.message }}</div>\n    <!-- TODO use filter on ngFor, to filter and group by severity -->\n    <div *ngFor=\"let logItem of messageService.logs\" style=\"color: blue;\">{{ logItem.message }}</div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <!-- <div *ngFor=\"let logItem of getFoo()\" style=\"color: red;\">{{ logItem.message }}</div> -->\n    <!-- TODO message component should be a separate component in libs/ui -->\n    <!-- <div *ngFor=\"let logItem of messageService.logs\" style=\"color: red;\">{{ logItem.message }}</div> -->\n    <!-- TODO use filter on ngFor, to filter and group by severity -->\n    <!-- <div *ngFor=\"let logItem of messageService.logs\" style=\"color: blue;\">{{ logItem.message }}</div> -->\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity:'error'\" style=\"color: red;\">{{ logItem.message }}</div>\n    <div *ngFor=\"let logItem of messageService.logs | bySeverity:'info'\" style=\"color: blue;\">{{ logItem.message }}</div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
@@ -619,7 +760,7 @@
         },
         {
             "name": "LoadingButtonComponent",
-            "id": "component-LoadingButtonComponent-693b112246b6f98a188b24fe2e8cc6b5",
+            "id": "component-LoadingButtonComponent-2db78e3d8e7dcf087918cb1f338b6902",
             "file": "libs/ui/src/lib/loading-button/loading-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -637,48 +778,21 @@
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "label",
-                    "description": "<p>The label to display on the button</p>\n",
-                    "line": 34,
-                    "type": "string"
-                },
-                {
                     "name": "loading",
                     "description": "<p>When loading is true, the button is disabled and a loading animation is displayed.</p>\n",
-                    "line": 18,
+                    "line": 15,
                     "type": "boolean"
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "_label_orig",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 12,
-                    "modifierKind": [
-                        112
-                    ]
-                },
-                {
-                    "name": "_loading",
-                    "type": "boolean",
-                    "optional": false,
-                    "description": "",
-                    "line": 13,
-                    "modifierKind": [
-                        112
-                    ]
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "hostBindings": [],
             "hostListeners": [],
             "description": "<p>Button with a loading state, to show when an an action is keeping this button disabled.</p>\n",
             "rawdescription": "Button with a loading state, to show when an an action is keeping this button disabled.",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  private _label_orig: string;\n  private _loading: boolean;\n\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() set loading(value: boolean) {\n    this._loading = value;\n\n    if (this.label !== 'Loading...') {\n      this._label_orig = this.label;\n    }\n\n    this.label = value ? 'Loading...' : this._label_orig;\n  }\n  get loading(): boolean {\n    return this._loading;\n  }\n\n  /**\n   * The label to display on the button\n   */\n  @Input() label: string;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n/**\n * Button with a loading state, to show when an an action is keeping this button disabled.\n */\n@Component({\n  selector: 'star-loading-button',\n  templateUrl: './loading-button.component.html',\n  styleUrls: ['./loading-button.component.scss'],\n})\nexport class LoadingButtonComponent {\n  /**\n   * When loading is true, the button is disabled and a loading animation is displayed.\n   */\n  @Input() loading: boolean;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -687,40 +801,7 @@
                 }
             ],
             "stylesData": "",
-            "accessors": {
-                "loading": {
-                    "name": "loading",
-                    "setSignature": {
-                        "name": "loading",
-                        "type": "void",
-                        "args": [
-                            {
-                                "name": "value",
-                                "type": "boolean"
-                            }
-                        ],
-                        "returnType": "void",
-                        "line": 18,
-                        "description": "<p>When loading is true, the button is disabled and a loading animation is displayed.</p>\n",
-                        "jsdoctags": [
-                            {
-                                "name": "value",
-                                "type": "boolean",
-                                "tagName": {
-                                    "text": "param"
-                                }
-                            }
-                        ]
-                    },
-                    "getSignature": {
-                        "name": "loading",
-                        "type": "boolean",
-                        "returnType": "boolean",
-                        "line": 27
-                    }
-                }
-            },
-            "templateData": "<star-primary-button label=\"{{ label }}\" [disabled]=\"loading\">\n  <div class=\"flex\">\n    <div>\n      <ng-content></ng-content>\n    </div>\n    <star-icon *ngIf=\"loading\" class=\"img-spin\" type=\"loading\"></star-icon>\n  </div>\n</star-primary-button>\n"
+            "templateData": "<star-primary-button [disabled]=\"loading\">\n  <div class=\"flex\">\n    <div>\n      <ng-content></ng-content>\n    </div>\n    <star-icon *ngIf=\"loading\" class=\"img-spin\" type=\"loading\"></star-icon>\n  </div>\n</star-primary-button>\n"
         },
         {
             "name": "PaperComponent",
@@ -907,6 +988,9 @@
                     "elements": [
                         {
                             "name": "AppComponent"
+                        },
+                        {
+                            "name": "BySeverityPipe"
                         }
                     ]
                 },
@@ -1019,7 +1103,13 @@
                     "type": "declarations",
                     "elements": [
                         {
+                            "name": "AlertComponent"
+                        },
+                        {
                             "name": "AppTemplateComponent"
+                        },
+                        {
+                            "name": "BySeverityPipe"
                         },
                         {
                             "name": "IconComponent"
@@ -1045,6 +1135,9 @@
                 {
                     "type": "exports",
                     "elements": [
+                        {
+                            "name": "AlertComponent"
+                        },
                         {
                             "name": "AppTemplateComponent"
                         },
@@ -1124,7 +1217,15 @@
                 "subtype": "variable",
                 "file": "apps/demo/src/app/app.component.stories.ts",
                 "type": "",
-                "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [UiModule, HttpClientModule],\n  },\n  // component: AppComponent,\n  props: {},\n})"
+                "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent, BySeverityPipe],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+            },
+            {
+                "name": "Example",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Example",
@@ -1197,6 +1298,14 @@
                 "file": "apps/server/src/main.ts",
                 "type": "",
                 "defaultValue": "app.listen(port, () => {\n  console.log(`Listening at http://localhost:${port}/api`);\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                "type": "Story<AlertComponent>",
+                "defaultValue": "(args) => ({\n  props: args,\n})"
             },
             {
                 "name": "Template",
@@ -1362,7 +1471,25 @@
                     "subtype": "variable",
                     "file": "apps/demo/src/app/app.component.stories.ts",
                     "type": "",
-                    "defaultValue": "() => ({\n  moduleMetadata: {\n    imports: [UiModule, HttpClientModule],\n  },\n  // component: AppComponent,\n  props: {},\n})"
+                    "defaultValue": "() => ({\n  moduleMetadata: {\n    declarations: [AppComponent, BySeverityPipe],\n    imports: [UiModule, HttpClientModule],\n    // TODO instead of keeping 2 lists of imports (here and in app.module.ts), import AppModule here (requires error fixing)\n    // imports: [AppModule]\n  },\n  props: {},\n})"
+                }
+            ],
+            "libs/ui/src/lib/alert/alert.component.stories.ts": [
+                {
+                    "name": "Example",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                    "type": "Story<AlertComponent>",
+                    "defaultValue": "(args) => ({\n  props: args,\n})"
                 }
             ],
             "libs/ui/src/lib/app-template/app-template.component.stories.ts": [
@@ -1536,7 +1663,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 10,
+        "count": 11,
         "status": "low",
         "files": [
             {
@@ -1575,6 +1702,15 @@
                 "name": "AppComponent",
                 "coveragePercent": 12,
                 "coverageCount": "1/8",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/demo/src/app/by-severity.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "BySeverityPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1711,6 +1847,35 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Example",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/alert/alert.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/alert/alert.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AlertComponent",
+                "coveragePercent": 50,
+                "coverageCount": "1/2",
+                "status": "medium"
+            },
+            {
                 "filePath": "libs/ui/src/lib/app-template/app-template.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
@@ -1737,6 +1902,15 @@
                 "name": "AppTemplateComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ui/src/lib/by-severity.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "BySeverityPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -1793,9 +1967,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "LoadingButtonComponent",
-                "coveragePercent": 60,
-                "coverageCount": "3/5",
-                "status": "good"
+                "coveragePercent": 100,
+                "coverageCount": "2/2",
+                "status": "very-good"
             },
             {
                 "filePath": "libs/ui/src/lib/paper/paper.component.stories.ts",
