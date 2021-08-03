@@ -12,7 +12,9 @@
       <star-rates-table [rates]="rates"></star-rates-table>
     </div>
     <!-- TODO message component should be a separate component in libs/ui -->
-    <div *ngFor="let message of messageService.messages" style="color: red;">{{ message }}</div>
+    <div *ngFor="let logItem of messageService.logs" style="color: red;">{{ logItem.message }}</div>
+    <!-- TODO use filter on ngFor, to filter and group by severity -->
+    <div *ngFor="let logItem of messageService.logs" style="color: blue;">{{ logItem.message }}</div>
   </star-paper>
 
   <star-paper>

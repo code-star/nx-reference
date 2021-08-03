@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BtcRateService } from './btc-rate.service';
+import { MinimalLoggerService } from './minimal-logger.service';
 
-describe('BtcRateService', () => {
-  let service: BtcRateService;
+describe('MinimalLoggerService', () => {
+  let service: MinimalLoggerService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(BtcRateService);
+    service = TestBed.inject(MinimalLoggerService);
   });
 
   it('should be created', () => {

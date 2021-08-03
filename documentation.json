@@ -112,13 +112,39 @@
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "Chainable-1"
+        },
+        {
+            "name": "LogItem",
+            "id": "interface-LogItem-a7746897422d4e18461892dceb80d77e",
+            "file": "libs/shared/types/src/lib/imessage.service.ts",
+            "type": "interface",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n  severity: string;\n  message: string;\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport abstract class IMessageService {\n  abstract logs: LogItem[];\n  abstract log: (msg: string, severity: Severity) => void;\n}",
+            "properties": [
+                {
+                    "name": "message",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "severity",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
         }
     ],
     "injectables": [
         {
             "name": "BtcRateService",
-            "id": "injectable-BtcRateService-53b5266ce7f077f19cc7e98fd0d337cd",
-            "file": "apps/demo/src/app/btc-rate.service.ts",
+            "id": "injectable-BtcRateService-6cf3106ace837aba832e3f77b14bd955",
+            "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
             "properties": [
                 {
                     "name": "btcUrl",
@@ -126,7 +152,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 22,
+                    "line": 20,
                     "modifierKind": [
                         112
                     ]
@@ -137,7 +163,7 @@
                     "type": "object",
                     "optional": false,
                     "description": "",
-                    "line": 24
+                    "line": 22
                 }
             ],
             "methods": [
@@ -147,7 +173,7 @@
                     "optional": false,
                     "returnType": "Observable<DateAndRate>",
                     "typeParameters": [],
-                    "line": 34
+                    "line": 32
                 },
                 {
                     "name": "handleError",
@@ -168,7 +194,7 @@
                     "typeParameters": [
                         "T"
                     ],
-                    "line": 53,
+                    "line": 51,
                     "description": "<p>Handle Http operation that failed.\nLet the app continue.</p>\n",
                     "modifierKind": [
                         112
@@ -176,16 +202,16 @@
                     "jsdoctags": [
                         {
                             "name": {
-                                "pos": 1611,
-                                "end": 1620,
+                                "pos": 1497,
+                                "end": 1506,
                                 "flags": 0,
                                 "escapedText": "operation"
                             },
                             "type": "string",
                             "defaultValue": "'operation'",
                             "tagName": {
-                                "pos": 1605,
-                                "end": 1610,
+                                "pos": 1491,
+                                "end": 1496,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -193,16 +219,16 @@
                         },
                         {
                             "name": {
-                                "pos": 1669,
-                                "end": 1675,
+                                "pos": 1555,
+                                "end": 1561,
                                 "flags": 0,
                                 "escapedText": "result"
                             },
                             "type": "T",
                             "optional": true,
                             "tagName": {
-                                "pos": 1663,
-                                "end": 1668,
+                                "pos": 1549,
+                                "end": 1554,
                                 "flags": 0,
                                 "escapedText": "param"
                             },
@@ -216,12 +242,16 @@
                         {
                             "name": "message",
                             "type": "string"
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity"
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 28,
+                    "line": 26,
                     "modifierKind": [
                         112
                     ],
@@ -232,12 +262,19 @@
                             "tagName": {
                                 "text": "param"
                             }
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity",
+                            "tagName": {
+                                "text": "param"
+                            }
                         }
                     ]
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse } from '@star/shared/types';\n// import { MessageService } from 'libs/shared/services/src/lib/message.service';\nimport { MessageService } from '@star/shared/services';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  // Add a message service here. However, the message service implementation will be in \"App/Demo\" and this service could be in \"lib\"\n  // Could work to use @Optional() messageService: MessageService\n  constructor(\n    private http: HttpClient,\n    private messageService: MessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string) {\n    // TODO: log message to message service\n    console.log(message);\n    this.messageService.add(`BtcRateService: ${message}`);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`)),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`);\n      return of(result as T);\n    };\n  }\n}\n",
+            "sourceCode": "import { Injectable, Optional } from '@angular/core';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { catchError, tap, map, delay } from 'rxjs/operators';\nimport { Rate, BtcResponse, Severity } from '@star/shared/types';\nimport { IMessageService } from '@star/shared/types';\n\ntype DateAndRate = [number, Rate];\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class BtcRateService {\n  constructor(\n    private http: HttpClient,\n    // TODO remove optional?\n    @Optional() private messageService: IMessageService\n  ) {}\n\n  private btcUrl = 'api/btc';\n\n  httpOptions = {\n    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),\n  };\n\n  private log(message: string, severity: Severity) {\n    console.log(message); // TODO remove\n    console.log(this.messageService); // TODO this should not be IMessageService in Runtime\n    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);\n  }\n\n  getRate(): Observable<DateAndRate> {\n    const url =\n      window.location.hostname === 'code-star.github.io'\n        ? `${this.btcUrl}`\n        : `http://localhost:3333/${this.btcUrl}`;\n    return this.http.get<BtcResponse>(url).pipe(\n      tap(() => this.log(`fetched rate`, 'info')),\n      delay(1000),\n      map(({ btc }) => [Date.now(), btc] as DateAndRate),\n      catchError(this.handleError<DateAndRate>(`getRate`))\n    );\n  }\n\n  /**\n   * Handle Http operation that failed.\n   * Let the app continue.\n   * @param operation - name of the operation that failed\n   * @param result - optional value to return as the observable result\n   */\n  private handleError<T>(operation = 'operation', result?: T) {\n    return (error: Error): Observable<T> => {\n      this.log(`${operation} failed: ${error.message}`, 'error');\n      return of(result as T);\n    };\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -248,10 +285,10 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "MessageService"
+                        "type": "IMessageService"
                     }
                 ],
-                "line": 14,
+                "line": 13,
                 "jsdoctags": [
                     {
                         "name": "http",
@@ -262,7 +299,7 @@
                     },
                     {
                         "name": "messageService",
-                        "type": "MessageService",
+                        "type": "IMessageService",
                         "tagName": {
                             "text": "param"
                         }
@@ -272,14 +309,45 @@
             "type": "injectable"
         },
         {
+            "name": "IMessageService",
+            "id": "injectable-IMessageService-a7746897422d4e18461892dceb80d77e",
+            "file": "libs/shared/types/src/lib/imessage.service.ts",
+            "properties": [
+                {
+                    "name": "log",
+                    "type": "function",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        117
+                    ]
+                },
+                {
+                    "name": "logs",
+                    "type": "LogItem[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 14,
+                    "modifierKind": [
+                        117
+                    ]
+                }
+            ],
+            "methods": [],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\n\nexport type Severity = \"info\" | \"error\";\n\nexport interface LogItem {\n  severity: string;\n  message: string;\n}\n\n@Injectable({\n  providedIn: 'root'\n})\nexport abstract class IMessageService {\n  abstract logs: LogItem[];\n  abstract log: (msg: string, severity: Severity) => void;\n}",
+            "type": "injectable"
+        },
+        {
             "name": "MessageService",
-            "id": "injectable-MessageService-df3c32a4ab4c9110b8b299aa9ea0b0d6",
+            "id": "injectable-MessageService-42bec7d1befea9a2c32b35d325a8a6fd",
             "file": "libs/shared/services/src/lib/message/message.service.ts",
             "properties": [
                 {
-                    "name": "messages",
-                    "defaultValue": "[]",
-                    "type": "string[]",
+                    "name": "logs",
+                    "defaultValue": "[\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ]",
+                    "type": "LogItem[]",
                     "optional": false,
                     "description": "",
                     "line": 7
@@ -287,17 +355,29 @@
             ],
             "methods": [
                 {
-                    "name": "add",
+                    "name": "clear",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                },
+                {
+                    "name": "log",
                     "args": [
                         {
                             "name": "message",
                             "type": "string"
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity"
                         }
                     ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 10,
+                    "line": 18,
                     "jsdoctags": [
                         {
                             "name": "message",
@@ -305,20 +385,19 @@
                             "tagName": {
                                 "text": "param"
                             }
+                        },
+                        {
+                            "name": "severity",
+                            "type": "Severity",
+                            "tagName": {
+                                "text": "param"
+                            }
                         }
                     ]
-                },
-                {
-                    "name": "clear",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 14
                 }
             ],
             "description": "",
-            "sourceCode": "import { Injectable } from '@angular/core';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService {\n  messages: string[] = [];\n\n  // TODO allow setting severity and to list the messages somewhere\n  add(message: string) {\n    this.messages.push(message);\n  }\n\n  clear() {\n    this.messages = [];\n  }\n}\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { IMessageService, LogItem, Severity } from '@star/shared/types';\n@Injectable({\n  providedIn: 'root',\n})\nexport class MessageService implements IMessageService {\n  logs: LogItem[] = [\n    {\n      message: 'test-info',\n      severity: 'info',\n    },\n    {\n      message: 'test-error',\n      severity: 'error',\n    },\n  ];\n\n  log(message: string, severity: Severity) {\n    this.logs.push({\n      message,\n      severity,\n    });\n  }\n\n  clear() {\n    this.logs = [];\n  }\n}\n",
             "type": "injectable"
         }
     ],
@@ -327,7 +406,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-8022e57daa92177f790416ef778ca0a7",
+            "id": "component-AppComponent-6035d44cfe39f4bc30ea2ed1a42d6b8b",
             "file": "apps/demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -352,7 +431,17 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 16
+                },
+                {
+                    "name": "messageService",
+                    "type": "MessageService",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "modifierKind": [
+                        114
+                    ]
                 },
                 {
                     "name": "rates",
@@ -360,7 +449,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 17
                 },
                 {
                     "name": "title",
@@ -368,7 +457,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 14
+                    "line": 15
                 }
             ],
             "methodsClass": [
@@ -378,7 +467,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21
+                    "line": 24
                 },
                 {
                     "name": "ngOnInit",
@@ -386,7 +475,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 29
+                    "line": 32
                 }
             ],
             "hostBindings": [],
@@ -394,7 +483,7 @@
             "description": "<p>AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*</p>\n",
             "rawdescription": "AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from './btc-rate.service';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  // Take message service here and list the messages in the template\n  constructor(private btcRateService: BtcRateService) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { MessageService } from '@star/shared/services';\nimport { Rate } from '@star/shared/types';\nimport { BtcRateService } from '@star/shared/data-access';\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n  selector: 'star-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  title = 'Rx Reference';\n  loading = false;\n  rates: [number, Rate][] = [];\n\n  constructor(\n    public messageService: MessageService,\n    private btcRateService: BtcRateService\n  ) {}\n\n  getRate(): void {\n    this.loading = true;\n    this.btcRateService.getRate().subscribe((item) => {\n      this.rates.push(item);\n      this.loading = false;\n    });\n  }\n\n  ngOnInit(): void {\n    this.getRate();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -408,12 +497,23 @@
                 "description": "",
                 "args": [
                     {
+                        "name": "messageService",
+                        "type": "MessageService"
+                    },
+                    {
                         "name": "btcRateService",
                         "type": "BtcRateService"
                     }
                 ],
-                "line": 16,
+                "line": 17,
                 "jsdoctags": [
+                    {
+                        "name": "messageService",
+                        "type": "MessageService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
                     {
                         "name": "btcRateService",
                         "type": "BtcRateService",
@@ -426,7 +526,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table></div\n  ></star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n  <star-paper\n    ><h2>Exchange rates</h2>\n    <div>\n      <div>\n        <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n          >get new exchange rate</star-loading-button\n        >\n      </div>\n\n      <h3>Exchange rates</h3>\n      <star-rates-table [rates]=\"rates\"></star-rates-table>\n    </div>\n    <!-- TODO message component should be a separate component in libs/ui -->\n    <div *ngFor=\"let logItem of messageService.logs\" style=\"color: red;\">{{ logItem.message }}</div>\n    <!-- TODO use filter on ngFor, to filter and group by severity -->\n    <div *ngFor=\"let logItem of messageService.logs\" style=\"color: blue;\">{{ logItem.message }}</div>\n  </star-paper>\n\n  <star-paper>\n    <p style=\"margin-top: 0\">\n      A reference example monorepo with Nx + Storybook + Atomic Design in\n      Angular\n    </p>\n    <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n  </star-paper>\n</star-app-template>\n"
         },
         {
             "name": "AppTemplateComponent",
@@ -814,6 +914,9 @@
                     "type": "imports",
                     "elements": [
                         {
+                            "name": "SharedDataAccessModule"
+                        },
+                        {
                             "name": "SharedServicesModule"
                         },
                         {
@@ -1161,7 +1264,7 @@
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
                 "rawtype": "[number, Rate]",
-                "file": "apps/demo/src/app/btc-rate.service.ts",
+                "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
                 "description": "",
                 "kind": 167
             },
@@ -1173,6 +1276,15 @@
                 "file": "libs/shared/types/src/lib/shared-types.ts",
                 "description": "",
                 "kind": 134
+            },
+            {
+                "name": "Severity",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"info\" | \"error\"",
+                "file": "libs/shared/types/src/lib/imessage.service.ts",
+                "description": "",
+                "kind": 168
             }
         ],
         "enumerations": [],
@@ -1387,13 +1499,13 @@
         },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "apps/demo/src/app/btc-rate.service.ts": [
+            "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts": [
                 {
                     "name": "DateAndRate",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
                     "rawtype": "[number, Rate]",
-                    "file": "apps/demo/src/app/btc-rate.service.ts",
+                    "file": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
                     "description": "",
                     "kind": 167
                 }
@@ -1408,12 +1520,23 @@
                     "description": "",
                     "kind": 134
                 }
+            ],
+            "libs/shared/types/src/lib/imessage.service.ts": [
+                {
+                    "name": "Severity",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"info\" | \"error\"",
+                    "file": "libs/shared/types/src/lib/imessage.service.ts",
+                    "description": "",
+                    "kind": 168
+                }
             ]
         }
     },
     "routes": [],
     "coverage": {
-        "count": 11,
+        "count": 10,
         "status": "low",
         "files": [
             {
@@ -1450,17 +1573,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AppComponent",
-                "coveragePercent": 14,
-                "coverageCount": "1/7",
-                "status": "low"
-            },
-            {
-                "filePath": "apps/demo/src/app/btc-rate.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "BtcRateService",
-                "coveragePercent": 14,
-                "coverageCount": "1/7",
+                "coveragePercent": 12,
+                "coverageCount": "1/8",
                 "status": "low"
             },
             {
@@ -1552,12 +1666,39 @@
                 "status": "low"
             },
             {
+                "filePath": "libs/shared/data-access/src/lib/btcRate/btc-rate.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "BtcRateService",
+                "coveragePercent": 14,
+                "coverageCount": "1/7",
+                "status": "low"
+            },
+            {
                 "filePath": "libs/shared/services/src/lib/message/message.service.ts",
                 "type": "injectable",
                 "linktype": "injectable",
                 "name": "MessageService",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/types/src/lib/imessage.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "IMessageService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/shared/types/src/lib/imessage.service.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "LogItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {

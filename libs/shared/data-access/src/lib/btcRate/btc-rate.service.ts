@@ -2,9 +2,8 @@ import { Injectable, Optional } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap, map, delay } from 'rxjs/operators';
-import { Rate, BtcResponse } from '@star/shared/types';
-// TODO This dependency should not exist!
-import { MessageService } from '@star/shared/services';
+import { Rate, BtcResponse, Severity } from '@star/shared/types';
+import { IMessageService } from '@star/shared/types';
 
 type DateAndRate = [number, Rate];
 
@@ -14,7 +13,8 @@ type DateAndRate = [number, Rate];
 export class BtcRateService {
   constructor(
     private http: HttpClient,
-    @Optional() private messageService: MessageService
+    // TODO remove optional?
+    @Optional() private messageService: IMessageService
   ) {}
 
   private btcUrl = 'api/btc';
@@ -23,9 +23,10 @@ export class BtcRateService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
-  private log(message: string) {
-    console.log(message);
-    this.messageService.add(`SHARED-BtcRateService: ${message}`);
+  private log(message: string, severity: Severity) {
+    console.log(message); // TODO remove
+    console.log(this.messageService); // TODO this should not be IMessageService in Runtime
+    this.messageService.log(`SHARED-BtcRateService: ${message}`, severity);
   }
 
   getRate(): Observable<DateAndRate> {
@@ -34,7 +35,7 @@ export class BtcRateService {
         ? `${this.btcUrl}`
         : `http://localhost:3333/${this.btcUrl}`;
     return this.http.get<BtcResponse>(url).pipe(
-      tap(() => this.log(`fetched rate`)),
+      tap(() => this.log(`fetched rate`, 'info')),
       delay(1000),
       map(({ btc }) => [Date.now(), btc] as DateAndRate),
       catchError(this.handleError<DateAndRate>(`getRate`))
@@ -49,7 +50,7 @@ export class BtcRateService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: Error): Observable<T> => {
-      this.log(`${operation} failed: ${error.message}`);
+      this.log(`${operation} failed: ${error.message}`, 'error');
       return of(result as T);
     };
   }

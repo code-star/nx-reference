@@ -1,17 +1,28 @@
 import { Injectable } from '@angular/core';
-
+import { IMessageService, LogItem, Severity } from '@star/shared/types';
 @Injectable({
   providedIn: 'root',
 })
-export class MessageService {
-  messages: string[] = [];
+export class MessageService implements IMessageService {
+  logs: LogItem[] = [
+    {
+      message: 'test-info',
+      severity: 'info',
+    },
+    {
+      message: 'test-error',
+      severity: 'error',
+    },
+  ];
 
-  // TODO allow setting severity
-  add(message: string) {
-    this.messages.push(message);
+  log(message: string, severity: Severity) {
+    this.logs.push({
+      message,
+      severity,
+    });
   }
 
   clear() {
-    this.messages = [];
+    this.logs = [];
   }
 }
