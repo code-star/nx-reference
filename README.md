@@ -85,6 +85,8 @@ From https://nx.dev/l/a/guides/setup-mfe-with-angular
 - Update the content of apps/demo/src/app/* with apps/demoOld/src/app/*, same with .storybook files
 - yarn nx g rm demoOld and reset the default project in in nx.json to demo
 - yarn nx g @nrwl/angular:app portfolio --mfe --mfeType=remote --port=4201 --host=demo --routing=true
+- test only portfolio, by running `yarn nx run portfolio:serve`
+- test integration, FIRST run `yarn nx run portfolio:serve` so the port is not in use, then `yarn nx run demo:serve-mfe`
 
 # Original Nx documentation
 

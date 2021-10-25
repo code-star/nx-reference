@@ -14,6 +14,7 @@ import { RouterModule } from "@angular/router";
     declarations: [AppComponent],
     imports: [
         BrowserModule,
+        RemoteEntryModule,
         RouterModule.forRoot([], { initialNavigation: "enabledBlocking" }),
     ],
     providers: [],

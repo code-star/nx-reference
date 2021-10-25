@@ -114,7 +114,7 @@
         {
             "name": "Chainable",
             "id": "interface-Chainable-664fb54ae922d8bb0e8759784dddfc17-1",
-            "file": "apps/ui-e2e/src/support/commands.ts",
+            "file": "apps/portfolio-e2e/src/support/commands.ts",
             "type": "interface",
             "sourceCode": "declare namespace Cypress {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    interface Chainable<Subject> {\n        login(email: string, password: string): void;\n    }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add(\"login\", (email, password) => {\n    console.log(\"Custom command example: Login\", email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
             "properties": [],
@@ -158,6 +158,54 @@
             "isDuplicate": true,
             "duplicateId": 1,
             "duplicateName": "Chainable-1"
+        },
+        {
+            "name": "Chainable",
+            "id": "interface-Chainable-664fb54ae922d8bb0e8759784dddfc17-2",
+            "file": "apps/ui-e2e/src/support/commands.ts",
+            "type": "interface",
+            "sourceCode": "declare namespace Cypress {\n    // eslint-disable-next-line @typescript-eslint/no-unused-vars\n    interface Chainable<Subject> {\n        login(email: string, password: string): void;\n    }\n}\n//\n// -- This is a parent command --\nCypress.Commands.add(\"login\", (email, password) => {\n    console.log(\"Custom command example: Login\", email, password);\n});\n//\n// -- This is a child command --\n// Cypress.Commands.add(\"drag\", { prevSubject: 'element'}, (subject, options) => { ... })\n//\n//\n// -- This is a dual command --\n// Cypress.Commands.add(\"dismiss\", { prevSubject: 'optional'}, (subject, options) => { ... })\n//\n//\n// -- This will overwrite an existing command --\n// Cypress.Commands.overwrite(\"visit\", (originalFn, url, options) => { ... })\n",
+            "properties": [],
+            "indexSignatures": [],
+            "kind": 152,
+            "methods": [
+                {
+                    "name": "login",
+                    "args": [
+                        {
+                            "name": "email",
+                            "type": "string"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15,
+                    "jsdoctags": [
+                        {
+                            "name": "email",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "isDuplicate": true,
+            "duplicateId": 2,
+            "duplicateName": "Chainable-2"
         },
         {
             "name": "LogItem",
@@ -627,7 +675,57 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<star-app-template [title]=\"title\">\n    <star-paper\n        ><h2>Exchange rates</h2>\n        <div>\n            <div>\n                <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n                    >get new exchange rate</star-loading-button\n                >\n            </div>\n\n            <h3>Exchange rates</h3>\n            <star-rates-table [rates]=\"rates\"></star-rates-table>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n    </star-paper>\n\n    <star-paper>\n        <p style=\"margin-top: 0\">\n            A reference example monorepo with Nx + Storybook + Atomic Design in\n            Angular\n        </p>\n        <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n    </star-paper>\n</star-app-template>\n"
+            "templateData": "<star-app-template [title]=\"title\">\n    <router-outlet></router-outlet>\n    <star-paper\n        ><h2>Exchange rates</h2>\n        <div>\n            <div>\n                <star-loading-button [loading]=\"loading\" (click)=\"getRate()\"\n                    >get new exchange rate</star-loading-button\n                >\n            </div>\n\n            <h3>Exchange rates</h3>\n            <star-rates-table [rates]=\"rates\"></star-rates-table>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'error'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n        <div *ngFor=\"let logItem of messageService.logs | bySeverity: 'info'\">\n            <star-alert [item]=\"logItem\"></star-alert>\n        </div>\n    </star-paper>\n\n    <star-paper>\n        <p style=\"margin-top: 0\">\n            A reference example monorepo with Nx + Storybook + Atomic Design in\n            Angular\n        </p>\n        <h4>Made by <a href=\"http://code-star.github.io\">Codestar</a></h4>\n    </star-paper>\n</star-app-template>\n"
+        },
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-a1425ce1b0033c3ce3c209a99565f82d-1",
+            "file": "apps/portfolio/src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "\"portfolio\"",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from \"@angular/core\";\n\n@Component({\n    selector: \"star-root\",\n    templateUrl: \"./app.component.html\",\n    styleUrls: [\"./app.component.scss\"],\n})\nexport class AppComponent {\n    title = \"portfolio\";\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "#wrapper {\n    background: black;\n\n    header > h1 {\n        color: white;\n    }\n\n    padding: 1rem;\n}",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "AppComponent-1",
+            "templateData": "<div id=\"wrapper\">\n    <header class=\"flex\">\n        <h1>{{ title }} MicroApp Wrapper</h1>\n    </header>\n\n    <router-outlet></router-outlet>\n</div>\n"
         },
         {
             "name": "AppTemplateComponent",
@@ -934,6 +1032,44 @@
             ],
             "stylesData": "",
             "templateData": "<table>\n  <thead>\n    <tr>\n      <th>Time</th>\n      <th>EUR / BTC</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr *ngFor=\"let rate of rates\">\n      <td>{{ rate[0] | date: 'HH:mm:ss' }}</td>\n      <td>{{ rate[1] }}</td>\n    </tr>\n  </tbody>\n</table>\n"
+        },
+        {
+            "name": "RemoteEntryComponent",
+            "id": "component-RemoteEntryComponent-6e0ff7ff3f7307e79dbf1e2a2955f007",
+            "file": "apps/portfolio/src/app/remote-entry/entry.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "star-portfolio-entry",
+            "styleUrls": [
+                "./entry.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./entry.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from \"@angular/core\";\n\n@Component({\n    selector: \"star-portfolio-entry\",\n    templateUrl: \"./entry.component.html\",\n    styleUrls: [\"./entry.component.scss\"],\n})\nexport class RemoteEntryComponent {}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".remote-entry {\n    border: 1px solid #eee;\n    border-radius: 4px;\n    color: white;\n    padding: 16px;\n    font-family: sans-serif;\n    margin: 16px;\n}",
+                    "styleUrl": "./entry.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"remote-entry\">\n    <h2>PORTFOLIO</h2>\n    <div></div>\n</div>"
         }
     ],
     "modules": [
@@ -977,6 +1113,80 @@
                             "name": "AppComponent"
                         }
                     ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "RemoteEntryModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "RemoteEntryModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "RemoteEntryComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
                 },
                 {
                     "type": "classes",
@@ -1152,6 +1362,22 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "apps/portfolio/src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n    production: true,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/portfolio/src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n    production: false,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "apps/server/src/environments/environment.prod.ts",
                 "type": "object",
                 "defaultValue": "{\n    production: true,\n}"
@@ -1233,6 +1459,14 @@
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "apps/demo-e2e/src/support/app.po.ts",
+                "type": "",
+                "defaultValue": "() => cy.get(\"h1\")"
+            },
+            {
+                "name": "getGreeting",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "apps/portfolio-e2e/src/support/app.po.ts",
                 "type": "",
                 "defaultValue": "() => cy.get(\"h1\")"
             },
@@ -1393,6 +1627,26 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "apps/demo/src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n    production: false,\n}"
+                }
+            ],
+            "apps/portfolio/src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/portfolio/src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n    production: true,\n}"
+                }
+            ],
+            "apps/portfolio/src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/portfolio/src/environments/environment.ts",
                     "type": "object",
                     "defaultValue": "{\n    production: false,\n}"
                 }
@@ -1562,6 +1816,16 @@
                     "type": "",
                     "defaultValue": "() => cy.get(\"h1\")"
                 }
+            ],
+            "apps/portfolio-e2e/src/support/app.po.ts": [
+                {
+                    "name": "getGreeting",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "apps/portfolio-e2e/src/support/app.po.ts",
+                    "type": "",
+                    "defaultValue": "() => cy.get(\"h1\")"
+                }
             ]
         },
         "groupedFunctions": {
@@ -1616,7 +1880,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 11,
+        "count": 9,
         "status": "low",
         "files": [
             {
@@ -1669,6 +1933,63 @@
             },
             {
                 "filePath": "apps/demo/src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio-e2e/src/support/app.po.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getGreeting",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio-e2e/src/support/commands.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Chainable",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio/src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio/src/app/remote-entry/entry.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RemoteEntryComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio/src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "apps/portfolio/src/environments/environment.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
