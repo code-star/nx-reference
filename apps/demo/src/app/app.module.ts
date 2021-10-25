@@ -16,7 +16,18 @@ import { AppComponent } from "./app.component";
         HttpClientModule,
         SharedServicesModule,
         SharedDataAccessModule,
-        RouterModule.forRoot([], { initialNavigation: "enabledBlocking" }),
+        RouterModule.forRoot(
+            [
+                {
+                    path: "portfolio",
+                    loadChildren: () =>
+                        import("portfolio/Module").then(
+                            (m) => m.RemoteEntryModule
+                        ),
+                },
+            ],
+            { initialNavigation: "enabledBlocking" }
+        ),
     ],
     providers: [{ provide: IMessageService, useExisting: MessageService }],
     bootstrap: [AppComponent],
