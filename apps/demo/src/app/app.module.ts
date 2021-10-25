@@ -7,9 +7,10 @@ import { SharedDataAccessModule } from "@star/shared/data-access";
 import { IMessageService } from "@star/shared/types";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
+import { FallbackComponent } from './fallback/fallback.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, FallbackComponent],
     imports: [
         BrowserModule,
         UiModule,
