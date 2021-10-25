@@ -507,7 +507,7 @@
         },
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-6dd12cd9dac541fbb6d2e13ac6a05b05",
+            "id": "component-AppComponent-40230a9714552de28f05761b85b8f756",
             "file": "apps/demo/src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -532,14 +532,14 @@
                     "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 16
+                    "line": 13
                 },
                 {
                     "name": "messageService",
                     "type": "MessageService",
                     "optional": false,
                     "description": "",
-                    "line": 20,
+                    "line": 17,
                     "modifierKind": [
                         114
                     ]
@@ -550,7 +550,7 @@
                     "type": "[]",
                     "optional": false,
                     "description": "",
-                    "line": 17
+                    "line": 14
                 },
                 {
                     "name": "title",
@@ -558,7 +558,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 15
+                    "line": 12
                 }
             ],
             "methodsClass": [
@@ -568,7 +568,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 24
+                    "line": 21
                 },
                 {
                     "name": "ngOnInit",
@@ -576,19 +576,19 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32
+                    "line": 29
                 }
             ],
             "hostBindings": [],
             "hostListeners": [],
-            "description": "<p>AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*</p>\n",
-            "rawdescription": "AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*",
+            "description": "",
+            "rawdescription": "",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from \"@angular/core\";\nimport { MessageService } from \"@star/shared/services\";\nimport { Rate } from \"@star/shared/types\";\nimport { BtcRateService } from \"@star/shared/data-access\";\n\n/**\n * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*\n */\n@Component({\n    selector: \"star-root\",\n    templateUrl: \"./app.component.html\",\n    styleUrls: [\"./app.component.scss\"],\n})\nexport class AppComponent implements OnInit {\n    title = \"Rx Reference\";\n    loading = false;\n    rates: [number, Rate][] = [];\n\n    constructor(\n        public messageService: MessageService,\n        private btcRateService: BtcRateService\n    ) {}\n\n    getRate(): void {\n        this.loading = true;\n        this.btcRateService.getRate().subscribe((item) => {\n            this.rates.push(item);\n            this.loading = false;\n        });\n    }\n\n    ngOnInit(): void {\n        this.getRate();\n    }\n}\n",
+            "sourceCode": "import { Component, OnInit } from \"@angular/core\";\nimport { MessageService } from \"@star/shared/services\";\nimport { Rate } from \"@star/shared/types\";\nimport { BtcRateService } from \"@star/shared/data-access\";\n\n@Component({\n    selector: \"star-root\",\n    templateUrl: \"./app.component.html\",\n    styleUrls: [\"./app.component.scss\"],\n})\nexport class AppComponent implements OnInit {\n    title = \"Rx Reference\";\n    loading = false;\n    rates: [number, Rate][] = [];\n\n    constructor(\n        public messageService: MessageService,\n        private btcRateService: BtcRateService\n    ) {}\n\n    getRate(): void {\n        this.loading = true;\n        this.btcRateService.getRate().subscribe((item) => {\n            this.rates.push(item);\n            this.loading = false;\n        });\n    }\n\n    ngOnInit(): void {\n        this.getRate();\n    }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "$star-spacing: 4px;\n\n:host {\n  --star-default-bg: #002042;\n  --star-card-bg: #001329;\n  --star-primary: #e87e00;\n  font-family: sans-serif;\n}\n\n.root {\n  background-color: var(--star-default-bg);\n  color: white;\n  display: flex;\n  height: 100vh;\n}\n\n.root-column {\n  flex-grow: 1;\n}\n\na {\n  color: var(--star-primary);\n}\n\nnav {\n  background-color: var(--star-primary);\n  width: $star-spacing * 16;\n  padding-top: calc(#{$star-spacing * 24} + 1rem);\n\n  button {\n    border: none;\n    border-radius: $star-spacing;\n    background-color: darken(#e87e00, 5%);\n    padding: $star-spacing;\n    margin: ($star-spacing * 0.5) $star-spacing;\n    width: $star-spacing * 14;\n    height: $star-spacing * 14;\n    cursor: pointer;\n\n    &:hover {\n      background-color: darken(#e87e00, 10%);\n    }\n  }\n}\n\nheader {\n  background-color: var(--star-card-bg);\n  height: calc(#{$star-spacing * 24} - 2rem);\n  padding: 1rem;\n\n  h1 {\n    margin: 0;\n  }\n}\n\n// .gutter-left {\n//   margin-left: 9px;\n// }\n\n// .col-span-2 {\n//   grid-column: span 2;\n// }\n\n// .flex {\n//   display: flex;\n//   align-items: center;\n//   justify-content: center;\n// }\n\n// header {\n//   background-color: #143055;\n//   color: white;\n//   padding: 5px;\n//   border-radius: 3px;\n// }\n\n// main {\n//   padding: 0 36px;\n// }\n\n// p {\n//   text-align: center;\n// }\n\n// h1 {\n//   text-align: center;\n//   margin-left: 18px;\n//   font-size: 24px;\n// }\n\n// h2 {\n//   text-align: center;\n//   font-size: 20px;\n//   margin: 40px 0 10px 0;\n// }\n\n// .resources {\n//   text-align: center;\n//   list-style: none;\n//   padding: 0;\n//   display: grid;\n//   grid-gap: 9px;\n//   grid-template-columns: 1fr 1fr;\n// }\n\n// .resource {\n//   color: #0094ba;\n//   height: 36px;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   border-radius: 4px;\n//   padding: 3px 9px;\n//   text-decoration: none;\n// }\n\n// .resource:hover {\n//   background-color: rgba(68, 138, 255, 0.04);\n// }\n\n// pre {\n//   padding: 9px;\n//   border-radius: 4px;\n//   background-color: black;\n//   color: #eee;\n// }\n\n// details {\n//   border-radius: 4px;\n//   color: #333;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   padding: 3px 9px;\n//   margin-bottom: 9px;\n// }\n\n// summary {\n//   cursor: pointer;\n//   outline: none;\n//   height: 36px;\n//   line-height: 36px;\n// }\n\n// .github-star-container {\n//   margin-top: 12px;\n//   line-height: 20px;\n// }\n\n// .github-star-container a {\n//   display: flex;\n//   align-items: center;\n//   text-decoration: none;\n//   color: #333;\n// }\n\n// .github-star-badge {\n//   color: #24292e;\n//   display: flex;\n//   align-items: center;\n//   font-size: 12px;\n//   padding: 3px 10px;\n//   border: 1px solid rgba(27, 31, 35, 0.2);\n//   border-radius: 3px;\n//   background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);\n//   margin-left: 4px;\n//   font-weight: 600;\n// }\n\n// .github-star-badge:hover {\n//   background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);\n//   border-color: rgba(27, 31, 35, 0.35);\n//   background-position: -0.5em;\n// }\n// .github-star-badge .material-icons {\n//   height: 16px;\n//   width: 16px;\n//   margin-right: 4px;\n// }\n",
+                    "data": "$star-spacing: 4px;\n\n:host {\n    --star-default-bg: #002042;\n    --star-card-bg: #001329;\n    --star-primary: #e87e00;\n    font-family: sans-serif;\n}\n\n.root {\n    background-color: var(--star-default-bg);\n    color: white;\n    display: flex;\n    height: 100vh;\n}\n\n.root-column {\n    flex-grow: 1;\n}\n\na {\n    color: var(--star-primary);\n}\n\nnav {\n    background-color: var(--star-primary);\n    width: $star-spacing * 16;\n    padding-top: calc(#{$star-spacing * 24} + 1rem);\n\n    button {\n        border: none;\n        border-radius: $star-spacing;\n        background-color: darken(#e87e00, 5%);\n        padding: $star-spacing;\n        margin: ($star-spacing * 0.5) $star-spacing;\n        width: $star-spacing * 14;\n        height: $star-spacing * 14;\n        cursor: pointer;\n\n        &:hover {\n            background-color: darken(#e87e00, 10%);\n        }\n    }\n}\n\nheader {\n    background-color: var(--star-card-bg);\n    height: calc(#{$star-spacing * 24} - 2rem);\n    padding: 1rem;\n\n    h1 {\n        margin: 0;\n    }\n}\n\n// .gutter-left {\n//   margin-left: 9px;\n// }\n\n// .col-span-2 {\n//   grid-column: span 2;\n// }\n\n// .flex {\n//   display: flex;\n//   align-items: center;\n//   justify-content: center;\n// }\n\n// header {\n//   background-color: #143055;\n//   color: white;\n//   padding: 5px;\n//   border-radius: 3px;\n// }\n\n// main {\n//   padding: 0 36px;\n// }\n\n// p {\n//   text-align: center;\n// }\n\n// h1 {\n//   text-align: center;\n//   margin-left: 18px;\n//   font-size: 24px;\n// }\n\n// h2 {\n//   text-align: center;\n//   font-size: 20px;\n//   margin: 40px 0 10px 0;\n// }\n\n// .resources {\n//   text-align: center;\n//   list-style: none;\n//   padding: 0;\n//   display: grid;\n//   grid-gap: 9px;\n//   grid-template-columns: 1fr 1fr;\n// }\n\n// .resource {\n//   color: #0094ba;\n//   height: 36px;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   border-radius: 4px;\n//   padding: 3px 9px;\n//   text-decoration: none;\n// }\n\n// .resource:hover {\n//   background-color: rgba(68, 138, 255, 0.04);\n// }\n\n// pre {\n//   padding: 9px;\n//   border-radius: 4px;\n//   background-color: black;\n//   color: #eee;\n// }\n\n// details {\n//   border-radius: 4px;\n//   color: #333;\n//   background-color: rgba(0, 0, 0, 0);\n//   border: 1px solid rgba(0, 0, 0, 0.12);\n//   padding: 3px 9px;\n//   margin-bottom: 9px;\n// }\n\n// summary {\n//   cursor: pointer;\n//   outline: none;\n//   height: 36px;\n//   line-height: 36px;\n// }\n\n// .github-star-container {\n//   margin-top: 12px;\n//   line-height: 20px;\n// }\n\n// .github-star-container a {\n//   display: flex;\n//   align-items: center;\n//   text-decoration: none;\n//   color: #333;\n// }\n\n// .github-star-badge {\n//   color: #24292e;\n//   display: flex;\n//   align-items: center;\n//   font-size: 12px;\n//   padding: 3px 10px;\n//   border: 1px solid rgba(27, 31, 35, 0.2);\n//   border-radius: 3px;\n//   background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);\n//   margin-left: 4px;\n//   font-weight: 600;\n// }\n\n// .github-star-badge:hover {\n//   background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);\n//   border-color: rgba(27, 31, 35, 0.35);\n//   background-position: -0.5em;\n// }\n// .github-star-badge .material-icons {\n//   height: 16px;\n//   width: 16px;\n//   margin-right: 4px;\n// }\n",
                     "styleUrl": "./app.component.scss"
                 }
             ],
@@ -606,7 +606,7 @@
                         "type": "BtcRateService"
                     }
                 ],
-                "line": 17,
+                "line": 14,
                 "jsdoctags": [
                     {
                         "name": "messageService",
@@ -1653,8 +1653,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "AppComponent",
-                "coveragePercent": 12,
-                "coverageCount": "1/8",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {

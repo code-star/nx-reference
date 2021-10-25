@@ -4,21 +4,21 @@ import { BrowserModule } from "@angular/platform-browser";
 import { UiModule } from "@star/ui";
 import { MessageService, SharedServicesModule } from "@star/shared/services";
 import { SharedDataAccessModule } from "@star/shared/data-access";
-
-import { AppComponent } from "./app.component";
 import { IMessageService } from "@star/shared/types";
+import { RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
 
-// Note: also update the imports in app.component.stories.ts
 @NgModule({
     declarations: [AppComponent],
-    providers: [{ provide: IMessageService, useExisting: MessageService }],
     imports: [
         BrowserModule,
         UiModule,
         HttpClientModule,
         SharedServicesModule,
         SharedDataAccessModule,
+        RouterModule.forRoot([], { initialNavigation: "enabledBlocking" }),
     ],
+    providers: [{ provide: IMessageService, useExisting: MessageService }],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -3,9 +3,6 @@ import { MessageService } from "@star/shared/services";
 import { Rate } from "@star/shared/types";
 import { BtcRateService } from "@star/shared/data-access";
 
-/**
- * AppComponent is not a library, but a direct component in apps/demo/src/app/app.component.*
- */
 @Component({
     selector: "star-root",
     templateUrl: "./app.component.html",

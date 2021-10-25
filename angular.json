@@ -31,67 +31,73 @@
             "prefix": "star",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-angular:browser",
+                    "builder": "@nrwl/angular:webpack-browser",
+                    "outputs": ["{options.outputPath}"],
                     "options": {
                         "outputPath": "dist/apps/demo",
                         "index": "apps/demo/src/index.html",
                         "main": "apps/demo/src/main.ts",
                         "polyfills": "apps/demo/src/polyfills.ts",
                         "tsConfig": "apps/demo/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
                         "assets": [
                             "apps/demo/src/favicon.ico",
                             "apps/demo/src/assets"
                         ],
                         "styles": ["apps/demo/src/styles.scss"],
                         "scripts": [],
-                        "vendorChunk": true,
-                        "extractLicenses": false,
-                        "buildOptimizer": false,
-                        "sourceMap": true,
-                        "optimization": false,
-                        "namedChunks": true
+                        "customWebpackConfig": {
+                            "path": "apps/demo/webpack.config.js"
+                        }
                     },
                     "configurations": {
                         "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
                             "fileReplacements": [
                                 {
                                     "replace": "apps/demo/src/environments/environment.ts",
                                     "with": "apps/demo/src/environments/environment.prod.ts"
                                 }
                             ],
-                            "optimization": true,
                             "outputHashing": "all",
-                            "sourceMap": false,
-                            "namedChunks": false,
-                            "extractLicenses": true,
-                            "vendorChunk": false,
-                            "buildOptimizer": true,
-                            "budgets": [
-                                {
-                                    "type": "initial",
-                                    "maximumWarning": "2mb",
-                                    "maximumError": "5mb"
-                                },
-                                {
-                                    "type": "anyComponentStyle",
-                                    "maximumWarning": "6kb",
-                                    "maximumError": "10kb"
-                                }
-                            ]
+                            "customWebpackConfig": {
+                                "path": "apps/demo/webpack.prod.config.js"
+                            }
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
                         }
                     },
-                    "defaultConfiguration": ""
+                    "defaultConfiguration": "production"
                 },
                 "serve": {
-                    "builder": "@angular-devkit/build-angular:dev-server",
-                    "options": {
-                        "browserTarget": "demo:build"
-                    },
+                    "builder": "@nrwl/angular:webpack-server",
                     "configurations": {
                         "production": {
                             "browserTarget": "demo:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "demo:build:development"
                         }
-                    }
+                    },
+                    "defaultConfiguration": "development",
+                    "options": {}
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -106,8 +112,7 @@
                             "apps/demo/src/**/*.ts",
                             "apps/demo/src/**/*.html"
                         ]
-                    },
-                    "outputs": ["{options.outputFile}"]
+                    }
                 },
                 "test": {
                     "builder": "@nrwl/jest:jest",
@@ -115,6 +120,12 @@
                     "options": {
                         "jestConfig": "apps/demo/jest.config.js",
                         "passWithNoTests": true
+                    }
+                },
+                "serve-mfe": {
+                    "builder": "@nrwl/workspace:run-commands",
+                    "options": {
+                        "commands": ["nx serve demo"]
                     }
                 },
                 "storybook": {
@@ -140,8 +151,7 @@
                         "outputPath": "dist/storybook/demo",
                         "config": {
                             "configFolder": "apps/demo/.storybook"
-                        },
-                        "staticDir": ["public"]
+                        }
                     },
                     "configurations": {
                         "ci": {
@@ -161,8 +171,8 @@
                     "builder": "@nrwl/cypress:cypress",
                     "options": {
                         "cypressConfig": "apps/demo-e2e/cypress.json",
-                        "tsConfig": "apps/demo-e2e/tsconfig.e2e.json",
-                        "devServerTarget": "demo:serve"
+                        "devServerTarget": "demo:serve:development",
+                        "tsConfig": "apps/demo-e2e/tsconfig.json"
                     },
                     "configurations": {
                         "production": {
@@ -172,10 +182,10 @@
                 },
                 "lint": {
                     "builder": "@nrwl/linter:eslint",
+                    "outputs": ["{options.outputFile}"],
                     "options": {
                         "lintFilePatterns": ["apps/demo-e2e/**/*.{js,ts}"]
-                    },
-                    "outputs": ["{options.outputFile}"]
+                    }
                 }
             },
             "tags": [],

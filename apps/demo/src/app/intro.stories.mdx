@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs/blocks';
+import { Meta } from "@storybook/addon-docs/blocks";
 
 <Meta title="Introduction" />
 
@@ -14,31 +14,30 @@ Elements use the `star` prefix, e.g.: `<star-primary-button>`
 
 Imports use the `@star` namespace, e.g.: `import { Rate, BtcResponse } from '@star/shared/types';`
 
-
 ## Getting started
 
 You can clone this repo from [Github](https://github.com/code-star/nx-reference)
 
-* Use Node 15, and run `yarn install`
-* Start storybook locally with `yarn docs:json && yarn nx storybook`
-* Open [http://localhost:4400](http://localhost:4400)
+-   Use Node 15, and run `yarn install`
+-   Start storybook locally with `yarn docs:json && yarn nx storybook`
+-   Open [http://localhost:4400](http://localhost:4400)
 
 ## Long form documentation example
 
 MDX files are useful for long form documentation and to explain non-visual packages, e.g. a randomizer util:
 
 ```ts
-import { Rate } from '@star/shared/types';
+import { Rate } from "@star/shared/types";
 
 export function someRandomValue(): Rate {
-  return Math.random() * 100000;
+    return Math.random() * 100000;
 }
 ```
 
 And how to call it in another component:
 
 ```ts
-import someRandomValue from '@star/someRandomValue';
+import someRandomValue from "@star/someRandomValue";
 
 console.log(someRandomValue());
 ```
