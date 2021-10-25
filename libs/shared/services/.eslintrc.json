@@ -1,30 +1,37 @@
 {
-  "extends": ["../../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*"],
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "extends": [
-        "plugin:@nrwl/nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:prettier/recommended"
-      ],
-      "parserOptions": { "project": ["libs/shared/services/tsconfig.*?.json"] },
-      "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          { "type": "attribute", "prefix": "star", "style": "camelCase" }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          { "type": "element", "prefix": "star", "style": "kebab-case" }
-        ]
-      }
-    },
-    {
-      "files": ["*.html"],
-      "extends": ["plugin:@nrwl/nx/angular-template"],
-      "rules": {}
-    }
-  ]
+    "extends": ["../../../.eslintrc.json"],
+    "ignorePatterns": ["!**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "extends": [
+                "plugin:@nrwl/nx/angular",
+                "plugin:@angular-eslint/template/process-inline-templates",
+                "plugin:prettier/recommended"
+            ],
+            "rules": {
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "type": "attribute",
+                        "prefix": "star",
+                        "style": "camelCase"
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "type": "element",
+                        "prefix": "star",
+                        "style": "kebab-case"
+                    }
+                ]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@nrwl/nx/angular-template"],
+            "rules": {}
+        }
+    ]
 }

@@ -1,13 +1,18 @@
 {
   "implicitDependencies": {
     "angular.json": "*",
-    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
     ".eslintrc.json": "*",
     "nx.json": "*"
   },
-  "affected": { "defaultBase": "master" },
+  "affected": {
+    "defaultBase": "master"
+  },
   "npmScope": "star",
   "tasksRunnerOptions": {
     "default": {
@@ -23,15 +28,43 @@
       }
     }
   },
-  "projects": {
-    "btc": { "tags": [] },
-    "demo": { "tags": [] },
-    "demo-e2e": { "tags": [], "implicitDependencies": ["demo"] },
-    "server": { "tags": [] },
-    "ui": { "tags": [] },
-    "ui-e2e": { "tags": [], "implicitDependencies": ["ui"] },
-    "shared-types": { "tags": [] },
-    "shared-services": { "tags": [] },
-    "shared-data-access": { "tags": [] }
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "demo",
+  "generators": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
   }
 }

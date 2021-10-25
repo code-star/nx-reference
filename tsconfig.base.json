@@ -1,32 +1,34 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "resolveJsonModule": true,
-    "strict": true,
-    "paths": {
-      "@star/btc": ["libs/btc/src/index.ts"],
-      "@star/ui": ["libs/ui/src/index.ts"],
-      "@star/shared/types": ["libs/shared/types/src/index.ts"],
-      "@star/shared/services": ["libs/shared/services/src/index.ts"],
-      "@star/shared/data-access": ["libs/shared/data-access/src/index.ts"]
-    }
-  },
-  "angularCompilerOptions": {
-    "strictTemplates": true,
-    "strictInjectionParameters": true
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "resolveJsonModule": true,
+        "strict": true,
+        "paths": {
+            "@star/btc": ["libs/btc/src/index.ts"],
+            "@star/shared/data-access": [
+                "libs/shared/data-access/src/index.ts"
+            ],
+            "@star/shared/services": ["libs/shared/services/src/index.ts"],
+            "@star/shared/types": ["libs/shared/types/src/index.ts"],
+            "@star/ui": ["libs/ui/src/index.ts"]
+        }
+    },
+    "angularCompilerOptions": {
+        "strictTemplates": true,
+        "strictInjectionParameters": true
+    },
+    "exclude": ["node_modules", "tmp"]
 }

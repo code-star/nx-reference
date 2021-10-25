@@ -1,4 +1,21 @@
-# NxStorybookAtomic
+# Nx Atomic Design Reference Project
+
+A reference example monorepo with [Nx](https://nx.dev) + [Storybook](https://storybook.js.org) + [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) in [Angular](https://angular.io/)
+
+Made by [Codestar](https://code-star.github.io) powered by [Ordina](https://www.ordina.nl)
+
+For more info see the [Intro](https://code-star.github.io/nx-reference/?path=/story/introduction--page)
+
+# Running
+
+- Run storybook: `yarn docs:json && yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
+So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
+- Also run `yarn nx serve server` in a separate terminal
+- To build storybook run: `yarn nx run demo:build-storybook`
+- Run lint on all projects: `yarn nx run-many --all --target=lint` (with `yarn nx lint` only the default project is linted)
+
+
+# Steps taken
 
 yarn import
 rm package-lock.json
@@ -11,7 +28,8 @@ yarn nx g @nrwl/angular:stories --name=ui
 yarn nx g @nrwl/angular:component LoadingButton --project=ui --export
 yarn nx g @nrwl/angular:stories --name=ui
 
-Back-end
+## Back-end
+
 yarn add -D @nrwl/express
 yarn add cors
 yarn add -D @types/cors
@@ -30,28 +48,30 @@ manually export from data-access/lib/index.ts
 yarn nx g @nrwl/angular:service MinimalLogger --project=shared-types --export
 yarn nx g @nrwl/angular:component Alert --project=ui --export
 
-Docs in Storybook
+## Adding docs in Storybook
+
 https://github.com/storybookjs/storybook/blob/master/addons/docs/angular/README.md
+
+```
 yarn add -D @compodoc/compodoc
+```
+
 Add to package.json: "docs:json": "compodoc -p ./tsconfig.base.json -e json -d ." 
+
+```
 yarn docs:json // TODO this now needs to be run manually after each type change, then also storybook needs to be restarted
+```
 
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
 
-Run storybook: `yarn docs:json && yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
-So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
-Also run `yarn nx serve server`.
-To build storybook run: `yarn nx run demo:build-storybook`
-Run lint on all projects: `yarn nx run-many --all --target=lint` (with `yarn nx lint` only the default project is linted)
+
+
+# Original Nx documentation
 
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
-
-## Quick Start & Documentation
 
 [Nx Documentation](https://nx.dev/angular)
 
