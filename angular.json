@@ -151,7 +151,8 @@
                         "outputPath": "dist/storybook/demo",
                         "config": {
                             "configFolder": "apps/demo/.storybook"
-                        }
+                        },
+                        "staticDir": ["public"]
                     },
                     "configurations": {
                         "ci": {
