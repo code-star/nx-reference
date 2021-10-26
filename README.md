@@ -65,7 +65,28 @@ yarn docs:json // TODO this now needs to be run manually after each type change,
 No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
 Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
 
+## MFE
 
+Target:
+
+- React: 1 field, current balance
+- Ng: more complex: portfolio, transactions, graph of balance over time (and use UI lib components in this MicroApp)
+
+From https://nx.dev/l/a/guides/setup-mfe-with-angular
+
+- This document explains that webpack 5 is required. After upgrading to the newest version of nx, and running `yarn why webpack` gives both webpack 4 and some special packages that end in webpack5. Let's try the recommended steps. 
+- yarn nx g @nrwl/angular:app dashboard --mfe --mfeType=host --routing=true
+- yarn nx g @nrwl/angular:app login --mfe --mfeType=remote --port=4201 --host=dashboard --routing=true
+- seems to work, stash results
+- yarn nx g mv --project demo demoOld
+- yarn nx g mv --project demo-e2e demo-e2eOld
+- yarn nx g @nrwl/angular:app demo --mfe --mfeType=host --routing=true
+- yarn nx run demo:serve-mfe
+- Update the content of apps/demo/src/app/* with apps/demoOld/src/app/*, same with .storybook files
+- yarn nx g rm demoOld and reset the default project in in nx.json to demo
+- yarn nx g @nrwl/angular:app portfolio --mfe --mfeType=remote --port=4201 --host=demo --routing=true
+- test only portfolio, by running `yarn nx run portfolio:serve`
+- test integration, FIRST run `yarn nx run portfolio:serve` so the port is not in use, then `yarn nx run demo:serve-mfe`
 
 # Original Nx documentation
 
