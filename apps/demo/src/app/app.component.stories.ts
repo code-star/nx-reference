@@ -34,7 +34,7 @@ export default {
 
 export const Example = () => ({
     moduleMetadata: {
-        declarations: [AppComponent],
+        declarations: [AppComponent, FallbackComponent],
         providers: [
             { provide: IMessageService, useExisting: MessageService },
             { provide: APP_BASE_HREF, useValue: "/" },
