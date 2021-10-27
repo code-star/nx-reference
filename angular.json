@@ -216,7 +216,8 @@
                         "scripts": [],
                         "customWebpackConfig": {
                             "path": "apps/portfolio/webpack.config.js"
-                        }
+                        },
+                        "baseHref": "/nx-reference-portfolio/"
                     },
                     "configurations": {
                         "production": {
