@@ -42,8 +42,7 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "apps/demo/src/favicon.ico",
-                            "apps/demo/src/assets",
-                            "public"
+                            "apps/demo/src/api/btc/index.json"
                         ],
                         "styles": ["apps/demo/src/styles.scss"],
                         "scripts": [],
