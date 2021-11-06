@@ -15,6 +15,6 @@ module.exports = {
         },
     },
     plugins: webpackHelper.createPlugins({
-        portfolio: "http://localhost:4201",
+        portfolio: "http://localhost:4201/nx-reference-portfolio",
     }),
 };

@@ -7,7 +7,7 @@ import { SharedDataAccessModule } from "@star/shared/data-access";
 import { IMessageService } from "@star/shared/types";
 import { RouterModule } from "@angular/router";
 import { AppComponent } from "./app.component";
-import { FallbackComponent } from './fallback/fallback.component';
+import { FallbackComponent } from "./fallback/fallback.component";
 // import { RemoteEntryModule } from "portfolio/Module"; -> this is not possible because Angular only allows lazy loading in RouterModule ? Maybe, see https://medium.com/@ckyidr9/lazy-load-feature-modules-without-routing-in-angular-9-ivy-220851cc7751
 
 @NgModule({
@@ -21,7 +21,7 @@ import { FallbackComponent } from './fallback/fallback.component';
         RouterModule.forRoot(
             [
                 {
-                    path: "portfolio",
+                    path: "",
                     loadChildren: () =>
                         import("portfolio/Module").then(
                             (m) => m.RemoteEntryModule
