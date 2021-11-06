@@ -48,3 +48,13 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/apps/portfolio # The folder the action should deploy.
           clean: true # Automatically remove deleted files from the deploy branch
+      - name: Build Portfolio Micro App
+        run: yarn nx run demo:build
+      - name: Deploy Portfolio Micro App 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }} # Access token from the Prod repo, set in Settings > Secrets
+          repository-name: code-star/nx-reference-shell
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist/apps/demo # The folder the action should deploy.
+          clean: true # Automatically remove deleted files from the deploy branch
