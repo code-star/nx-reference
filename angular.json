@@ -48,7 +48,8 @@
                         "scripts": [],
                         "customWebpackConfig": {
                             "path": "apps/demo/webpack.config.js"
-                        }
+                        },
+                        "baseHref": "/nx-reference-shell/"
                     },
                     "configurations": {
                         "production": {
