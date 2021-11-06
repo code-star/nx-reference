@@ -42,7 +42,8 @@
                         "inlineStyleLanguage": "scss",
                         "assets": [
                             "apps/demo/src/favicon.ico",
-                            "apps/demo/src/assets"
+                            "apps/demo/src/assets",
+                            "public"
                         ],
                         "styles": ["apps/demo/src/styles.scss"],
                         "scripts": [],
