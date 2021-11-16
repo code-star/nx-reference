@@ -23,7 +23,9 @@
                         ],
                         "styles": [],
                         "scripts": [],
-                        "webpackConfig": "@nrwl/react/plugins/webpack"
+                        "customWebpackConfig": {
+                            "path": "apps/balance/webpack.ts"
+                        }
                     },
                     "configurations": {
                         "production": {

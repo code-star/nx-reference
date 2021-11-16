@@ -89,6 +89,19 @@ From https://nx.dev/l/a/guides/setup-mfe-with-angular
 - test only shell app: `yarn nx run demo:serve:development`
 - test integration, run `yarn nx run demo:serve-mfe` which will start both servers, view on http://localhost:4200/nx-reference-shell
 
+Add a React Micro App:
+
+- yarn add @nrwl/react
+- yarn nx g @nrwl/react:app balance --mfe --mfeType=remote --port=4202 --host=demo --routing=true
+  - stylesheet: emotion
+- yarn nx run balance:serve
+- it seems the mfe and port flags were ignored REMOVE, it is probably also stil using webpack 4 https://nx.dev/l/r/guides/webpack-5#webpack-5-for-react-apps
+- REMOVE upgrade to webpack 5: `yarn nx g @nrwl/web:webpack5 --project=balance`
+- create a custom webpack.ts from https://github.com/nrwl/nx/blob/master/packages/react/plugins/webpack.ts and set "customWebpackConfig": {
+                            "path": "apps/balance/webpack.ts"
+                        } in angular.json
+-  
+
 # Original Nx documentation
 
 This project was generated using [Nx](https://nx.dev).
