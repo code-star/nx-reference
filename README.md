@@ -95,12 +95,13 @@ Add a React Micro App:
 - yarn nx g @nrwl/react:app balance --mfe --mfeType=remote --port=4202 --host=demo --routing=true
   - stylesheet: emotion
 - yarn nx run balance:serve
-- it seems the mfe and port flags were ignored REMOVE, it is probably also stil using webpack 4 https://nx.dev/l/r/guides/webpack-5#webpack-5-for-react-apps
-- REMOVE upgrade to webpack 5: `yarn nx g @nrwl/web:webpack5 --project=balance`
-- create a custom webpack.ts from https://github.com/nrwl/nx/blob/master/packages/react/plugins/webpack.ts and set "customWebpackConfig": {
+- it seems the mfe and port flags were ignored
+- create a custom webpack.config.js from https://github.com/nrwl/nx/blob/master/packages/react/plugins/webpack.ts and set "customWebpackConfig": {
                             "path": "apps/balance/webpack.ts"
                         } in angular.json
--  
+- set port 4202 in angular.json
+- add ModuleFederationPlugin in webpack.config.js
+- create apps/balance/src/app/remote-entry
 
 # Original Nx documentation
 

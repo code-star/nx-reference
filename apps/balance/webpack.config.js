@@ -1,10 +1,8 @@
-import type { Configuration } from "webpack";
-// import ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-import { ReactRefreshPlugin } from "@pmmmwh/react-refresh-webpack-plugin";
+const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
 // Add React-specific configuration
-function getWebpackConfig(config: Configuration) {
-    // @ts-expect-error copied
+function getWebpackConfig(config) {
     config.module.rules.push(
         {
             test: /\.(png|jpe?g|gif|webp)$/,
@@ -55,7 +53,6 @@ function getWebpackConfig(config: Configuration) {
         }
     );
 
-    // @ts-expect-error copied
     if (config.mode === "development" && config["devServer"]?.hot) {
         // add `react-refresh/babel` to babel loader plugin
         const babelLoader = config?.module?.rules?.find(
@@ -64,9 +61,7 @@ function getWebpackConfig(config: Configuration) {
                 rule.loader?.toString().includes("babel-loader")
         );
         if (babelLoader && typeof babelLoader !== "string") {
-            // @ts-expect-error copied
             babelLoader.options["plugins"] = [
-                // @ts-expect-error copied
                 ...(babelLoader.options["plugins"] || []),
                 [
                     require.resolve("react-refresh/babel"),
@@ -77,9 +72,27 @@ function getWebpackConfig(config: Configuration) {
             ];
         }
         // add https://github.com/pmmmwh/react-refresh-webpack-plugin to webpack plugin
-        // @ts-expect-error copied
         config.plugins.push(new ReactRefreshPlugin());
     }
+
+    // output: {
+    //     uniqueName: "portfolio",
+    //     publicPath: "auto",
+    // },
+
+    config.plugins?.push(
+        new ModuleFederationPlugin({
+            name: "balance",
+            filename: "remoteEntry.js",
+            // TODO Wrong webpack version used?
+            // exposes: {
+            //     "./Module": "apps/balance/src/app/remote-entry/Entry.tsx",
+            // },
+        })
+    );
+
+    // TODO remove
+    console.log("My Custom Webpack config", typeof config, config);
 
     return config;
 }

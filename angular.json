@@ -23,9 +23,7 @@
                         ],
                         "styles": [],
                         "scripts": [],
-                        "customWebpackConfig": {
-                            "path": "apps/balance/webpack.ts"
-                        }
+                        "webpackConfig": "apps/balance/webpack.config.js"
                     },
                     "configurations": {
                         "production": {
@@ -48,7 +46,8 @@
                     "builder": "@nrwl/web:dev-server",
                     "options": {
                         "buildTarget": "balance:build",
-                        "hmr": true
+                        "hmr": true,
+                        "port": 4202
                     },
                     "configurations": {
                         "production": {

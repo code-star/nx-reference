@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from "./logo.svg";
 import star from "./star.svg";
 
 import { Route, Link } from "react-router-dom";
+import Entry from "./remote-entry/Entry";
 
 const StyledApp = styled.div`
     font-family: sans-serif;
@@ -137,10 +138,11 @@ const StyledApp = styled.div`
 export function App() {
     return (
         <StyledApp>
-            <header className="flex">
-                {/* <Logo width="75" height="75" /> */}
+            <Entry />
+            {/* <header className="flex">
+                 <Logo width="75" height="75" /> 
                 <h1>Balance: 0.1000000 BTC (€5,212.80)</h1>
-            </header>
+            </header> */}
 
             <Route
                 path="/"
