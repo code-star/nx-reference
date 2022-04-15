@@ -9,7 +9,7 @@ import { BtcRateService } from "@star/shared/data-access";
     styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-    title = "Rx Reference";
+    title = "Nx Reference";
     loading = false;
     rates: [number, Rate][] = [];
 
