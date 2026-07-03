@@ -5,6 +5,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
+import { version } from 'root-package-json';
 import { RouterOutlet } from '@angular/router';
 import {
   Alert,
@@ -35,6 +36,7 @@ import { Rate } from '@star/shared/types';
 })
 export class App implements OnInit {
   protected readonly title = 'Nx Reference';
+  protected readonly version = version;
   protected readonly loading = signal(false);
   protected readonly rates = signal<[number, Rate][]>([]);
 
