@@ -1,6 +1,6 @@
 import { Injectable, Signal } from '@angular/core';
 
-export type Severity = 'info' | 'error';
+export type Severity = 'info' | 'warning' | 'error';
 
 export interface LogItem {
   severity: string;

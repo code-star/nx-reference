@@ -19,6 +19,11 @@
     <div>
       <star-alert [item]="logItem"></star-alert>
     </div>
+    } @for (logItem of messageService.logs() | bySeverity: 'warning'; track $index)
+    {
+    <div>
+      <star-alert [item]="logItem"></star-alert>
+    </div>
     } @for (logItem of messageService.logs() | bySeverity: 'info'; track $index)
     {
     <div>

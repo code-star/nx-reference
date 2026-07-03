@@ -29,11 +29,19 @@ export class BtcRateService {
   }
 
   getRate(): Observable<DateAndRate> {
-    const url =
-      window.location.hostname === 'code-star.github.io'
-        ? `${this.btcUrl}`
-        : `http://localhost:3333/${this.btcUrl}`;
-    return this.http.get<BtcResponse>(url).pipe(
+    const isLocal =
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1';
+
+    if (!isLocal) {
+      this.log(
+        'The BTC rate API is only available when running locally. Start the server app to enable it.',
+        'warning',
+      );
+      return of(undefined as unknown as DateAndRate);
+    }
+
+    return this.http.get<BtcResponse>(`http://localhost:3333/${this.btcUrl}`).pipe(
       delay(1000),
       tap(() => this.log(`fetched rate`, 'info')),
       map(({ btc }) => [Date.now(), btc] as DateAndRate),
