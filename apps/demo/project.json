@@ -34,6 +34,29 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/demo",
+        "configDir": "apps/demo/.storybook",
+        "tsConfig": "apps/demo/.storybook/tsconfig.json",
+        "styles": ["apps/demo/src/styles.scss"],
+        "compodoc": false,
+        "experimentalZoneless": true
+      }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/demo/.storybook",
+        "tsConfig": "apps/demo/.storybook/tsconfig.json",
+        "styles": ["apps/demo/src/styles.scss"],
+        "compodoc": false,
+        "experimentalZoneless": true
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": ["libs/ui/src/**/*.ts", "libs/shared/**/src/**/*.ts"],
+  "exclude": ["**/*.spec.ts", "**/*.stories.ts", "**/*.stories.mdx"]
+}

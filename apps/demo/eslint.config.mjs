@@ -31,4 +31,12 @@ export default [
     // Override or add rules here
     rules: {},
   },
+  {
+    // Storybook config aggregates the workspace catalog and loads the
+    // compodoc output from the workspace root; both are legitimate here.
+    files: ['**/.storybook/**/*.ts'],
+    rules: {
+      '@nx/enforce-module-boundaries': 'off',
+    },
+  },
 ];

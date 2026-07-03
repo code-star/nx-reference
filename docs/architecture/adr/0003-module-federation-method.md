@@ -24,7 +24,7 @@ Investigation confirmed:
   (`@angular-architects/native-federation`), which builds on standards-based import maps and the
   Angular **esbuild `application` builder**.
 
-So the webpack `withModuleFederation()` path is the *old, retiring* method (removed in Nx v24), not
+So the webpack `withModuleFederation()` path is the _old, retiring_ method (removed in Nx v24), not
 the newest. The newest Nx-endorsed Angular MF method is **Native Federation**.
 
 ## decision

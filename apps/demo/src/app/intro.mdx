@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Nx Reference
+
+A reference example monorepo with [Nx](https://nx.dev) + [Storybook](https://storybook.js.org) + [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) in [Angular](https://angular.dev).
+
+Made by [Codestar](https://code-star.github.io) powered by [Sopra Steria](https://www.soprasteria.nl).
+
+Note in the menu that the components are organized first by their Atomic Design level (atoms, molecules, organisms, etc).
+
+Elements use the `star` prefix, e.g.: `<star-primary-button>`.
+
+Imports use the `@star` namespace, e.g.: `import { Rate, BtcResponse } from '@star/shared/types';`.
+
+## Getting started
+
+You can clone this repo from [GitHub](https://github.com/code-star/nx-reference).
+
+- Use Node 24 and run `yarn install`.
+- Generate the component docs and start Storybook with `yarn docs:json && yarn nx storybook demo`.
+- Open [http://localhost:4400](http://localhost:4400).
+
+## Module Federation demo
+
+The catalog above documents the UI components. The runtime demo of **Module Federation** (host `demo`
+lazy-loading remote `portfolio` via [Native Federation](https://www.npmjs.com/package/@angular-architects/native-federation))
+runs separately with `yarn nx serve demo` and `yarn nx serve portfolio`.
+
+## Long form documentation example
+
+MDX files are useful for long form documentation and to explain non-visual packages, e.g. a randomizer util:
+
+```ts
+import { Rate } from '@star/shared/types';
+
+export function someRandomValue(): Rate {
+  return Math.random() * 100000;
+}
+```
+
+And how to call it in another component:
+
+```ts
+import { btc } from '@star/btc';
+
+console.log(btc());
+```

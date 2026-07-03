@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="services/Message Service" />
+
+# Message Service
+
+Stores log items (info, warnings and errors) as a signal so the UI can react to them
+in a zoneless application.
+
+Add an entry:
+
+```ts
+this.messageService.log(`MyService: ${message}`, 'error');
+```
+
+Show the log with the new control flow, reading the `logs` signal:
+
+```html
+@for (item of messageService.logs(); track item) {
+<star-alert [item]="item"></star-alert>
+}
+```

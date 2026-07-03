@@ -45,3 +45,8 @@ Thumbs.db
 .claude/settings.local.json
 
 .angular
+
+
+storybook-static
+# Compodoc generated docs (regenerated via `yarn docs:json`)
+documentation.json
