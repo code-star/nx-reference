@@ -11,7 +11,8 @@
       "options": {},
       "configurations": {
         "production": {
-          "target": "demo:esbuild:production"
+          "target": "demo:esbuild:production",
+          "baseHref": "/nx-reference/"
         },
         "development": {
           "target": "demo:esbuild:development",

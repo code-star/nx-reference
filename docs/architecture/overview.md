@@ -46,8 +46,9 @@ flowchart LR
     DataAccess["@star/shared/data-access"] --> Types
     Services["@star/shared/services"] --> Types
     Server --> Btc["@star/btc"]
-    subgraph Deployed
-      SB[Storybook 10 catalog] --> UI
+    subgraph Deployed["Deployed — one GitHub Pages site (/nx-reference/)"]
+      Shell["/ shell (demo)"] -. Native Federation .-> Remote["/portfolio remote"]
+      SB["/storybook catalog"] --> UI
       SB --> Stories[shared + app stories]
     end
 ```
@@ -108,8 +109,10 @@ The Phase-0 open questions below were resolved during implementation:
 - **Build/DX:** `nx serve demo` + `nx serve portfolio` run the MF demo; `nx run demo:build-storybook`
   produces the deployable catalog; `nx run-many -t lint,test,build` is green.
 - **Reliability:** rate fetch failures degrade gracefully (logged alert, no crash) — preserved.
-- **Deployability:** Storybook static output hostable on GitHub Pages with correct base-href; prod
-  remote URL configurable to the Pages URL.
+- **Deployability:** one GitHub Pages site (`/nx-reference/`) hosts the shell (root), the
+  `portfolio` remote (`/portfolio`, also serving `remoteEntry.json`), and the Storybook catalog
+  (`/storybook`) via subdirectory deployment with per-app base-href. Each app builds and deploys
+  independently through `actions/deploy-pages` (see ADR-0007).
 - **Security posture:** demo-grade; server has no secrets; cors open (unchanged, demo scope).
 
 ## key decisions
@@ -120,6 +123,7 @@ The Phase-0 open questions below were resolved during implementation:
 - [ADR-0004](./adr/0004-storybook-catalog.md) — Storybook 10 as the deployed component catalog.
 - [ADR-0005](./adr/0005-testing-strategy.md) — Testing strategy & coverage parity.
 - [ADR-0006](./adr/0006-standalone-signals.md) — Standalone components + signal APIs.
+- [ADR-0007](./adr/0007-github-pages-subdirectory-hosting.md) — Single GitHub Pages site, subdirectory hosting, independent per-app deploys.
 
 ## open questions
 

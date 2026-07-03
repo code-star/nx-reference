@@ -1,0 +1,63 @@
+name: Deploy portfolio
+
+# The portfolio Module Federation remote is served (and exposes its
+# remoteEntry.json) at:
+#   http://codestar.nl/nx-reference/portfolio/
+# Only apps/portfolio (and shared libs) changes trigger this workflow, so the
+# remote deploys independently of the shell.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/portfolio/**'
+      - 'libs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'nx.json'
+      - 'tsconfig.base.json'
+      - '.github/workflows/deploy-portfolio.yml'
+      - '.github/actions/deploy-subdir/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Serialize with the other Pages deploys so storage-branch writes never race.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 24 🟢
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies 🔧
+        run: npm ci
+
+      - name: Build portfolio remote 🏗️
+        run: npx nx build portfolio --configuration=production
+
+      - name: Assemble /portfolio 🧩
+        uses: ./.github/actions/deploy-subdir
+        with:
+          source-dir: dist/apps/portfolio/browser
+          target-subdir: portfolio
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v5
