@@ -6,7 +6,11 @@ A reference monorepo demonstrating **Module Federation in Nx with Angular**, plu
 
 Made by [Codestar](https://code-star.github.io).
 
-For a component tour see the [Storybook Intro](https://code-star.github.io/nx-reference/storybook/?path=/docs/introduction--docs).
+For the full demo with integrated remotes, see the [Shell Demo](https://code-star.github.io/nx-reference/).
+
+For just the portfolio micro front-end in isolation, see the [Portfolio Remote](https://code-star.github.io/nx-reference/portfolio/).
+
+For a component tour, see the [Storybook Intro](https://code-star.github.io/nx-reference/storybook/?path=/docs/introduction--docs).
 
 > **Rebuilt on the latest toolchain** — Nx 23 · Angular 21 (standalone + signals + zoneless) ·
 > Storybook 10 · Native Federation. The full rationale and audit trail live under [`docs/`](./docs).
