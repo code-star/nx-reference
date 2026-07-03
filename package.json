@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@angular/animations": "~21.2.0",
     "@angular/common": "~21.2.0",
     "@angular/compiler": "~21.2.0",
     "@angular/core": "~21.2.0",
@@ -12,11 +13,16 @@
     "@angular/platform-browser": "~21.2.0",
     "@angular/platform-browser-dynamic": "~21.2.0",
     "@angular/router": "~21.2.0",
+    "@softarc/native-federation-node": "^3.3.4",
+    "es-module-shims": "^1.5.12",
     "rxjs": "~7.8.0"
   },
   "devDependencies": {
+    "@angular-architects/native-federation": "~21.2.0",
+    "@angular-devkit/build-angular": "~21.2.0",
     "@angular-devkit/core": "~21.2.0",
     "@angular-devkit/schematics": "~21.2.0",
+    "@angular/build": "~21.2.0",
     "@angular/cli": "~21.2.0",
     "@angular/compiler-cli": "~21.2.0",
     "@angular/language-service": "~21.2.0",
@@ -26,6 +32,7 @@
     "@nx/eslint-plugin": "23.0.1",
     "@nx/jest": "23.0.1",
     "@nx/js": "23.0.1",
+    "@nx/web": "23.0.1",
     "@nx/workspace": "23.0.1",
     "@schematics/angular": "~21.2.0",
     "@swc/helpers": "~0.5.18",
