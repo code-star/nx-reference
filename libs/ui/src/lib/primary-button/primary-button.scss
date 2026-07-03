@@ -1,0 +1,19 @@
+button {
+  background: #e87e00;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: black;
+  padding: 0.5rem 1rem;
+  box-shadow:
+    0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%),
+    0px 1px 5px 0px rgb(0 0 0 / 12%);
+  text-transform: uppercase;
+  font-weight: bold;
+
+  &:disabled {
+    background: #533106;
+    cursor: not-allowed;
+  }
+}
