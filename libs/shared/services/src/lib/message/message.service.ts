@@ -1,24 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal, Signal } from '@angular/core';
 import { IMessageService, LogItem, Severity } from '@star/shared/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService implements IMessageService {
-  logs: LogItem[] = [];
+  private readonly _logs = signal<LogItem[]>([]);
 
-  log(message: string, severity: Severity) {
-    // Do not mutate the array; create a new one so a pure pipe can detect changes.
-    this.logs = [
-      ...this.logs,
-      {
-        message,
-        severity,
-      },
-    ];
+  /** Reactive, read-only view of the log. */
+  readonly logs: Signal<LogItem[]> = this._logs.asReadonly();
+
+  log(message: string, severity: Severity): void {
+    this._logs.update((logs) => [...logs, { message, severity }]);
   }
 
-  clear() {
-    this.logs = [];
+  clear(): void {
+    this._logs.set([]);
   }
 }
