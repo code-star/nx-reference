@@ -66,9 +66,16 @@ npm run docs:json && npx nx build-storybook demo   # → dist/storybook/demo
 
 ### Run the Module Federation demo
 
-Serve the remote and the host in two terminals:
+Serve the api, remote and the host in parallel:
 
 ```bash
+npx nx run-many -t serve -p demo portfolio server --parallel
+```
+
+This is the same as running each app in a separate terminal:
+
+```bash
+npx nx serve server      # Express API on http://localhost:3333 (GET /api/btc)
 npx nx serve portfolio   # remote on http://localhost:4201
 npx nx serve demo        # host on http://localhost:4200 (lazy-loads the portfolio remote)
 ```
@@ -76,7 +83,6 @@ npx nx serve demo        # host on http://localhost:4200 (lazy-loads the portfol
 ### Run the backend
 
 ```bash
-npx nx serve server      # Express API on http://localhost:3333 (GET /api/btc)
 ```
 
 ## Quality gates
