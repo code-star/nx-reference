@@ -49,3 +49,11 @@ Thumbs.db
 storybook-static
 # Compodoc generated docs (regenerated via `npm run docs:json`)
 documentation.json
+
+# agents
+.github/agents
+.github/hooks
+.github/instructions
+.github/prompts
+.github/skills
+.vstack

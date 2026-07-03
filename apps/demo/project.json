@@ -40,6 +40,7 @@
       "options": {
         "outputDir": "dist/storybook/demo",
         "configDir": "apps/demo/.storybook",
+        "browserTarget": "demo:esbuild",
         "tsConfig": "apps/demo/.storybook/tsconfig.json",
         "styles": ["apps/demo/src/styles.scss"],
         "compodoc": false,
@@ -51,6 +52,7 @@
       "options": {
         "port": 4400,
         "configDir": "apps/demo/.storybook",
+        "browserTarget": "demo:esbuild",
         "tsConfig": "apps/demo/.storybook/tsconfig.json",
         "styles": ["apps/demo/src/styles.scss"],
         "compodoc": false,

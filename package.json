@@ -1,6 +1,6 @@
 {
   "name": "nx-reference",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "license": "MIT",
   "scripts": {
     "docs:json": "compodoc -p ./tsconfig.doc.json -e json -d ."
