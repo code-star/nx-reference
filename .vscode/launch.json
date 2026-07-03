@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Debug server with Nx",
-      "runtimeExecutable": "yarn",
+      "runtimeExecutable": "npx",
       "runtimeArgs": ["nx", "serve", "server"],
       "env": {
         "NODE_OPTIONS": "--inspect=9229"

@@ -22,16 +22,16 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install and Build components 🔧
         run: |
-          yarn install --frozen-lockfile
-      # TODO not needed to build after install? yarn build
+          npm ci
+      # TODO not needed to build after install? npm run build
       # TODO - name: Validate ☑️
-      #   run: yarn validate
+      #   run: npm run validate
       #   env:
       #     CI: false # true -> fails on warning
       - name: Build Storybook 📚
         run: |
-          yarn docs:json
-          yarn nx run demo:build-storybook
+          npm run docs:json
+          npx nx run demo:build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
@@ -40,7 +40,7 @@ jobs:
           FOLDER: dist/storybook/demo # The folder the action should deploy.
           CLEAN: true # Automatically remove deleted files from the deploy branch
       - name: Build Portfolio Micro App
-        run: yarn nx run portfolio:build
+        run: npx nx run portfolio:build
       - name: Deploy Portfolio Micro App 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
@@ -50,7 +50,7 @@ jobs:
           folder: dist/apps/portfolio # The folder the action should deploy.
           clean: true # Automatically remove deleted files from the deploy branch
       - name: Build Shell Micro App
-        run: yarn nx run demo:build
+        run: npx nx run demo:build
       - name: Deploy Shell Micro App 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:

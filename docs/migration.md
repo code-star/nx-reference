@@ -90,8 +90,6 @@ when the remote is unavailable.
 - `@nx/angular@23` pins Angular **21.2** (not 22) and scaffolds **zoneless** by default.
 - The Native Federation `nf:init` generator drops the trailing newline on rewritten `project.json`
   and re-serializes arrays; `nx format:write` normalises these.
-- `nx format:write` will reformat the vendored `.yarn/releases/*.cjs` — it is added to
-  `.prettierignore`.
 - The `@nx/js` `btc` lib and the `server` app expose lint via the **inferred** `eslint:lint` target,
   so `nx run-many -t lint` skips them; lint them via `nx run-many -t "eslint:lint"`.
 - `@nx/jest:jest` and `@nx/eslint:lint` executors are deprecated (removed in Nx v24) — tracked as a
@@ -99,6 +97,6 @@ when the remote is unavailable.
 
 ## Deployment
 
-`.github/workflows/prod.yml` now runs `yarn docs:json` before `nx run demo:build-storybook` (compodoc
+`.github/workflows/prod.yml` now runs `npm run docs:json` before `nx run demo:build-storybook` (compodoc
 output is git-ignored) and deploys `dist/storybook/demo` to GitHub Pages. The Node version was bumped
 from 15 to 24.

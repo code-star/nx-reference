@@ -43,7 +43,7 @@
       "executor": "@nx/js:prune-lockfile",
       "outputs": [
         "{workspaceRoot}/dist/apps/server/package.json",
-        "{workspaceRoot}/dist/apps/server/yarn.lock"
+        "{workspaceRoot}/dist/apps/server/package-lock.json"
       ],
       "options": {
         "buildTarget": "build"
