@@ -11,6 +11,7 @@ argument-hint: '[incident or issue to analyse]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -186,7 +187,7 @@ Write to the confirmed output path:
 ## action items
 
 | Item | Owner | Due |
-| --- | --- | --- |
+| ---- | ----- | --- |
 
 ## lessons learned
 ```

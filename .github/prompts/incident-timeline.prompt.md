@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Construct a blameless incident timeline from the provided evidence.
 
 Anchor claims to available logs, alerts, traces, and change events.

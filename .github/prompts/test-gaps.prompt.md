@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Identify missing behavioral coverage and prioritize test additions by production risk.
 
 Focus on observable behavior and realistic failure paths.

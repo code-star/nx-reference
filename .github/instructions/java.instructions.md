@@ -3,6 +3,7 @@ name: java
 description: 'Java coding conventions for projects. Use when writing or reviewing Java source files, tests, and build configuration.'
 applyTo: '**/*.java'
 ---
+
 Use these Java conventions in this project.
 
 ## Design and readability

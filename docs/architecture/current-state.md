@@ -22,17 +22,17 @@ the legacy implementation details (which are being replaced).
 
 ## legacy toolchain (being replaced)
 
-| Concern | Version |
-| --- | --- |
-| Nx / `@nrwl/*` | 13.0.2 |
-| Angular | 12.2.11 |
+| Concern           | Version                                                                            |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| Nx / `@nrwl/*`    | 13.0.2                                                                             |
+| Angular           | 12.2.11                                                                            |
 | Module Federation | `@angular-architects/module-federation` ^12.5.3 (webpack `ModuleFederationPlugin`) |
-| Storybook | 6.3 (webpack5 builder) |
-| Unit tests | Jest 27 (`jest-preset-angular` 10) |
-| e2e | Cypress 6 |
-| Docs | Compodoc 1.1 (`documentation.json` feeds Storybook docs) |
-| Package manager | Yarn 1 |
-| npm scope | `@star` |
+| Storybook         | 6.3 (webpack5 builder)                                                             |
+| Unit tests        | Jest 27 (`jest-preset-angular` 10)                                                 |
+| e2e               | Cypress 6                                                                          |
+| Docs              | Compodoc 1.1 (`documentation.json` feeds Storybook docs)                           |
+| Package manager   | Yarn 1                                                                             |
+| npm scope         | `@star`                                                                            |
 
 ## system structure (current)
 
@@ -89,16 +89,16 @@ flowchart LR
 
 Selector prefix `star-`. Components + one pipe:
 
-| Component | Selector | Inputs | Role (Atomic Design) |
-| --- | --- | --- | --- |
-| PrimaryButton | `star-primary-button` | `disabled: boolean` | atom |
-| LoadingButton | `star-loading-button` | `loading: boolean` | molecule (wraps PrimaryButton + Icon) |
-| Icon | `star-icon[type]` | `type: 'loading'\|'home'\|'code'\|'star'` | atom (inline SVG) |
-| Paper | `star-paper` | — (content projection) | atom (card) |
-| Alert | `star-alert[item]` | `item: LogItem` | molecule |
-| RatesTable | `star-rates-table` | `rates: [number, Rate][]` | molecule |
-| AppTemplate | `star-app-template[title]` | `title: string` | template (nav + header + main) |
-| BySeverity (pipe) | `bySeverity` | `(LogItem[], Severity)` | pure pipe filter |
+| Component         | Selector                   | Inputs                                    | Role (Atomic Design)                  |
+| ----------------- | -------------------------- | ----------------------------------------- | ------------------------------------- |
+| PrimaryButton     | `star-primary-button`      | `disabled: boolean`                       | atom                                  |
+| LoadingButton     | `star-loading-button`      | `loading: boolean`                        | molecule (wraps PrimaryButton + Icon) |
+| Icon              | `star-icon[type]`          | `type: 'loading'\|'home'\|'code'\|'star'` | atom (inline SVG)                     |
+| Paper             | `star-paper`               | — (content projection)                    | atom (card)                           |
+| Alert             | `star-alert[item]`         | `item: LogItem`                           | molecule                              |
+| RatesTable        | `star-rates-table`         | `rates: [number, Rate][]`                 | molecule                              |
+| AppTemplate       | `star-app-template[title]` | `title: string`                           | template (nav + header + main)        |
+| BySeverity (pipe) | `bySeverity`               | `(LogItem[], Severity)`                   | pure pipe filter                      |
 
 **Design tokens (must be visually identical):**
 

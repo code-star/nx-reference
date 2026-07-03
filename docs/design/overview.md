@@ -15,13 +15,13 @@ All contracts must reproduce the behaviour recorded in
 
 ## domain model
 
-| Entity | Definition | Notes |
-| --- | --- | --- |
-| `Rate` | `number` | BTC price in EUR. |
-| `BtcResponse` | `{ btc: Rate }` | Server payload from `GET /api/btc`. |
-| `Severity` | `'info' \| 'error'` | Log/alert classification. |
-| `LogItem` | `{ severity: string; message: string }` | Message-service entry; `severity` typed loosely for compatibility. |
-| `DateAndRate` | `[number, Rate]` | `[epochMillis, rate]` tuple rendered by the rates table. |
+| Entity            | Definition                                      | Notes                                                              |
+| ----------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
+| `Rate`            | `number`                                        | BTC price in EUR.                                                  |
+| `BtcResponse`     | `{ btc: Rate }`                                 | Server payload from `GET /api/btc`.                                |
+| `Severity`        | `'info' \| 'error'`                             | Log/alert classification.                                          |
+| `LogItem`         | `{ severity: string; message: string }`         | Message-service entry; `severity` typed loosely for compatibility. |
+| `DateAndRate`     | `[number, Rate]`                                | `[epochMillis, rate]` tuple rendered by the rates table.           |
 | `IMessageService` | `{ logs: LogItem[]; log(msg, severity): void }` | Abstract token; `MessageService` is the impl, bound via `provide`. |
 
 **MessageService lifecycle:** `log()` produces a **new** `logs` array (never mutates) so a pure pipe
@@ -48,10 +48,10 @@ All contracts must reproduce the behaviour recorded in
 
 ### Server API
 
-| Method | Path | Response | Status |
-| --- | --- | --- | --- |
-| GET | `/api` | `{ message: "Welcome to server!" }` | 200 |
-| GET | `/api/btc` | `{ btc: number }` (`BtcResponse`) | 200 |
+| Method | Path       | Response                            | Status |
+| ------ | ---------- | ----------------------------------- | ------ |
+| GET    | `/api`     | `{ message: "Welcome to server!" }` | 200    |
+| GET    | `/api/btc` | `{ btc: number }` (`BtcResponse`)   | 200    |
 
 CORS enabled (open). Port `process.env.port || 3333`.
 

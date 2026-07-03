@@ -61,18 +61,18 @@ star-app-template [title="Nx Reference"]        (template)
 
 ## visual tokens (must match)
 
-| Token | Value | Usage |
-| --- | --- | --- |
-| `--star-default-bg` | `#002042` | app background |
-| `--star-card-bg` / `--star-paper-bg` | `#001329` | header + paper cards |
-| `--star-primary` | `#e87e00` | accent, nav, primary button |
-| primary disabled | `#533106` | disabled button |
-| text | `white` | body/table text |
-| error alert | `rgb(250,179,174)` on `rgb(24,6,5)` | error blocks |
-| info alert | `rgb(166,213,250)` on `rgb(3,14,24)` | info blocks |
-| spacing unit | `4px` | AppTemplate layout math |
-| font | `sans-serif` | global |
-| radii | button `4px`, paper `8px` | — |
+| Token                                | Value                                | Usage                       |
+| ------------------------------------ | ------------------------------------ | --------------------------- |
+| `--star-default-bg`                  | `#002042`                            | app background              |
+| `--star-card-bg` / `--star-paper-bg` | `#001329`                            | header + paper cards        |
+| `--star-primary`                     | `#e87e00`                            | accent, nav, primary button |
+| primary disabled                     | `#533106`                            | disabled button             |
+| text                                 | `white`                              | body/table text             |
+| error alert                          | `rgb(250,179,174)` on `rgb(24,6,5)`  | error blocks                |
+| info alert                           | `rgb(166,213,250)` on `rgb(3,14,24)` | info blocks                 |
+| spacing unit                         | `4px`                                | AppTemplate layout math     |
+| font                                 | `sans-serif`                         | global                      |
+| radii                                | button `4px`, paper `8px`            | —                           |
 
 ## accessibility notes (preserve/inherit)
 

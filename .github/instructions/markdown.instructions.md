@@ -3,6 +3,7 @@ name: markdown
 description: 'Markdown authoring conventions for documentation, README files, ADRs, and other hand-authored prose. Use when writing or reviewing any Markdown file.'
 applyTo: '**/*.md'
 ---
+
 Use these Markdown conventions in this project.
 
 ## Structure and headings

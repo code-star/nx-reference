@@ -3,6 +3,7 @@ name: terraform
 description: 'Terraform coding conventions for projects. Use when writing or reviewing Terraform modules, root configurations, variable files, and state configuration.'
 applyTo: '**/*.tf'
 ---
+
 Use these Terraform conventions in this project.
 
 ## Structure and file layout

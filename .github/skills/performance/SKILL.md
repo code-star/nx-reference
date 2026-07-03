@@ -11,6 +11,7 @@ argument-hint: '[endpoint or function to profile]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -74,7 +75,7 @@ optimizations. Measure first; never optimize without evidence.
 
 If on a feature branch, record performance metrics before and after the change:
 
-```bash
+````bash
 # Record current branch metrics
 CURRENT=$(git branch --show-current)
 
@@ -101,23 +102,29 @@ elif [ -f Cargo.toml ]; then
 else
   echo "No recognized test framework detected."
 fi
-```
+````
 
 # Language-specific benchmark runners:
+
 # Node/Bun
+
 [ -f package.json ] && npm run bench 2>/dev/null \
-  || npx vitest bench 2>/dev/null \
-  || npx jest --config jest.bench.config.js 2>/dev/null || true
+ || npx vitest bench 2>/dev/null \
+ || npx jest --config jest.bench.config.js 2>/dev/null || true
 
 # Python
+
 [ -f pyproject.toml ] && python -m pytest --benchmark-only -v 2>/dev/null || true
 
 # Go
+
 [ -f go.mod ] && go test -bench=. -benchmem ./... 2>/dev/null || true
 
 # Rust
+
 [ -f Cargo.toml ] && cargo bench 2>/dev/null || true
-```
+
+````
 
 ## Phase 2: Comparison vs Base Branch
 
@@ -132,7 +139,7 @@ echo "=== Benchmarks on <base> ==="
 # Restore feature branch
 git checkout "$CURRENT"
 git stash pop
-```
+````
 
 Compare results:
 

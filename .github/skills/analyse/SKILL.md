@@ -11,6 +11,7 @@ argument-hint: '[topic, change, or question to analyse]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -176,9 +177,11 @@ Present findings clearly:
 ## Findings
 
 ### [Finding 1 — short title]
+
 [Evidence + explanation]
 
 ### [Finding 2]
+
 [Evidence + explanation]
 ```
 

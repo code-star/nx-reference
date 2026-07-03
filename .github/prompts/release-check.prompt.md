@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Evaluate release gate readiness using required reports, artifacts, and sign-off evidence.
 
 Use repository evidence only.

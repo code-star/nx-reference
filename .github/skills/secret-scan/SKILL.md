@@ -11,6 +11,7 @@ argument-hint: '[scope: enable | configure push-protection | custom-pattern | tr
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -73,9 +74,9 @@ Create `.github/secret_scanning.yml` to auto-close alerts for known-safe paths:
 
 ```yaml
 paths-ignore:
-  - "docs/examples/**"       # Example/demo credentials
-  - "test/fixtures/**"       # Test fixture files
-  - "**/*.example"           # Template files with placeholder values
+  - 'docs/examples/**' # Example/demo credentials
+  - 'test/fixtures/**' # Test fixture files
+  - '**/*.example' # Template files with placeholder values
 ```
 
 **Limits:** 1,000 entries maximum, file under 1 MB.

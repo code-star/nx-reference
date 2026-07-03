@@ -25,11 +25,22 @@
 - SCSS (preserve):
   ```scss
   button {
-    background: #e87e00; border: none; border-radius: 4px; cursor: pointer;
-    color: black; padding: 0.5rem 1rem;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-    text-transform: uppercase; font-weight: bold;
-    &:disabled { background: #533106; cursor: not-allowed; }
+    background: #e87e00;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: black;
+    padding: 0.5rem 1rem;
+    box-shadow:
+      0px 3px 1px -2px rgb(0 0 0 / 20%),
+      0px 2px 2px 0px rgb(0 0 0 / 14%),
+      0px 1px 5px 0px rgb(0 0 0 / 12%);
+    text-transform: uppercase;
+    font-weight: bold;
+    &:disabled {
+      background: #533106;
+      cursor: not-allowed;
+    }
   }
   ```
 
@@ -46,7 +57,7 @@
 - No inputs; content projection.
 - Template: `<section><ng-content></ng-content></section>`.
 - SCSS (preserve): `:host { --star-paper-bg: #001329; }` and `section { background: var(--star-paper-bg);
-  color: white; margin: 1rem; padding: 1rem; border-radius: 8px; h2{margin-top:0} h4{margin-bottom:0} }`.
+color: white; margin: 1rem; padding: 1rem; border-radius: 8px; h2{margin-top:0} h4{margin-bottom:0} }`.
 
 ## molecules
 
@@ -63,7 +74,7 @@
   </star-primary-button>
   ```
 - SCSS (preserve): `.flex { display:flex; gap:.4rem; }` + `.img-spin { width:15px;height:15px;
-  animation:spin 2s linear infinite; transform-origin:center; }` + `@keyframes spin { 100%{ transform:rotate(360deg);} }`.
+animation:spin 2s linear infinite; transform-origin:center; }` + `@keyframes spin { 100%{ transform:rotate(360deg);} }`.
 - Imports: `PrimaryButtonComponent`, `IconComponent`.
 
 ### Alert — `star-alert[item]`
@@ -81,10 +92,18 @@
 - Template (preserve; `@for` with `track`):
   ```html
   <table>
-    <thead><tr><th>Time</th><th>EUR / BTC</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>EUR / BTC</th>
+      </tr>
+    </thead>
     <tbody>
       @for (rate of rates(); track rate[0]) {
-        <tr><td>{{ rate[0] | date: 'HH:mm:ss' }}</td><td>{{ rate[1] }}</td></tr>
+      <tr>
+        <td>{{ rate[0] | date: 'HH:mm:ss' }}</td>
+        <td>{{ rate[1] }}</td>
+      </tr>
       }
     </tbody>
   </table>

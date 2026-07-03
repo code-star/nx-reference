@@ -29,6 +29,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # product
 
 ## identity and purpose
@@ -146,8 +147,6 @@ Use this exact stage report schema at the end of your response:
 - If required product items are stale or missing: block progression until corrected.
 
 ## work items
-
-
 
 ### output
 

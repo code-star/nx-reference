@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Audit the provided dependency manifest or lockfile for vulnerabilities, outdated packages, licence risks, and supply chain hygiene.
 
 Prefer evidence from the manifest itself; flag items that require external verification.

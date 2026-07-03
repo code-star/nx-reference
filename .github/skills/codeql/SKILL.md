@@ -11,6 +11,7 @@ argument-hint: '[languages and setup type: default or advanced]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -103,7 +104,7 @@ on:
   pull_request:
     branches: [main]
   schedule:
-    - cron: '30 6 * * 1'  # Weekly, Monday 06:30 UTC
+    - cron: '30 6 * * 1' # Weekly, Monday 06:30 UTC
 
 jobs:
   analyze:
@@ -111,9 +112,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
-      security-events: write  # Required to upload SARIF results
-      contents: read          # Required to check out code
-      actions: read           # Required for private repos
+      security-events: write # Required to upload SARIF results
+      contents: read # Required to check out code
+      actions: read # Required for private repos
 
     strategy:
       fail-fast: false
@@ -150,7 +151,7 @@ jobs:
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
         with:
-          category: "/language:${{ matrix.language }}"
+          category: '/language:${{ matrix.language }}'
 ```
 
 **Query suite options:**
@@ -186,7 +187,7 @@ Reference it in the workflow:
 For monorepos with per-component results:
 
 ```yaml
-category: "/language:${{ matrix.language }}/component:backend"
+category: '/language:${{ matrix.language }}/component:backend'
 ```
 
 To skip documentation-only PRs:

@@ -11,6 +11,7 @@ argument-hint: '[cluster/context, namespace, and scope: manifest review | deploy
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.

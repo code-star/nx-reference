@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Produce a safe migration plan with sequencing, fallback paths, and verification checkpoints.
 
 Use source changes, schema/contracts, and deployment constraints.

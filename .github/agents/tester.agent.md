@@ -28,6 +28,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # tester
 
 ## identity and purpose
@@ -170,8 +171,6 @@ what work is needed:
 | ---------------------- |
 | `docs/reports/**/*.md` |
 | `tests/**/*`           |
-
-
 
 Agents do not write to items owned by other roles. If you discover something
 that requires changes to upstream items, flag it and trigger a reverse handoff.

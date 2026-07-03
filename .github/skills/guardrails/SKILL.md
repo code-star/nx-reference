@@ -11,6 +11,7 @@ argument-hint: '[task]'
 user-invocable: true
 disable-model-invocation: true
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.

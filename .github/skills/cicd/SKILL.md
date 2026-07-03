@@ -11,6 +11,7 @@ argument-hint: '[service or workflow to configure]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -66,7 +67,7 @@ name: CI
 
 on:
   push:
-    branches: ["**"]
+    branches: ['**']
   pull_request:
     branches: [main]
   workflow_dispatch: {}
@@ -89,7 +90,7 @@ jobs:
       # Python
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: '3.12'
       - uses: actions/cache@v4
         with:
           path: ~/.cache/pip
@@ -127,23 +128,23 @@ jobs:
 Add dependency and secret scanning:
 
 ```yaml
-  security:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+security:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
 
-      # Dependency scan (pick one):
-      # Python
-      - run: pip install pip-audit && pip-audit
+    # Dependency scan (pick one):
+    # Python
+    - run: pip install pip-audit && pip-audit
 
-      # Node
-      # - run: npm audit --audit-level=high
+    # Node
+    # - run: npm audit --audit-level=high
 
-      # Secret scan
-      - uses: trufflesecurity/trufflehog-actions-scan@v3
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
+    # Secret scan
+    - uses: trufflesecurity/trufflehog-actions-scan@v3
+      with:
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
 ```
 
 ## Step 4: CD workflow — `.github/workflows/cd.yml`

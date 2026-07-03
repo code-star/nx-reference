@@ -11,6 +11,7 @@ argument-hint: '[scope: new layout | dependency graph | state migration | run-al
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.

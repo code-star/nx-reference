@@ -11,6 +11,7 @@ argument-hint: '[service to containerise]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -116,13 +117,14 @@ services:
   app:
     build: .
     ports:
-      - "<host>:<container>"
+      - '<host>:<container>'
     environment:
       - <ENV_VAR>=<value>
     depends_on:
       - <dependency>
     volumes:
-      - .:/app          # hot-reload in dev only — remove for prod
+      - .:/app # hot-reload in dev only — remove for prod
+
 
   # Add dependencies: database, cache, broker
   # db:

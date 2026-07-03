@@ -22,17 +22,17 @@ Adopt the following baseline. **Angular tracks the latest version supported by t
 because the project goal is Nx-native Module Federation and Nx-hosted Storybook — Nx compatibility wins
 over using a newer, unsupported Angular major.
 
-| Concern | Target |
-| --- | --- |
-| Monorepo | Nx 23.0.1 (integrated), packages under `@nx/*` |
-| Framework | Angular ~21.2.0 (latest Nx 23-supported; standalone + signals, see ADR-0006) |
-| Storybook | 10.x via `@nx/storybook` + `@storybook/angular` (see ADR-0004) |
-| Module Federation | Nx-native `@nx/module-federation` + `withModuleFederation` (see ADR-0003) |
-| Unit tests | Jest for spec parity (see ADR-0005) |
-| Language | TypeScript 5.9.x (installed by `@nx/angular` init) |
-| Package manager | Yarn 1 (continuity with existing `yarn.lock` workflow) |
-| npm scope | `@star` (preserve `@star/*` import paths via `--importPath`) |
-| Docs for Storybook | Compodoc (`documentation.json`) if compatible with Angular 21 |
+| Concern            | Target                                                                       |
+| ------------------ | ---------------------------------------------------------------------------- |
+| Monorepo           | Nx 23.0.1 (integrated), packages under `@nx/*`                               |
+| Framework          | Angular ~21.2.0 (latest Nx 23-supported; standalone + signals, see ADR-0006) |
+| Storybook          | 10.x via `@nx/storybook` + `@storybook/angular` (see ADR-0004)               |
+| Module Federation  | Nx-native `@nx/module-federation` + `withModuleFederation` (see ADR-0003)    |
+| Unit tests         | Jest for spec parity (see ADR-0005)                                          |
+| Language           | TypeScript 5.9.x (installed by `@nx/angular` init)                           |
+| Package manager    | Yarn 1 (continuity with existing `yarn.lock` workflow)                       |
+| npm scope          | `@star` (preserve `@star/*` import paths via `--importPath`)                 |
+| Docs for Storybook | Compodoc (`documentation.json`) if compatible with Angular 21                |
 
 ## alternatives considered
 

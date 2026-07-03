@@ -23,6 +23,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # planner
 
 ## identity and purpose
@@ -208,10 +209,6 @@ Use this exact stage report schema at the end of your response:
 | Item           |
 | -------------- |
 | `docs/**/*.md` |
-
-
-
-
 
 Agents do not write to items owned by other roles. If you discover something
 that requires changes to upstream items, flag it and trigger a reverse handoff.

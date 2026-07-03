@@ -3,6 +3,7 @@ name: python
 description: 'Python coding conventions for projects. Use when writing or reviewing Python modules, tests, CLI code, and package internals.'
 applyTo: '**/*.py'
 ---
+
 Use these Python conventions in this project.
 
 ## Design and readability

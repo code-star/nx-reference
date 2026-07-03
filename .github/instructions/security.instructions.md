@@ -3,6 +3,7 @@ name: security
 description: 'Security policy for all code, configuration, and infrastructure. Use when writing or reviewing any code, configuration, or workflow file.'
 applyTo: '**/*'
 ---
+
 Apply these security policies in this project.
 
 ## Secrets and credentials

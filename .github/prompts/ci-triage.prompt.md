@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Triage CI failures into root-cause clusters and prioritize the fastest safe recovery path.
 
 Use failing job logs, workflow config, and changed files.

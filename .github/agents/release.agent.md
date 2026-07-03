@@ -29,6 +29,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # release
 
 ## identity and purpose
@@ -155,8 +156,6 @@ Use this exact stage report schema at the end of your response:
 | Item                 | Notes                                      |
 | -------------------- | ------------------------------------------ |
 | `docs/releases/*.md` | includes release notes and sign-off record |
-
-
 
 Agents do not write to items owned by other roles. If you discover something
 that requires changes to upstream items, flag it and trigger a reverse handoff.

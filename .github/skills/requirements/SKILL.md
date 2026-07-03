@@ -11,6 +11,7 @@ argument-hint: '[feature or system to document]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -102,13 +103,16 @@ Ask for clarity on ambiguous areas:
 ## Functional Requirements
 
 ### Must have (MVP)
+
 - FR-01: The system must [...]
 - FR-02: The system must [...]
 
 ### Should have (desirable)
+
 - FR-03: [...]
 
 ### Won't have (explicitly out of scope)
+
 - [State what will NOT be built in this iteration]
 ```
 
@@ -133,6 +137,7 @@ Document known constraints:
 
 ```markdown
 ## Constraints
+
 - Budget: [if relevant]
 - Timeline: [hard deadline if any]
 - Technology: [must use X, cannot use Y]
@@ -140,6 +145,7 @@ Document known constraints:
 - Existing systems: [must integrate with X]
 
 ## Assumptions
+
 - [Things assumed true that could invalidate requirements if wrong]
 ```
 
@@ -149,6 +155,7 @@ What does "done" look like? How do we know the requirements are met?
 
 ```markdown
 ## Success Criteria
+
 - [ ] [Measurable outcome 1]
 - [ ] [Measurable outcome 2]
 - [ ] [Acceptance test: given X, when Y, then Z]
@@ -160,6 +167,7 @@ List anything that is unclear and needs a decision before work begins:
 
 ```markdown
 ## Open Questions
+
 - [ ] [Question] — Owner: [who decides] — Deadline: [when needed]
 ```
 
@@ -175,24 +183,31 @@ Write all findings to `docs/product/requirements.md`:
 **Author:** product role
 
 ## Problem Statement
+
 [...]
 
 ## Users & Stakeholders
+
 [table]
 
 ## Functional Requirements
+
 [...]
 
 ## Non-Functional Requirements
+
 [table]
 
 ## Constraints & Assumptions
+
 [...]
 
 ## Success Criteria
+
 [...]
 
 ## Open Questions
+
 [...]
 ```
 

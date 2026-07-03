@@ -3,6 +3,7 @@ name: git
 description: 'Git and release hygiene conventions. Use when creating commits, branches, or release-related changes.'
 applyTo: '**/*'
 ---
+
 Use these Git and release hygiene conventions in this project.
 
 ## Branch naming

@@ -11,6 +11,7 @@ argument-hint: '[plan or system to review]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -227,7 +228,7 @@ Not every item is required, but each should be consciously decided:
 >
 > Alerts fire when an SLO is at risk. Not every project needs formal SLOs — but every project benefits from knowing what "degraded" looks like.
 
-*Observability is first-class scope, not post-launch cleanup.*
+_Observability is first-class scope, not post-launch cleanup._
 
 1. What structured log events are emitted at key decision points?
 1. What metrics are introduced? Are SLOs defined?

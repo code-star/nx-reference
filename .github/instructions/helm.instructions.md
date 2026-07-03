@@ -3,6 +3,7 @@ name: helm
 description: 'Helm chart conventions. Use when writing or reviewing Helm charts, templates, and values files.'
 applyTo: '**/charts/**/*.{yaml,yml,tpl}'
 ---
+
 Use these Helm conventions in this project.
 
 ## Chart structure

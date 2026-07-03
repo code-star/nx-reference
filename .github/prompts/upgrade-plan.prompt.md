@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Build a safe upgrade plan with sequencing, compatibility checks, and rollback points.
 
 Use repository docs, manifests, and test constraints.

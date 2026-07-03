@@ -27,7 +27,7 @@ scaffolded and the preserved artifacts (UI design, business logic, stories, docs
   debugging cost across 10 hops exceeds a clean rebuild for a codebase this small.
 - **Keep `@angular-architects/module-federation`:** diverges from Nx's first-party MF direction and
   carries its own upgrade cadence; rejected in favour of ADR-0003.
-- **Freeze versions / do nothing:** fails the goal of demonstrating the *newest* Nx MF method.
+- **Freeze versions / do nothing:** fails the goal of demonstrating the _newest_ Nx MF method.
 
 ## rationale
 

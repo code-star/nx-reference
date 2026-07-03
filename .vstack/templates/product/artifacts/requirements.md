@@ -5,14 +5,14 @@
 > Maintained by: **product** role\
 > Last updated: YYYY-MM-DD
 
-______________________________________________________________________
+---
 
 ## context
 
 <!-- One paragraph: what is this product, who uses it, and what problem does it solve?
 Reference vision.md rather than restating it in full. -->
 
-______________________________________________________________________
+---
 
 ## functional requirements
 
@@ -25,7 +25,7 @@ ______________________________________________________________________
 <!-- What the system must do. Use "must", "should", "may" to signal priority.
 Add a row to the index and a matching FR-N section for each requirement. -->
 
-______________________________________________________________________
+---
 
 ## non-functional requirements
 
@@ -33,7 +33,7 @@ ______________________________________________________________________
 | ----- | ----------- |
 | NFR-1 |             |
 
-______________________________________________________________________
+---
 
 ## success criteria
 

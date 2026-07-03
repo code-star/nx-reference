@@ -11,6 +11,7 @@ argument-hint: '[resource type or stack name, e.g. VPC | RDS | ECS service | Lam
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -62,7 +63,7 @@ aws cloudformation list-stacks \
 ## Step 1: Template Structure
 
 ```yaml
-AWSTemplateFormatVersion: "2010-09-09"
+AWSTemplateFormatVersion: '2010-09-09'
 Description: >
   One-line description of what this stack provisions.
   Used in the AWS Console — keep it informative.
@@ -71,13 +72,13 @@ Metadata:
   AWS::CloudFormation::Interface:
     ParameterGroups:
       - Label:
-          default: "Network Configuration"
+          default: 'Network Configuration'
         Parameters:
           - VpcId
           - SubnetIds
     ParameterLabels:
       VpcId:
-        default: "VPC ID"
+        default: 'VPC ID'
 
 Parameters:
   Environment:
@@ -100,7 +101,7 @@ Outputs:
     Description: Load balancer DNS name
     Value: !GetAtt LoadBalancer.DNSName
     Export:
-      Name: !Sub "${AWS::StackName}-ServiceEndpoint"
+      Name: !Sub '${AWS::StackName}-ServiceEndpoint'
 ```
 
 ## Step 2: Parameters
@@ -148,7 +149,7 @@ Resources:
   AppSecurityGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
-      GroupName: !Sub "${AWS::StackName}-app-${Environment}"
+      GroupName: !Sub '${AWS::StackName}-app-${Environment}'
       VpcId: !Ref VpcId
       Tags:
         - Key: Environment
@@ -175,7 +176,7 @@ Resources:
 ```yaml
 # Cross-stack reference — import an export from another stack
 DatabaseEndpoint: !ImportValue
-  Fn::Sub: "${NetworkStackName}-DatabaseEndpoint"
+  Fn::Sub: '${NetworkStackName}-DatabaseEndpoint'
 ```
 
 ## Step 5: Conditions
@@ -184,12 +185,12 @@ DatabaseEndpoint: !ImportValue
 Conditions:
   IsProd: !Equals [!Ref Environment, prod]
   IsNotProd: !Not [Condition: IsProd]
-  EnableDeletion: !Equals [!Ref EnableDeletion, "true"]
+  EnableDeletion: !Equals [!Ref EnableDeletion, 'true']
 
 Resources:
   ReadReplica:
     Type: AWS::RDS::DBInstance
-    Condition: IsProd   # only created in prod
+    Condition: IsProd # only created in prod
     Properties:
       # ...
 
@@ -210,13 +211,13 @@ Outputs:
     Description: VPC ID for use by dependent stacks.
     Value: !Ref VPC
     Export:
-      Name: !Sub "${AWS::StackName}-VpcId"
+      Name: !Sub '${AWS::StackName}-VpcId'
 
   PrivateSubnetIds:
     Description: Comma-separated private subnet IDs.
-    Value: !Join [",", [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]
+    Value: !Join [',', [!Ref PrivateSubnet1, !Ref PrivateSubnet2]]
     Export:
-      Name: !Sub "${AWS::StackName}-PrivateSubnetIds"
+      Name: !Sub '${AWS::StackName}-PrivateSubnetIds'
 ```
 
 **Cross-stack dependency rules:**
@@ -315,7 +316,7 @@ AppSecurityGroup:
       - IpProtocol: tcp
         FromPort: 443
         ToPort: 443
-        CidrIp: 0.0.0.0/0   # HTTPS only — review for internal services
+        CidrIp: 0.0.0.0/0 # HTTPS only — review for internal services
 ```
 
 **cfn-lint errors to enforce:** `E3001` (invalid resource type), `W3045` (unrestricted SG ingress), `E3030` (invalid property values).

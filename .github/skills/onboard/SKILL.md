@@ -11,6 +11,7 @@ argument-hint: '[repository or service to document]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -164,11 +165,11 @@ Welcome. This guide gets you from zero to a merged PR.
 
 ## Prerequisites
 
-| Tool | Version | Install |
-|------|---------|---------|
-| Python | >= X.Y | [pyenv](https://github.com/pyenv/pyenv) |
-| Poetry | >= X.Y | `pip install poetry` |
-| make | any | system package manager |
+| Tool   | Version | Install                                 |
+| ------ | ------- | --------------------------------------- |
+| Python | >= X.Y  | [pyenv](https://github.com/pyenv/pyenv) |
+| Poetry | >= X.Y  | `pip install poetry`                    |
+| make   | any     | system package manager                  |
 
 ## Setup
 
@@ -257,7 +258,6 @@ Link to docs/architecture/overview.md for details.\]
 ## Getting Help
 
 [Slack channel / GitHub Discussions / email — whatever is appropriate]
-
 ````
 
 ## Step 6: Supplement README (if needed)
@@ -275,7 +275,6 @@ Quick start:
 [one-liner setup command]
 [one-liner test command]
 ```
-
 ````
 
 ## Output

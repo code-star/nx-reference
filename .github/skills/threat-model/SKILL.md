@@ -11,6 +11,7 @@ argument-hint: '[system, component, or architecture to threat model]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -210,26 +211,33 @@ For each high-priority threat include:
 # Threat Model — [System] — [Date]
 
 ## Scope and Context
+
 - System and boundaries
 - Critical assets
 - Assumptions and exclusions
 
 ## Architecture and Data Flow
+
 [diagram + concise narrative]
 
 ## STRIDE Threat Inventory
+
 | ID | Component/Flow | Category | Threat | Current Controls | Gaps | Mitigation |
 
 ## DREAD Prioritization (if used)
+
 | ID | Damage | Reproducibility | Exploitability | Affected Users | Discoverability | Score | Priority |
 
 ## PASTA Expansion (if used)
+
 [business objectives, attack simulation summary, business-impact alignment]
 
 ## Priority Mitigation Plan
+
 | Priority | Threat ID | Control | Owner | Verification | Target |
 
 ## Residual Risk and Decisions
+
 - accepted risks
 - escalations needed
 - decisions requiring ADR or product sign-off

@@ -6,7 +6,7 @@ Status values: shipped | planned | candidate | not planned -->
 > Maintained by: **product** role\
 > Last updated: YYYY-MM-DD
 
-______________________________________________________________________
+---
 
 ## status overview
 
@@ -18,7 +18,7 @@ ______________________________________________________________________
 
 Legend: **shipped** = done; **planned** = committed for next release; **candidate** = optional, not committed; **not planned** = evaluated and intentionally excluded.
 
-______________________________________________________________________
+---
 
 ## shipped
 
@@ -33,7 +33,7 @@ Reference ADRs or design docs where relevant. Add [v{version}] in the heading if
 - what changed and why it matters
 - any ADR or design doc reference
 
-______________________________________________________________________
+---
 
 ## planned
 
@@ -50,7 +50,7 @@ Planned direction:
 - key deliverable
 - any dependency or prerequisite
 
-______________________________________________________________________
+---
 
 ## candidates
 
@@ -62,7 +62,7 @@ rationale for why this is on the radar, rough shape, and what would trigger prio
 <!-- What is this and why is it on the radar?
 What would need to be true for this to become planned? -->
 
-______________________________________________________________________
+---
 
 ## not planned
 

@@ -3,6 +3,7 @@ name: testing
 description: 'Test authoring conventions for any language or framework. Use when writing or reviewing tests, test plans, or test coverage decisions.'
 applyTo: '**/*'
 ---
+
 Use these testing conventions in this project.
 
 ## Scope and intent

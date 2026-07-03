@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Assess this repository for production-readiness gaps and prioritized improvement opportunities.
 
 Focus on evidence found in source files, tests, CI configuration, docs, and manifests.

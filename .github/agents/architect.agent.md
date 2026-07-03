@@ -30,6 +30,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # architect
 
 ## identity and purpose

@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Review workflow stage flow, gate usage, and handoff integrity across role artifacts.
 
 Focus on evidence in workflow config, role templates, and docs.

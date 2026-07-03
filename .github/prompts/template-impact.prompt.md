@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Assess impact of a template change on generated artifacts, tests, and release risk.
 
 Use source-template and generated-artifact evidence.

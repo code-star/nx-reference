@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Check source templates against generated artifacts and identify drift or missing regeneration.
 
 Compare `src/vstack/_templates/` sources against their installed counterparts in `.github/`

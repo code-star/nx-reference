@@ -11,6 +11,7 @@ argument-hint: '[decision to record]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -85,6 +86,7 @@ Include:
 
 ```markdown
 ## Context
+
 [2-4 paragraphs explaining the situation, constraints, and why this matters]
 ```
 
@@ -94,12 +96,14 @@ List all serious options that were evaluated. For each:
 
 ```markdown
 ### Option A: [Name]
+
 **Description:** [What this option is]
 **Pros:**
+
 - [...]
-**Cons:**
+  **Cons:**
 - [...]
-**Why rejected:** [or "this is the chosen option"]
+  **Why rejected:** [or "this is the chosen option"]
 ```
 
 Include at least 2-3 alternatives. Including a "do nothing" option is recommended.
@@ -110,6 +114,7 @@ State the chosen option clearly:
 
 ```markdown
 ## Decision
+
 We will [chosen option].
 
 [1-2 sentences on why this option was selected over alternatives]
@@ -121,6 +126,7 @@ Explain the reasoning in depth:
 
 ```markdown
 ## Rationale
+
 [Detailed explanation: what made this the right choice given the context and constraints.
 Reference specific cons from rejected options and explain why they were acceptable tradeoffs.]
 ```
@@ -131,12 +137,15 @@ Reference specific cons from rejected options and explain why they were acceptab
 ## Consequences
 
 ### Positive
+
 - [Expected benefits]
 
 ### Negative / Tradeoffs
+
 - [Known downsides or limitations of this choice]
 
 ### Risks
+
 - [What could go wrong, and how we'd detect or mitigate it]
 ```
 
@@ -144,6 +153,7 @@ Reference specific cons from rejected options and explain why they were acceptab
 
 ```markdown
 ## Related ADRs
+
 - ADR-NNN: [title] — [relationship: supersedes / related to / depends on]
 ```
 
@@ -159,21 +169,27 @@ is a kebab-case title.
 **Status:** proposed | accepted | rejected | deprecated | superseded
 
 ## Context
+
 [...]
 
 ## Decision
+
 [...]
 
 ## Alternatives Considered
+
 [...]
 
 ## Rationale
+
 [...]
 
 ## Consequences
+
 [...]
 
 ## Related ADRs
+
 [...]
 ```
 

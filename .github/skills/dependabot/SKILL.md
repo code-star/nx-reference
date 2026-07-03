@@ -11,6 +11,7 @@ argument-hint: '[repository type: library | service | monorepo, and ecosystems t
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -96,10 +97,10 @@ Every entry needs at minimum:
 version: 2
 
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
+  - package-ecosystem: 'pip'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
 ```
 
 Default schedule: weekly on Monday. Add `time` and `timezone` for
@@ -107,10 +108,10 @@ predictable windows:
 
 ```yaml
 schedule:
-  interval: "weekly"
-  day: "monday"
-  time: "09:00"
-  timezone: "Europe/Amsterdam"
+  interval: 'weekly'
+  day: 'monday'
+  time: '09:00'
+  timezone: 'Europe/Amsterdam'
 ```
 
 ## Step 3: Full Example (common stack)
@@ -120,34 +121,34 @@ version: 2
 
 updates:
   # Python dependencies
-  - package-ecosystem: "pip"
-    directory: "/"
+  - package-ecosystem: 'pip'
+    directory: '/'
     schedule:
-      interval: "weekly"
-      day: "monday"
+      interval: 'weekly'
+      day: 'monday'
     groups:
       python-deps:
-        dependency-type: "production"
-        update-types: ["minor", "patch"]
+        dependency-type: 'production'
+        update-types: ['minor', 'patch']
       python-dev-deps:
-        dependency-type: "development"
-        update-types: ["minor", "patch"]
+        dependency-type: 'development'
+        update-types: ['minor', 'patch']
     commit-message:
-      prefix: "deps"
+      prefix: 'deps'
     labels:
-      - "dependencies"
-      - "python"
+      - 'dependencies'
+      - 'python'
 
   # GitHub Actions
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  - package-ecosystem: 'github-actions'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     commit-message:
-      prefix: "ci"
+      prefix: 'ci'
     labels:
-      - "dependencies"
-      - "ci"
+      - 'dependencies'
+      - 'ci'
 ```
 
 ## Step 4: Grouping Strategies
@@ -159,11 +160,11 @@ Reduce PR noise by grouping related updates.
 ```yaml
 groups:
   dev-dependencies:
-    dependency-type: "development"
-    update-types: ["minor", "patch"]
+    dependency-type: 'development'
+    update-types: ['minor', 'patch']
   production-dependencies:
-    dependency-type: "production"
-    update-types: ["minor", "patch"]
+    dependency-type: 'production'
+    update-types: ['minor', 'patch']
 ```
 
 ### By name pattern
@@ -171,10 +172,10 @@ groups:
 ```yaml
 groups:
   aws-sdk:
-    patterns: ["boto3", "botocore", "aws-*"]
-    update-types: ["minor", "patch"]
+    patterns: ['boto3', 'botocore', 'aws-*']
+    update-types: ['minor', 'patch']
   testing:
-    patterns: ["pytest*", "coverage*", "mypy*"]
+    patterns: ['pytest*', 'coverage*', 'mypy*']
 ```
 
 ### For security updates only
@@ -183,8 +184,8 @@ groups:
 groups:
   security-patches:
     applies-to: security-updates
-    patterns: ["*"]
-    update-types: ["patch", "minor"]
+    patterns: ['*']
+    update-types: ['patch', 'minor']
 ```
 
 **Rules:**
@@ -198,13 +199,13 @@ groups:
 Use `directories` (plural) with glob patterns — `directory` (singular) does not support globs:
 
 ```yaml
-- package-ecosystem: "npm"
+- package-ecosystem: 'npm'
   directories:
-    - "/"
-    - "/apps/*"
-    - "/packages/*"
+    - '/'
+    - '/apps/*'
+    - '/packages/*'
   schedule:
-    interval: "weekly"
+    interval: 'weekly'
 ```
 
 If a subdirectory has its own lockfile outside the workspace, add a separate
@@ -221,8 +222,8 @@ To group security PRs:
 groups:
   security-patches:
     applies-to: security-updates
-    patterns: ["*"]
-    update-types: ["patch", "minor"]
+    patterns: ['*']
+    update-types: ['patch', 'minor']
 ```
 
 To disable version update PRs and keep only security updates:
@@ -237,23 +238,23 @@ open-pull-requests-limit: 0
 
 ```yaml
 ignore:
-  - dependency-name: "django"
-    versions: ["4.x", "5.x"]
+  - dependency-name: 'django'
+    versions: ['4.x', '5.x']
 ```
 
 ### Only update production dependencies
 
 ```yaml
 allow:
-  - dependency-type: "production"
+  - dependency-type: 'production'
 ```
 
 ### Exclude vendor paths
 
 ```yaml
 exclude-paths:
-  - "vendor/**"
-  - "test/fixtures/**"
+  - 'vendor/**'
+  - 'test/fixtures/**'
 ```
 
 ## Step 8: Advanced Options
@@ -283,8 +284,8 @@ registries:
     token: ${{ secrets.PYPI_TOKEN }}
 
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
+  - package-ecosystem: 'pip'
+    directory: '/'
     registries:
       - pypi-private
 ```

@@ -11,6 +11,7 @@ argument-hint: '[project or package manifest to audit]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.

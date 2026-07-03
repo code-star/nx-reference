@@ -9,6 +9,7 @@ tools:
   - search
   - edit
 ---
+
 Review the selected code or diff for production risk.
 
 Focus only on issues with real impact:

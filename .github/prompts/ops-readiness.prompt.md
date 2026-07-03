@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Assess operational readiness across observability, runbooks, failure handling, and supportability.
 
 Use evidence from code, tests, docs, and runbooks.

@@ -28,6 +28,7 @@ model:
 user-invocable: true
 target: vscode
 ---
+
 # engineer
 
 ## identity and purpose
@@ -176,8 +177,6 @@ what work is needed:
 | `tests/**/*`                       |                                        |
 | `issues/{id}-{slug}-rca.md`        | when working on an issue               |
 | `issues/{id}-{slug}-postmortem.md` | when stakeholder impact is significant |
-
-
 
 Agents do not write to items owned by other roles. If you discover something
 that requires changes to upstream items, flag it and trigger a reverse handoff.

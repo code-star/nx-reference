@@ -11,6 +11,7 @@ argument-hint: '[API or service to design]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -221,24 +222,31 @@ Output a complete design document to `docs/design/overview.md` or `openapi.yaml`
 # API Design — [Service Name]
 
 ## Overview
+
 [One paragraph purpose]
 
 ## Resources
+
 [Entity diagram + table]
 
 ## Endpoints
+
 [Endpoint table]
 
 ## Conventions
+
 [Request/response envelope, error codes, pagination]
 
 ## Versioning
+
 [Strategy and policy]
 
 ## Authentication
+
 [Auth flow and token lifecycle]
 
 ## Security
+
 [Input validation, rate limiting, CORS policy]
 ```
 

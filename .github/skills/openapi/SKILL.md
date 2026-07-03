@@ -11,6 +11,7 @@ argument-hint: '[API or spec file to write or review]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -75,11 +76,11 @@ find . -name 'openapi*.yaml' -o -name 'openapi*.json' \
 Every OpenAPI 3.1 spec must have:
 
 ```yaml
-openapi: "3.1.0"
+openapi: '3.1.0'
 
 info:
   title: Service Name API
-  version: "1.0.0"
+  version: '1.0.0'
   description: |
     One paragraph describing the service purpose.
   contact:
@@ -184,11 +185,11 @@ components:
         code:
           type: string
           description: Machine-readable error code
-          example: "VALIDATION_ERROR"
+          example: 'VALIDATION_ERROR'
         message:
           type: string
           description: Human-readable description
-          example: "email must be a valid email address"
+          example: 'email must be a valid email address'
         details:
           type: array
           description: Field-level validation errors
@@ -198,14 +199,14 @@ components:
             properties:
               field:
                 type: string
-                example: "email"
+                example: 'email'
               message:
                 type: string
-                example: "must be a valid email address"
+                example: 'must be a valid email address'
         request_id:
           type: string
           description: Correlation ID for tracing
-          example: "req_01HZ..."
+          example: 'req_01HZ...'
 ```
 
 Check:
@@ -276,27 +277,27 @@ components:
   schemas:
     User:
       type: object
-      required: [id, email, created_at]    # ← explicit required list
+      required: [id, email, created_at] # ← explicit required list
       properties:
         id:
           type: string
           format: uuid
-          readOnly: true                   # ← readOnly for server-generated fields
-          example: "01HZ..."
+          readOnly: true # ← readOnly for server-generated fields
+          example: '01HZ...'
         email:
           type: string
           format: email
-          example: "user@example.com"
+          example: 'user@example.com'
         name:
           type: string
           minLength: 1
           maxLength: 255
-          example: "Alice"
+          example: 'Alice'
         created_at:
           type: string
           format: date-time
           readOnly: true
-          example: "2026-01-01T00:00:00Z"
+          example: '2026-01-01T00:00:00Z'
 ```
 
 Check:
@@ -324,7 +325,7 @@ components:
       name: X-API-Key
 
 security:
-  - bearerAuth: []   # Global default
+  - bearerAuth: [] # Global default
 ```
 
 Override at operation level where needed:
@@ -333,7 +334,7 @@ Override at operation level where needed:
 paths:
   /health:
     get:
-      security: []   # Public endpoint — no auth required
+      security: [] # Public endpoint — no auth required
 ```
 
 Check:
@@ -364,8 +365,8 @@ Check:
 /users/{userId}:
   get:
     deprecated: true
-    x-sunset: "2027-01-01"
-    description: "Deprecated. Use /v2/users/{userId} instead."
+    x-sunset: '2027-01-01'
+    description: 'Deprecated. Use /v2/users/{userId} instead.'
 ```
 
 ## Output

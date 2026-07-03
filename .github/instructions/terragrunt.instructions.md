@@ -3,6 +3,7 @@ name: terragrunt
 description: 'Terragrunt coding conventions for projects. Use when writing or reviewing Terragrunt HCL configurations, root configs, unit modules, and dependency blocks.'
 applyTo: '**/terragrunt.hcl'
 ---
+
 Use these Terragrunt conventions in this project.
 
 ## Structure and hierarchy

@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Evaluate the provided architecture for delivery and runtime risk.
 
 Prioritize issues that could cause outages, data loss, severe operability pain, or major rework.

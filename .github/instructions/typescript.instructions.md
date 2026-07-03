@@ -3,6 +3,7 @@ name: typescript
 description: 'TypeScript coding conventions for projects. Use when writing or reviewing TypeScript or JavaScript modules, components, and package internals.'
 applyTo: '**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}'
 ---
+
 Use these TypeScript conventions in this project.
 
 ## Type safety

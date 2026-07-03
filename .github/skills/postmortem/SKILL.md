@@ -11,6 +11,7 @@ argument-hint: '[incident to write a post-mortem for]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -151,8 +152,8 @@ Write to the confirmed output path:
 ## timeline
 
 | Time (UTC) | Event |
-| --- | --- |
-| HH:MM | |
+| ---------- | ----- |
+| HH:MM      |       |
 
 ## impact
 
@@ -163,7 +164,7 @@ Write to the confirmed output path:
 ## action items
 
 | Item | Owner | Due | Status |
-| --- | --- | --- | --- |
+| ---- | ----- | --- | ------ |
 
 ## lessons learned
 ```

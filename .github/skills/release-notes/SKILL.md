@@ -11,6 +11,7 @@ argument-hint: '[version or changes to release]'
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -101,24 +102,29 @@ Use this structure:
 # Release {date}
 
 ## Summary
+
 [1–3 sentences: what changed and why it matters to users]
 
 ## What's new
+
 - [user-visible feature or fix — lead with what the user can now DO]
 
 ## Fixed
+
 - [bug fixes]
 
 ## Internal
+
 - [infra, tooling, tests — optional]
 
 ## Evidence reviewed
-| evidence | status |
-|----------|--------|
-| [requirements artifact] | ✓ |
-| [architecture artifact] | ✓ |
-| [test report] | ✓ |
-| [security report] | ✓ |
+
+| evidence                | status |
+| ----------------------- | ------ |
+| [requirements artifact] | ✓      |
+| [architecture artifact] | ✓      |
+| [test report]           | ✓      |
+| [security report]       | ✓      |
 ```
 
 Rules:
@@ -135,12 +141,15 @@ Prepend a new entry at the top of `CHANGELOG.md`:
 ## {version or date}
 
 ### What's new
+
 - [user-visible changes]
 
 ### Fixed
+
 - [bug fixes]
 
 ### Internal
+
 - [optional]
 ```
 

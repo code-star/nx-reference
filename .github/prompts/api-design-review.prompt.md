@@ -8,6 +8,7 @@ tools:
   - read
   - search
 ---
+
 Review the provided API design or OpenAPI specification for correctness, completeness, and consistency.
 
 Focus on issues that affect consumers: breaking contracts, ambiguous semantics, missing error cases, and inconsistent conventions.

@@ -11,6 +11,7 @@ argument-hint: '[provider: aws | azure | gcp | generic, and scope: new resource 
 user-invocable: true
 disable-model-invocation: false
 ---
+
 ## Skill Context
 
 This skill is part of **vstack** — a VS Code-native AI engineering workflow system.
@@ -284,7 +285,7 @@ Set up drift detection in CI:
 ```yaml
 - name: Terraform plan (drift check)
   run: terraform plan -detailed-exitcode -no-color
-  continue-on-error: false  # fail CI on drift
+  continue-on-error: false # fail CI on drift
 ```
 
 ## Step 10: State Operations (high risk)
