@@ -1,0 +1,23 @@
+{
+  "imports": {
+    "@angular/common": "_angular_common.n-i30YJZeg.js",
+    "@angular/common/http": "_angular_common_http.x0NAm90DfL.js",
+    "@angular/core": "_angular_core.rVf3miuJTV.js",
+    "@angular/core/primitives/di": "_angular_core_primitives_di.4T8zzBWo_5.js",
+    "@angular/core/primitives/signals": "_angular_core_primitives_signals.53NdfOUy7D.js",
+    "@angular/platform-browser": "_angular_platform_browser.KZcdC1DXN9.js",
+    "@angular/router": "_angular_router.PeZRDOGrkZ.js",
+    "rxjs": "rxjs.CDNR_rYGA2.js",
+    "rxjs/operators": "rxjs_operators.0rFsZEjZ9h.js",
+    "@nf-internal/chunk-HNXYBGTD": "chunk-HNXYBGTD.js",
+    "@nf-internal/chunk-SELWPYJI": "chunk-SELWPYJI.js",
+    "@nf-internal/chunk-E5FJ2RS5": "chunk-E5FJ2RS5.js",
+    "@nf-internal/chunk-HQKSIQVQ": "chunk-HQKSIQVQ.js",
+    "@nf-internal/chunk-4CLCTAJ7": "chunk-4CLCTAJ7.js",
+    "@star/shared/services": "_star_shared_services-MKZGAA2N.js",
+    "@star/shared/types": "_star_shared_types-SFS3JXPA.js",
+    "@star/ui": "_star_ui-LMFQUZDM.js",
+    "root-package-json": "root_package_json-A4D5ODOE.js",
+    "@star/shared/data-access": "_star_shared_data_access-SHQOX5Q7.js"
+  }
+}

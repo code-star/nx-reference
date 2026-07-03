@@ -1,0 +1,1 @@
+import*as r from"@angular/core";var e=class t{static \u0275fac=function(o){return new(o||t)};static \u0275prov=r.\u0275\u0275defineInjectable({token:t,factory:t.\u0275fac,providedIn:"root"})};export{e as IMessageService};

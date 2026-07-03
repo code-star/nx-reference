@@ -1,0 +1,158 @@
+{
+  "name": "demo",
+  "shared": [
+    {
+      "packageName": "@angular/common",
+      "outFileName": "_angular_common.n-i30YJZeg.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/common/http",
+      "outFileName": "_angular_common_http.x0NAm90DfL.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/core",
+      "outFileName": "_angular_core.rVf3miuJTV.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/core/primitives/di",
+      "outFileName": "_angular_core_primitives_di.4T8zzBWo_5.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/core/primitives/signals",
+      "outFileName": "_angular_core_primitives_signals.53NdfOUy7D.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/platform-browser",
+      "outFileName": "_angular_platform_browser.KZcdC1DXN9.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "@angular/router",
+      "outFileName": "_angular_router.PeZRDOGrkZ.js",
+      "requiredVersion": "~21.2.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "21.2.17"
+    },
+    {
+      "packageName": "rxjs",
+      "outFileName": "rxjs.CDNR_rYGA2.js",
+      "requiredVersion": "~7.8.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "7.8.2"
+    },
+    {
+      "packageName": "rxjs/operators",
+      "outFileName": "rxjs_operators.0rFsZEjZ9h.js",
+      "requiredVersion": "~7.8.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "7.8.2"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-HNXYBGTD",
+      "outFileName": "chunk-HNXYBGTD.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-SELWPYJI",
+      "outFileName": "chunk-SELWPYJI.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-E5FJ2RS5",
+      "outFileName": "chunk-E5FJ2RS5.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-HQKSIQVQ",
+      "outFileName": "chunk-HQKSIQVQ.js"
+    },
+    {
+      "singleton": false,
+      "strictVersion": false,
+      "version": "0.0.0",
+      "requiredVersion": "0.0.0",
+      "packageName": "@nf-internal/chunk-4CLCTAJ7",
+      "outFileName": "chunk-4CLCTAJ7.js"
+    },
+    {
+      "packageName": "@star/shared/services",
+      "outFileName": "_star_shared_services-MKZGAA2N.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    },
+    {
+      "packageName": "@star/shared/types",
+      "outFileName": "_star_shared_types-SFS3JXPA.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    },
+    {
+      "packageName": "@star/ui",
+      "outFileName": "_star_ui-LMFQUZDM.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    },
+    {
+      "packageName": "root-package-json",
+      "outFileName": "root_package_json-A4D5ODOE.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    },
+    {
+      "packageName": "@star/shared/data-access",
+      "outFileName": "_star_shared_data_access-SHQOX5Q7.js",
+      "requiredVersion": "",
+      "singleton": true,
+      "strictVersion": false,
+      "version": ""
+    }
+  ],
+  "exposes": []
+}
