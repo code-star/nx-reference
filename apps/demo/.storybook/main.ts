@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/angular';
+import { join } from 'node:path';
 
 /**
  * Single deployable catalog: aggregates the demo app, the @star/ui component
@@ -15,6 +16,17 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  // Mirror the `root-package-json` tsconfig path alias for the webpack builder
+  // so MDX/story imports of the root package.json resolve during the catalog build.
+  webpackFinal: async (webpackConfig) => {
+    webpackConfig.resolve ??= {};
+    webpackConfig.resolve.alias = {
+      ...(webpackConfig.resolve.alias ?? {}),
+      'root-package-json': join(process.cwd(), 'package.json'),
+    };
+    return webpackConfig;
+  },
 };
 
 export default config;
+

@@ -1,0 +1,71 @@
+name: Deploy shell
+
+# The shell (Module Federation host) is served at the site root:
+#   http://codestar.nl/nx-reference/
+# Only apps/demo (and shared libs) changes trigger this workflow — a portfolio
+# remote change never rebuilds the shell, demonstrating module-federation
+# loose coupling.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/demo/src/**'
+      - 'apps/demo/public/**'
+      - 'apps/demo/federation.config.js'
+      - 'apps/demo/federation.manifest.prod.json'
+      - 'apps/demo/project.json'
+      - 'apps/demo/tsconfig*.json'
+      - 'libs/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'nx.json'
+      - 'tsconfig.base.json'
+      - '.github/workflows/deploy-shell.yml'
+      - '.github/actions/deploy-subdir/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Serialize with the other Pages deploys so storage-branch writes never race.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 24 🟢
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies 🔧
+        run: npm ci
+
+      - name: Build shell 🏗️
+        run: npx nx build demo --configuration=production
+
+      - name: Apply production federation manifest 🔗
+        run: cp apps/demo/federation.manifest.prod.json dist/apps/demo/browser/federation.manifest.json
+
+      - name: Assemble site root 🧩
+        uses: ./.github/actions/deploy-subdir
+        with:
+          source-dir: dist/apps/demo/browser
+          target-subdir: ''
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v5

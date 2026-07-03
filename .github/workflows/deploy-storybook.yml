@@ -1,0 +1,65 @@
+name: Deploy storybook
+
+# The aggregated Storybook catalog is served at:
+#   http://codestar.nl/nx-reference/storybook/
+# Triggered by Storybook config, story files, or shared library changes.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/demo/.storybook/**'
+      - 'libs/**'
+      - '**/*.stories.ts'
+      - '**/*.stories.tsx'
+      - '**/*.mdx'
+      - 'tsconfig.doc.json'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-storybook.yml'
+      - '.github/actions/deploy-subdir/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Serialize with the other Pages deploys so storage-branch writes never race.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v7
+
+      - name: Use Node.js 24 🟢
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies 🔧
+        run: npm ci
+
+      - name: Build Storybook 📚
+        run: |
+          npm run docs:json
+          npx nx run demo:build-storybook
+
+      - name: Assemble /storybook 🧩
+        uses: ./.github/actions/deploy-subdir
+        with:
+          source-dir: dist/storybook/demo
+          target-subdir: storybook
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages 🚀
+        id: deployment
+        uses: actions/deploy-pages@v5

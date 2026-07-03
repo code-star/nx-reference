@@ -12,7 +12,8 @@
       "options": {},
       "configurations": {
         "production": {
-          "target": "portfolio:esbuild:production"
+          "target": "portfolio:esbuild:production",
+          "baseHref": "/nx-reference/portfolio/"
         },
         "development": {
           "target": "portfolio:esbuild:development",

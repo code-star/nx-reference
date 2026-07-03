@@ -6,7 +6,7 @@ A reference monorepo demonstrating **Module Federation in Nx with Angular**, plu
 
 Made by [Codestar](https://code-star.github.io).
 
-For a component tour see the [Storybook Intro](https://code-star.github.io/nx-reference/?path=/docs/introduction--docs).
+For a component tour see the [Storybook Intro](https://code-star.github.io/nx-reference/storybook/?path=/docs/introduction--docs).
 
 > **Rebuilt on the latest toolchain** — Nx 23 · Angular 21 (standalone + signals + zoneless) ·
 > Storybook 10 · Native Federation. The full rationale and audit trail live under [`docs/`](./docs).
@@ -89,6 +89,58 @@ npx nx build-storybook demo      # build the Storybook catalog
 ```
 
 The latest verification results are recorded in [`docs/reports/test-report.md`](./docs/reports/test-report.md).
+
+## Hosting
+
+Everything is served from a **single GitHub Pages site** for this repo
+(`code-star.github.io/nx-reference/`) using
+subdirectory deployment:
+
+| URL                                         | Serves                                                            |
+| ------------------------------------------- | ----------------------------------------------------------------- |
+| `http://codestar.nl/nx-reference/`          | Shell — Module Federation host (`apps/demo`)                      |
+| `http://codestar.nl/nx-reference/portfolio` | Portfolio remote micro app + `remoteEntry.json` (`apps/portfolio`) |
+| `http://codestar.nl/nx-reference/storybook` | Storybook component catalog                                       |
+
+The `server` Express app is not deployed to Pages.
+
+### How it works
+
+- Each app builds with its own base href (`/nx-reference/` for the shell,
+  `/nx-reference/portfolio/` for the remote — set on the production build
+  configuration in each `project.json`) and is published to its own subdirectory.
+- At runtime the shell reads `federation.manifest.json`. The production manifest
+  ([`apps/demo/federation.manifest.prod.json`](./apps/demo/federation.manifest.prod.json))
+  points the `portfolio` remote at `/nx-reference/portfolio/remoteEntry.json`;
+  the committed dev manifest keeps pointing at `http://localhost:4201` so local
+  development is unchanged.
+- A root `404.html` (copy of the shell `index.html`) plus a `.nojekyll` marker
+  provide SPA deep-link fallback on GitHub Pages.
+
+### Independent deployments
+
+Three path-filtered workflows deploy each piece **independently**, all through the
+`actions/deploy-pages` action:
+
+| Workflow                                   | Triggered by                          | Deploys       |
+| ------------------------------------------ | ------------------------------------- | ------------- |
+| `.github/workflows/deploy-shell.yml`       | `apps/demo/**`, shared libs           | site root `/` |
+| `.github/workflows/deploy-portfolio.yml`   | `apps/portfolio/**`, shared libs      | `/portfolio`  |
+| `.github/workflows/deploy-storybook.yml`   | `.storybook`, story files, shared libs | `/storybook`  |
+
+A change confined to `apps/portfolio` rebuilds and redeploys **only** the portfolio
+remote — the shell is never rebuilt, and vice-versa. That is the module-federation
+payoff: host and remotes are decoupled at deploy time.
+
+Because `deploy-pages` publishes one artifact that replaces the whole site, the
+shared [`.github/actions/deploy-subdir`](./.github/actions/deploy-subdir) composite
+action keeps the full assembled site on a `pages-content` storage branch and
+overlays only the changed subdirectory before each deploy. All Pages deploys share a
+`pages` concurrency group so they serialise safely.
+
+> **Setup:** set the repo's **Settings → Pages → Source** to **GitHub Actions**, then
+> trigger each workflow once via **Run workflow** (`workflow_dispatch`) to seed all
+> three subdirectories on the first deploy.
 
 ## Documentation & audit trail
 
