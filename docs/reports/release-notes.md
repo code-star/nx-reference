@@ -35,9 +35,9 @@ Angular UI component library, an Express backend, and a deployed Storybook catal
 ## Upgrade / run notes
 
 - Requires **Node 24**.
-- Run the catalog: `yarn docs:json && yarn nx storybook demo`.
-- Run the MF demo: `yarn nx serve portfolio` and `yarn nx serve demo` (two terminals).
-- Run the backend: `yarn nx serve server`.
+- Run the catalog: `npm run docs:json && npx nx storybook demo`.
+- Run the MF demo: `npx nx serve portfolio` and `npx nx serve demo` (two terminals).
+- Run the backend: `npx nx serve server`.
 
 ## Known issues / follow-ups
 

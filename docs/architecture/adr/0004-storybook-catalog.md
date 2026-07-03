@@ -49,7 +49,7 @@ into core; `addon-storysource` behaviour differs); the Angular framework package
   in Phase 7; if incompatible, docs extraction strategy changes (recorded here).
 - Migration note (resolved in Phase 7): **framework = `@storybook/angular` 10.4.6** (webpack builder);
   **compodoc = kept** (pinned `@compodoc/compodoc@1.2.1`, which resolves the Angular-21 devkit and
-  runs on Node 24; `yarn docs:json` emits `documentation.json`, loaded via `setCompodocJson` in
+  runs on Node 24; `npm run docs:json` emits `documentation.json`, loaded via `setCompodocJson` in
   `.storybook/preview.ts`); **storysource = dropped** (removed from Storybook's core addon set in
   SB10; superseded by the source view in `@storybook/addon-docs`).
 
@@ -66,4 +66,4 @@ into core; `addon-storysource` behaviour differs); the Angular framework package
   (`intro.mdx`, `message.mdx`) using `@storybook/addon-docs/blocks`. `tags: ['autodocs']` drives the
   Docs tab; component arg/`@Input` descriptions come from compodoc.
 - Static output goes to `dist/storybook/demo` to preserve the GitHub Pages deploy contract
-  (`.github/workflows/prod.yml`), which now runs `yarn docs:json` before `demo:build-storybook`.
+  (`.github/workflows/prod.yml`), which now runs `npm run docs:json` before `demo:build-storybook`.

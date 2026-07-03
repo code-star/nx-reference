@@ -30,7 +30,7 @@ over using a newer, unsupported Angular major.
 | Module Federation  | Nx-native `@nx/module-federation` + `withModuleFederation` (see ADR-0003)    |
 | Unit tests         | Jest for spec parity (see ADR-0005)                                          |
 | Language           | TypeScript 5.9.x (installed by `@nx/angular` init)                           |
-| Package manager    | Yarn 1 (continuity with existing `yarn.lock` workflow)                       |
+| Package manager    | npm (uses `package-lock.json`)                                               |
 | npm scope          | `@star` (preserve `@star/*` import paths via `--importPath`)                 |
 | Docs for Storybook | Compodoc (`documentation.json`) if compatible with Angular 21                |
 

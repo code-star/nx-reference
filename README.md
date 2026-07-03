@@ -48,20 +48,20 @@ npm scope is `@star`; element selectors use the `star-` prefix (e.g. `<star-prim
 Requires Node 24.
 
 ```bash
-yarn install
+npm install
 ```
 
 ### Run the Storybook component catalog
 
 ```bash
-yarn docs:json          # generate compodoc documentation.json (feeds the Docs tab)
-yarn nx storybook demo  # serve the aggregated catalog on http://localhost:4400
+npm run docs:json          # generate compodoc documentation.json (feeds the Docs tab)
+npx nx storybook demo  # serve the aggregated catalog on http://localhost:4400
 ```
 
 Build the static catalog (deployed to GitHub Pages):
 
 ```bash
-yarn docs:json && yarn nx build-storybook demo   # → dist/storybook/demo
+npm run docs:json && npx nx build-storybook demo   # → dist/storybook/demo
 ```
 
 ### Run the Module Federation demo
@@ -69,23 +69,23 @@ yarn docs:json && yarn nx build-storybook demo   # → dist/storybook/demo
 Serve the remote and the host in two terminals:
 
 ```bash
-yarn nx serve portfolio   # remote on http://localhost:4201
-yarn nx serve demo        # host on http://localhost:4200 (lazy-loads the portfolio remote)
+npx nx serve portfolio   # remote on http://localhost:4201
+npx nx serve demo        # host on http://localhost:4200 (lazy-loads the portfolio remote)
 ```
 
 ### Run the backend
 
 ```bash
-yarn nx serve server      # Express API on http://localhost:3333 (GET /api/btc)
+npx nx serve server      # Express API on http://localhost:3333 (GET /api/btc)
 ```
 
 ## Quality gates
 
 ```bash
-yarn nx run-many -t lint          # lint all projects
-yarn nx run-many -t test          # unit tests (Jest)
-yarn nx run-many -t build         # build the apps
-yarn nx build-storybook demo      # build the Storybook catalog
+npx nx run-many -t lint          # lint all projects
+npx nx run-many -t test          # unit tests (Jest)
+npx nx run-many -t build         # build the apps
+npx nx build-storybook demo      # build the Storybook catalog
 ```
 
 The latest verification results are recorded in [`docs/reports/test-report.md`](./docs/reports/test-report.md).

@@ -18,15 +18,15 @@ Imports use the `@star` namespace, e.g.: `import { Rate, BtcResponse } from '@st
 
 You can clone this repo from [GitHub](https://github.com/code-star/nx-reference).
 
-- Use Node 24 and run `yarn install`.
-- Generate the component docs and start Storybook with `yarn docs:json && yarn nx storybook demo`.
+- Use Node 24 and run `npm install`.
+- Generate the component docs and start Storybook with `npm run docs:json && npx nx storybook demo`.
 - Open [http://localhost:4400](http://localhost:4400).
 
 ## Module Federation demo
 
 The catalog above documents the UI components. The runtime demo of **Module Federation** (host `demo`
 lazy-loading remote `portfolio` via [Native Federation](https://www.npmjs.com/package/@angular-architects/native-federation))
-runs separately with `yarn nx serve demo` and `yarn nx serve portfolio`.
+runs separately with `npx nx serve demo` and `npx nx serve portfolio`.
 
 ## Long form documentation example
 
