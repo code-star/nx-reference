@@ -1,16 +1,21 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Signal } from '@angular/core';
 
-export type Severity = "info" | "error";
+export type Severity = 'info' | 'error';
 
 export interface LogItem {
-    severity: string;
-    message: string;
+  severity: string;
+  message: string;
 }
 
+/**
+ * Abstract DI token for a message/log sink. `MessageService` is the concrete
+ * implementation, bound via `{ provide: IMessageService, useExisting: MessageService }`.
+ * `logs` is exposed as a signal so zoneless, OnPush consumers react to new entries.
+ */
 @Injectable({
-    providedIn: "root",
+  providedIn: 'root',
 })
 export abstract class IMessageService {
-    abstract logs: LogItem[];
-    abstract log: (msg: string, severity: Severity) => void;
+  abstract readonly logs: Signal<LogItem[]>;
+  abstract log(message: string, severity: Severity): void;
 }

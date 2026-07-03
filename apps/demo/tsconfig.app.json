@@ -1,10 +1,17 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "outDir": "../../dist/out-tsc",
-        "types": []
-    },
-    "files": ["src/main.ts", "src/polyfills.ts"],
-    "include": ["src/**/*.d.ts"],
-    "exclude": ["**/*.stories.ts", "**/*.stories.js"]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "types": []
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "jest.config.ts",
+    "jest.config.cts",
+    "src/test-setup.ts",
+    "**/*.stories.ts",
+    "**/*.stories.js"
+  ]
 }

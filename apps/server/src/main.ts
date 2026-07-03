@@ -1,27 +1,27 @@
 /**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
+ * Minimal backend for the demo: exposes the BTC rate used by the host app.
  */
-
-import * as express from "express";
-import * as cors from "cors";
-import { btc } from "@star/btc";
-import { BtcResponse } from "@star/shared/types";
+import express from 'express';
+import cors from 'cors';
+import { btc } from '@star/btc';
+import { BtcResponse } from '@star/shared/types';
 
 const app = express();
 
 app.use(cors());
 
-app.get("/api", (req, res) => {
-    res.send({ message: "Welcome to server!" });
+app.get('/api', (req, res) => {
+  res.send({ message: 'Welcome to server!' });
 });
 
-app.get("/api/btc", (req, res) => {
-    res.send({ btc: btc() } as BtcResponse);
+app.get('/api/btc', (req, res) => {
+  res.send({ btc: btc() } satisfies BtcResponse);
 });
 
-const port = process.env.port || 3333;
-const server = app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}/api`);
+const host = process.env.HOST ?? 'localhost';
+const port = process.env.PORT ? Number(process.env.PORT) : 3333;
+
+const server = app.listen(port, host, () => {
+  console.log(`Listening at http://${host}:${port}/api`);
 });
-server.on("error", console.error);
+server.on('error', console.error);

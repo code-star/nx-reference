@@ -1,0 +1,10 @@
+<star-primary-button [disabled]="loading()">
+  <div class="flex">
+    <div>
+      <ng-content></ng-content>
+    </div>
+    @if (loading()) {
+    <star-icon class="img-spin" type="loading"></star-icon>
+    }
+  </div>
+</star-primary-button>

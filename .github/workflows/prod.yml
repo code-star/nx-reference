@@ -7,12 +7,11 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [15.0.1] # Test other node versions, e.g.: [12.16.1, 15.x, 16.x]
+        node-version: [24.x] # Node 24 is required by the rebuilt Nx 23 / Angular 21 stack
 
     steps:
       - name: Checkout 🛎️
@@ -30,7 +29,9 @@ jobs:
       #   env:
       #     CI: false # true -> fails on warning
       - name: Build Storybook 📚
-        run: yarn nx run demo:build-storybook
+        run: |
+          yarn docs:json
+          yarn nx run demo:build-storybook
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:

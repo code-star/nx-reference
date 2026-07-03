@@ -1,0 +1,211 @@
+# vstack project configuration
+#
+# vstack install  — first-run setup. Seeds this file if missing (never overwrites).
+#                   Then runs init to generate .github/ artifacts from templates.
+#                   Use once per project, or when onboarding a new machine.
+#
+# vstack init     — idempotent regeneration. Reads this file on every run.
+#                   Safe to re-run in CI after pip install --upgrade vstack.
+#
+# This file is committed to git. It expresses stable project preferences —
+# editing it is a deliberate choice that affects all future vstack init runs.
+
+# -----------------------------------------------------------------------------
+# SELECTIVE INSTALL EXCLUSIONS
+#
+# Remove or comment out to install everything.
+# -----------------------------------------------------------------------------
+
+# exclude:
+#   skills:
+#     - terraform
+#     - terragrunt
+#     - helm
+#     - k8s
+#   hooks:
+#     - post-edit-markdown-quality
+#   instructions: all
+#   prompts: all
+
+# -----------------------------------------------------------------------------
+# REPOSITORY HOOKS
+#
+# Hooks are installed under .github/hooks/*.json and can be tuned here.
+#
+# hooks.enabled: disable the entire generated hook baseline
+# hooks.mode:    default runtime posture for generated hooks (audit or enforce)
+# hooks.log_level: default audit verbosity for central logger (off|minimal|verbose)
+# hooks.log_retention_days: retain dated log folders for this many days (session-audit)
+# hooks.log_dir: root directory for dated hook logs (YYYYMMDD buckets)
+# hooks.hooks.<name>.enabled: disable one named hook without disabling the type
+# hooks.hooks.<name>.mode:    override the default mode for one named hook
+# hooks.hooks.<name>.log.level: override central audit verbosity per hook
+# hooks.hooks.<name>.log.name: override the log filename for one hook (basename only)
+#                              Effective path is always .vstack/logs/YYYYMMDD/<name>
+# hooks.hooks.<name>.log.retention_days: override retention days for one hook (e.g., security alerts: 30)
+#
+# Example 1: quiet mode (logs off)
+#   hooks:
+#     enabled: true
+#     mode: audit
+#     log_level: off
+#
+# Example 2: security team setup (verbose, longer retention, custom paths)
+#   hooks:
+#     enabled: true
+#     log_level: verbose
+#     log_retention_days: 7
+#     hooks:
+#       pre-tool-safety-gate:
+#         mode: enforce
+#         log:
+#           name: security-gate.log
+#           retention_days: 30
+#       post-commit-security-scan:
+#         log:
+#           name: security-scan.log
+#           retention_days: 30
+#       session-audit:
+#         log:
+#           level: verbose
+#
+# Example 3: minimal quality checks, verbose security logging
+#   hooks:
+#     enabled: true
+#     log_level: minimal
+#     hooks:
+#       post-edit-format:
+#         log:
+#           level: off
+#       post-edit-markdown-quality:
+#         log:
+#           level: off
+#       post-commit-security-scan:
+#         log:
+#           level: verbose
+#           retention_days: 60
+#
+# Defaults: enabled=true, mode=audit, log_level=minimal, log_retention_days=7
+# -----------------------------------------------------------------------------
+
+# hooks:
+#   enabled: true
+#   mode: audit
+#   log_level: minimal
+#   log_retention_days: 7
+#   log_dir: .vstack/logs
+#   hooks:
+#     pre-tool-safety-gate:
+#       mode: enforce
+#     session-audit:
+#       log:
+#         level: verbose
+#     post-edit-format:
+#       log:
+#         name: custom-quality.log
+#     post-commit-security-scan:
+#       log:
+#         retention_days: 30
+#     post-edit-markdown-quality:
+#       enabled: false
+
+# -----------------------------------------------------------------------------
+# ROOT DIRECTORY FOR GENERATED WORK ITEMS
+#
+# Default: docs
+# -----------------------------------------------------------------------------
+
+# Root directory for generated agent work-item paths.
+#
+# items:
+#   root: docs
+#
+# Legacy fallback (still supported):
+# artifacts:
+#   root: docs
+
+# -----------------------------------------------------------------------------
+# PIPELINE WORKFLOW
+#
+# Seeded by vstack install, owned by this project.
+#
+# mode: agentic — default; planner orchestrates stage progression; worker handoff buttons are omitted
+# mode: manual  — keep worker handoff buttons; planner agent is not generated
+# mode: hybrid  — support both (planner optional + worker handoffs)
+#
+# Execution order:
+# - Stage order in workflow.stages is the canonical progression order.
+# - Without depends_on, each stage implicitly depends on the previous stage
+#   (fully sequential, backward-compatible behavior).
+# - Set depends_on explicitly to enable DAG orchestration and parallel branches.
+#   Example: architect and designer can both depend on product.
+# - Use depends_on: [] to make a stage an independent root.
+# - In agentic mode planner can evaluate ready stages from dependency completion.
+#
+# Handoffs:
+# - handoffs.prompt is the message used when transitioning to the next stage.
+# - If handoffs.agent is omitted, target defaults to the next role in workflow.stages.
+# - By default, leave handoffs unset and let each agent's defaults drive prompts.
+# - Add overrides only when your team needs custom wording.
+#   Example:
+#     handoffs:
+#       prompt: "<replace with your team-specific transition prompt>"
+# - Keep handoffs.agent unset in normal use so workflow order stays canonical.
+# - Explicit handoffs.agent overrides are advanced/exceptional and usually unnecessary.
+# - In agentic mode, worker handoff buttons are hidden; planner drives progression.
+# - handoffs.prompt values remain in this file in agentic mode for compatibility
+#   when switching to manual or hybrid.
+#
+# gate: required   — stage always runs
+# gate: optional   — stage may be skipped when its domain is unaffected
+# gate: skip        — stage is never executed (explicit opt-out)
+# depends_on: []    — optional list of prerequisite stage roles
+#
+# hitl: always     — pipeline pauses for human approval before handoff (default for required)
+# hitl: on-change  — pipeline pauses only when the stage made changes (default for optional)
+# hitl: never      — pipeline continues without human approval (explicit opt-out)
+#
+# Notes:
+# - Lines starting with # are documentation/examples and are not active config.
+# - Active configuration starts below at workflow:.
+# - After edits, run: vstack init
+#
+# Minimal active config example:
+# workflow:
+#   mode: agentic
+#   version: 1
+#   stages:
+#     - role: product
+#       gate: required
+#       hitl: always
+#     - role: release
+#       gate: required
+#       hitl: always
+#
+workflow:
+  mode: agentic
+  version: 1
+  stages:
+    - role: product
+      gate: required
+      hitl: always
+    - role: architect
+      gate: required
+      hitl: always
+      depends_on: [product]
+    - role: designer
+      gate: optional
+      hitl: on-change
+      depends_on: [product]
+    - role: engineer
+      gate: required
+      hitl: always
+      depends_on: [architect, designer]
+    - role: tester
+      gate: required
+      hitl: always
+      depends_on: [engineer]
+    - role: release
+      gate: required
+      hitl: always
+      depends_on: [tester]

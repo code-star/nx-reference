@@ -1,190 +1,101 @@
 # Nx Atomic Design Reference Project
 
-A reference example monorepo with [Nx](https://nx.dev) + [Storybook](https://storybook.js.org) + [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) in [Angular](https://angular.io/)
+A reference monorepo demonstrating **Module Federation in Nx with Angular**, plus a custom
+[Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) UI component library
+**published as a deployed [Storybook](https://storybook.js.org) catalog**.
 
-Made by [Codestar](https://code-star.github.io) powered by [Ordina](https://www.ordina.nl)
+Made by [Codestar](https://code-star.github.io).
 
-For more info see the [Intro](https://code-star.github.io/nx-reference/?path=/story/introduction--page)
+For a component tour see the [Storybook Intro](https://code-star.github.io/nx-reference/?path=/docs/introduction--docs).
 
-# Running
+> **Rebuilt on the latest toolchain** — Nx 23 · Angular 21 (standalone + signals + zoneless) ·
+> Storybook 10 · Native Federation. The full rationale and audit trail live under [`docs/`](./docs).
+> Start with the [architecture overview](./docs/architecture/overview.md) and the
+> [ADRs](./docs/architecture/adr).
 
-- Run storybook: `yarn docs:json && yarn nx storybook` (does nx run demo:storybook) or `nx run ui:storybook`.
-So modify apps/demo/.storybook/main.js to also include libs/ui and then use `yarn nx storybook`
-- Also run `yarn nx serve server` in a separate terminal
-- To build storybook run: `yarn nx run demo:build-storybook`
-- Run lint on all projects: `yarn nx run-many --all --target=lint` (with `yarn nx lint` only the default project is linted)
+## Stack
 
+| Tool              | Version                                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| Nx                | 23                                                                                                                                             |
+| Angular           | 21.2 (standalone, `input()` signals, `@if`/`@for`, zoneless)                                                                                   |
+| Module Federation | [`@angular-architects/native-federation`](https://www.npmjs.com/package/@angular-architects/native-federation) (esbuild `application` builder) |
+| Storybook         | 10 (`@storybook/angular`, compodoc docs)                                                                                                       |
+| Backend           | Express 5                                                                                                                                      |
+| Test runner       | Jest                                                                                                                                           |
+| Node              | 24                                                                                                                                             |
 
-# Steps taken
+## Workspace layout
 
-yarn import
-rm package-lock.json
-yarn add --dev @nrwl/storybook
-yarn nx g @nrwl/angular:storybook-configuration demo
-yarn nx g @nrwl/angular:lib ui
-yarn nx g @nrwl/angular:storybook-configuration ui
-yarn nx g @nrwl/angular:component button --project=ui --export
-yarn nx g @nrwl/angular:stories --name=ui
-yarn nx g @nrwl/angular:component LoadingButton --project=ui --export
-yarn nx g @nrwl/angular:stories --name=ui
-
-## Back-end
-
-yarn add -D @nrwl/express
-yarn add cors
-yarn add -D @types/cors
-yarn nx g @nrwl/express:application server
-yarn nx g @nrwl/node:library btc
-yarn nx g service BtcRate
-Note that modules (e.g. HttpClientModule or UiModule) need to be added to both app.module.ts and app.component.stories.ts
-
-yarn nx g @nrwl/workspace:lib shared/types
-yarn nx g @nrwl/angular:lib shared/services
-yarn nx g @nrwl/angular:service Message --project=shared-services --export
-manually export from services/lib/index.ts
-yarn nx g @nrwl/angular:lib shared/data-access
-yarn nx g @nrwl/angular:service btcRate/BtcRate --project=shared-data-access --export
-manually export from data-access/lib/index.ts
-yarn nx g @nrwl/angular:service MinimalLogger --project=shared-types --export
-yarn nx g @nrwl/angular:component Alert --project=ui --export
-
-## Adding docs in Storybook
-
-https://github.com/storybookjs/storybook/blob/master/addons/docs/angular/README.md
-
-```
-yarn add -D @compodoc/compodoc
+```text
+apps/
+  demo/        # Module Federation HOST (Angular) + hosts the deployable Storybook catalog
+  portfolio/   # Module Federation REMOTE (Angular) — exposes ./Routes
+  server/      # Express backend — GET /api/btc
+libs/
+  ui/                    # @star/ui — standalone Atomic Design components + bySeverity pipe
+  shared/types/          # @star/shared/types — contracts (Rate, BtcResponse, LogItem, IMessageService)
+  shared/services/       # @star/shared/services — MessageService (signal-based log)
+  shared/data-access/    # @star/shared/data-access — BtcRateService
+  btc/                   # @star/btc — btc() rate generator
+docs/          # ADRs, architecture & design docs, and the tester report (audit trail)
 ```
 
-Add to package.json: "docs:json": "compodoc -p ./tsconfig.base.json -e json -d ." 
+npm scope is `@star`; element selectors use the `star-` prefix (e.g. `<star-primary-button>`).
 
+## Getting started
+
+Requires Node 24.
+
+```bash
+yarn install
 ```
-yarn docs:json // TODO this now needs to be run manually after each type change, then also storybook needs to be restarted
+
+### Run the Storybook component catalog
+
+```bash
+yarn docs:json          # generate compodoc documentation.json (feeds the Docs tab)
+yarn nx storybook demo  # serve the aggregated catalog on http://localhost:4400
 ```
 
-No stories generated because there were no components declared in /libs/ui/src/lib/ui.module.ts.
-Hint: you can always generate stories later with the 'nx generate @nrwl/angular:stories --name=ui' command
+Build the static catalog (deployed to GitHub Pages):
 
-## MFE
+```bash
+yarn docs:json && yarn nx build-storybook demo   # → dist/storybook/demo
+```
 
-Target:
+### Run the Module Federation demo
 
-- React: 1 field, current balance
-- Ng: more complex: portfolio, transactions, graph of balance over time (and use UI lib components in this MicroApp)
+Serve the remote and the host in two terminals:
 
-From https://nx.dev/l/a/guides/setup-mfe-with-angular
+```bash
+yarn nx serve portfolio   # remote on http://localhost:4201
+yarn nx serve demo        # host on http://localhost:4200 (lazy-loads the portfolio remote)
+```
 
-- This document explains that webpack 5 is required. After upgrading to the newest version of nx, and running `yarn why webpack` gives both webpack 4 and some special packages that end in webpack5. Let's try the recommended steps. 
-- yarn nx g @nrwl/angular:app dashboard --mfe --mfeType=host --routing=true
-- yarn nx g @nrwl/angular:app login --mfe --mfeType=remote --port=4201 --host=dashboard --routing=true
-- seems to work, stash results
-- yarn nx g mv --project demo demoOld
-- yarn nx g mv --project demo-e2e demo-e2eOld
-- yarn nx g @nrwl/angular:app demo --mfe --mfeType=host --routing=true
-- yarn nx run demo:serve-mfe
-- Update the content of apps/demo/src/app/* with apps/demoOld/src/app/*, same with .storybook files
-- yarn nx g rm demoOld and reset the default project in in nx.json to demo
-- yarn nx g @nrwl/angular:app portfolio --mfe --mfeType=remote --port=4201 --host=demo --routing=true
-- test only portfolio, by running `yarn nx run portfolio:serve`
-- test only shell app: `yarn nx run demo:serve:development`
-- test integration, run `yarn nx run demo:serve-mfe` which will start both servers, view on http://localhost:4200/nx-reference-shell
+### Run the backend
 
-# Original Nx documentation
+```bash
+yarn nx serve server      # Express API on http://localhost:3333 (GET /api/btc)
+```
 
-This project was generated using [Nx](https://nx.dev).
+## Quality gates
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+```bash
+yarn nx run-many -t lint          # lint all projects
+yarn nx run-many -t test          # unit tests (Jest)
+yarn nx run-many -t build         # build the apps
+yarn nx build-storybook demo      # build the Storybook catalog
+```
 
-[Nx Documentation](https://nx.dev/angular)
+The latest verification results are recorded in [`docs/reports/test-report.md`](./docs/reports/test-report.md).
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+## Documentation & audit trail
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@star/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Computation Memoization in the Cloud
-
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+- [Architecture overview](./docs/architecture/overview.md) and
+  [current-state snapshot](./docs/architecture/current-state.md)
+- [Architecture Decision Records](./docs/architecture/adr)
+- [Design overview](./docs/design/overview.md),
+  [UX](./docs/design/ux.md), [component contracts](./docs/design/components.md)
+- [Migration notes](./docs/migration.md) and [release notes](./docs/reports/release-notes.md)
+- [Test & verification report](./docs/reports/test-report.md)

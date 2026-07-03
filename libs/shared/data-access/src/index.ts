@@ -1,2 +1,1 @@
-export * from "./lib/btcRate";
-export * from "./lib/shared-data-access.module";
+export * from './lib/btcRate/btc-rate.service';
