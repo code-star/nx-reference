@@ -19,9 +19,9 @@ jobs:
         node-version: [24.x]
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install and Build components 🔧
@@ -37,7 +37,7 @@ jobs:
           npm run docs:json
           npx nx run demo:build-storybook
       - name: Upload Pages artifact 📦
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist/storybook/demo
 
@@ -50,7 +50,7 @@ jobs:
     steps:
       - name: Deploy 🚀
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
       # - name: Build Portfolio Micro App
       #   run: npx nx run portfolio:build
       # - name: Deploy Portfolio Micro App 🚀
