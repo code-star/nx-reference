@@ -8,7 +8,7 @@
 The legacy code is NgModule-first Angular 12: `@NgModule` declarations (`UiModule`,
 `SharedServicesModule`, `RemoteEntryModule`, `AppModule`), constructor DI, `@Input()` decorators,
 `*ngIf`/`*ngFor` structural directives, `platformBrowserDynamic().bootstrapModule()`, and
-`HttpClientModule`. Angular 22 makes **standalone** the default and provides the **signals** input
+`HttpClientModule`. Angular 21 makes **standalone** the default and provides the **signals** input
 API, `inject()`, the built-in control flow block syntax, and `provide*` bootstrap functions. The
 rebuild should use "the latest Angular way of working" while keeping the UI design and public
 contracts identical.
@@ -31,7 +31,7 @@ Author all new Angular code standalone and signal-first:
 
 ## alternatives considered
 
-- **Keep NgModule-first Angular:** works on Angular 22 but contradicts "latest Angular way of
+- **Keep NgModule-first Angular:** works on Angular 21 but contradicts "latest Angular way of
   working". Rejected.
 - **Partial adoption (standalone but constructor DI / old control flow):** inconsistent and misses the
   modernisation intent. Rejected in favour of full adoption.
@@ -40,7 +40,7 @@ Author all new Angular code standalone and signal-first:
 
 ## rationale
 
-- Standalone + signals is the documented default and idiomatic surface for Angular 22 and integrates
+- Standalone + signals is the documented default and idiomatic surface for Angular 21 and integrates
   cleanly with Nx's standalone MF generators.
 - Preserving input names/types and template output keeps design and consumer contracts intact while
   modernising the implementation.

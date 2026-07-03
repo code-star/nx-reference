@@ -22,14 +22,14 @@ into core; `addon-storysource` behaviour differs); the Angular framework package
 - **Migrate stories to Storybook 10 CSF**; convert the two `.stories.mdx` pages to Storybook 10 MDX
   (docs pages / autodocs). Adopt the SB10 addon set (docs + essentials via core; replace
   `addon-storysource` with its SB10 equivalent or drop if unsupported).
-- Keep **Compodoc** feeding component/`@Input` docs **if** it is compatible with Angular 22; otherwise
+- Keep **Compodoc** feeding component/`@Input` docs **if** it is compatible with Angular 21; otherwise
   fall back to Storybook's own `argTypes`/JSDoc extraction and record the change here.
 - Storybook remains a **catalog only** — it does not load the MF remote (ADR-0003).
 
 ## alternatives considered
 
 - **Vite-based `@analogjs/storybook-angular`:** faster, modern, but a bigger jump from the current
-  webpack + compodoc setup and less proven with Angular 22 MF-adjacent config. Fallback, not default.
+  webpack + compodoc setup and less proven with Angular 21 MF-adjacent config. Fallback, not default.
 - **Per-project Storybooks (no aggregation):** diverges from the current single deployed catalog and
   the "hosted as a Storybook app, just like it is now" requirement. Rejected.
 - **Drop MDX docs pages:** loses the intro/onboarding content that is part of the current end state.
@@ -45,7 +45,7 @@ into core; `addon-storysource` behaviour differs); the Angular framework package
 ## consequences
 
 - **Easier:** familiar aggregation + GitHub Pages deploy; existing CSF stories port with minor edits.
-- **Harder:** MDX and addon migration is required; compodoc/Angular 22 compatibility must be verified
+- **Harder:** MDX and addon migration is required; compodoc/Angular 21 compatibility must be verified
   in Phase 7; if incompatible, docs extraction strategy changes (recorded here).
 - Migration note (update after Phase 7): **[framework: @storybook/angular | analog]**,
   **[compodoc: kept | replaced]**, **[storysource: kept | dropped]**.

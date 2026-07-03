@@ -7,7 +7,7 @@
 
 `nx-reference` is a reference monorepo that demonstrates **Module Federation in Nx with Angular**,
 with a custom UI component library **published as a deployed Storybook catalog**. This document
-describes the **target architecture** for the rebuild on the latest toolchain (Nx 23 / Angular 22 /
+describes the **target architecture** for the rebuild on the latest toolchain (Nx 23 / Angular 21 /
 Storybook 10). It preserves the behaviour and design captured in
 [`current-state.md`](./current-state.md).
 
@@ -100,7 +100,7 @@ flowchart LR
 ## key decisions
 
 - [ADR-0001](./adr/0001-rebuild-from-scratch.md) — Rebuild from scratch vs incremental migration.
-- [ADR-0002](./adr/0002-target-stack.md) — Target stack: Nx 23 / Angular 22 / Storybook 10.
+- [ADR-0002](./adr/0002-target-stack.md) — Target stack: Nx 23 / Angular 21 / Storybook 10.
 - [ADR-0003](./adr/0003-module-federation-method.md) — Nx-native Module Federation method.
 - [ADR-0004](./adr/0004-storybook-catalog.md) — Storybook 10 as the deployed component catalog.
 - [ADR-0005](./adr/0005-testing-strategy.md) — Testing strategy & coverage parity.
@@ -112,4 +112,4 @@ flowchart LR
 - **Storybook Angular builder:** classic `@storybook/angular` (webpack) vs Vite-based
   `@analogjs/storybook-angular` (ADR-0004) — confirm compodoc + MDX compatibility during Phase 7.
 - **Test runner:** Jest (parity) vs Vitest (newer Nx default) (ADR-0005) — default Jest, revisit if
-  Angular 22 + Jest ESM friction appears.
+  Angular 21 + Jest ESM friction appears.

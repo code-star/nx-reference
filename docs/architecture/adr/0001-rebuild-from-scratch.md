@@ -6,7 +6,7 @@
 ## context
 
 The repository is on Nx 13 / Angular 12 / Storybook 6.3 with the third-party
-`@angular-architects/module-federation` plugin. The target is the latest toolchain (Nx 23 / Angular 22
+`@angular-architects/module-federation` plugin. The target is the latest toolchain (Nx 23 / Angular 21
 / Storybook 10). That is ~10 Angular majors, ~10 Nx majors, and 4 Storybook majors of drift, plus a
 change in the recommended Module Federation approach and the deprecation of NgModules-first Angular,
 `.stories.mdx`, and the legacy Storybook addon model. The codebase is small (5 libs, 3 apps, 7 UI

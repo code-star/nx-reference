@@ -7,7 +7,7 @@
 
 The legacy repo uses Jest 27 (`jest-preset-angular`) for unit tests (~18 spec files) and Cypress 6
 for e2e (`demo-e2e`, `portfolio-e2e`, `ui-e2e`). The rebuild goal is **minimal test coverage similar
-to the current coverage**. Nx 23 supports both Jest and Vitest for Angular unit tests; Angular 22 also
+to the current coverage**. Nx 23 supports both Jest and Vitest for Angular unit tests; Angular 21 also
 has experimental Vitest support via `@angular/build`. The user asked for coverage parity, not a test
 framework overhaul.
 
@@ -27,7 +27,7 @@ framework overhaul.
 
 - **Vitest (newer Nx default):** modern and fast, but migrating the existing Jest specs adds churn
   without changing coverage. Chosen as a documented alternative, not the default. Revisit only if
-  Angular 22 + Jest ESM/zone friction blocks the build.
+  Angular 21 + Jest ESM/zone friction blocks the build.
 - **Full Cypress e2e parity (3 e2e apps):** disproportionate for a small demo; higher flake and CI
   cost. Rejected in favour of unit parity + optional smoke.
 - **No tests:** violates the parity requirement. Rejected.
@@ -41,7 +41,7 @@ framework overhaul.
 
 - **Easier:** existing spec intent transfers directly; fast local runs; green
   `nx run-many -t test`.
-- **Harder:** Angular 22 + Jest may need `jest-preset-angular` config tuning (ESM, zone) — validated
+- **Harder:** Angular 21 + Jest may need `jest-preset-angular` config tuning (ESM, zone) — validated
   in Phase 2. If unresolved, Vitest is the pre-approved fallback (record here).
 - e2e coverage is intentionally lighter than legacy; noted as accepted residual risk in the test
   report.

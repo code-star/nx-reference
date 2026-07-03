@@ -23,7 +23,7 @@ Use **Nx's first-party Module Federation generators and runtime helpers**:
   hand-written webpack helper.
 - Preserve the topology: host `demo` lazy-loads remote `portfolio` at route `''`; dev remote on
   `localhost:4201`; the production remote URL is configurable to the GitHub Pages deployment.
-- **Builder:** default to the **webpack** MF builder for maximum compatibility with Angular 22 and the
+- **Builder:** default to the **webpack** MF builder for maximum compatibility with Angular 21 and the
   Storybook Angular integration; evaluate the **Rspack** builder during the Phase 4 spike and adopt it
   if host+remote serve and build cleanly. Record the final choice as a follow-up note here.
 
@@ -33,7 +33,7 @@ Use **Nx's first-party Module Federation generators and runtime helpers**:
   showcase "the newest method Nx provides". Rejected.
 - **Hand-rolled `ModuleFederationPlugin` (as today):** verbose, brittle across versions, and not the
   recommended path. Rejected.
-- **Rspack-only from the start:** newest and fastest, but higher risk against Angular 22 + compodoc +
+- **Rspack-only from the start:** newest and fastest, but higher risk against Angular 21 + compodoc +
   Storybook in one step. Deferred to a spike rather than a blind default.
 
 ## rationale
