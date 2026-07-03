@@ -38,6 +38,7 @@ runs:
         TARGET_SUBDIR: ${{ inputs.target-subdir }}
         STORAGE_BRANCH: ${{ inputs.storage-branch }}
         PRESERVE: ${{ inputs.preserve }}
+        GH_TOKEN: ${{ inputs.github-token }}
       run: ${{ github.action_path }}/assemble-site.sh
 
     - name: Upload Pages artifact 📦
