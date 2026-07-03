@@ -37,7 +37,7 @@ nx-reference/
 ```mermaid
 flowchart LR
     subgraph Runtime MF demo
-      Demo[demo host] -- withModuleFederation remote --> Portfolio[portfolio remote]
+      Demo[demo host] -- Native Federation loadRemoteModule --> Portfolio[portfolio remote]
       Demo -- HTTP GET /api/btc --> Server[server]
     end
     Demo --> UI["@star/ui"]
@@ -53,10 +53,11 @@ flowchart LR
 ```
 
 - **`demo` (host):** standalone bootstrap (`bootstrapApplication`), `provideRouter`,
-  `provideHttpClient`. Route `''` lazy-loads the `portfolio` remote via Nx MF. Renders the app shell,
-  exchange-rate panel, and severity-filtered alerts.
-- **`portfolio` (remote):** standalone bootstrap; exposes its entry route/component through Nx MF;
-  consumes `@star/ui`.
+  `provideHttpClient`, zoneless. Route `''` lazy-loads the `portfolio` remote via Native Federation
+  `loadRemoteModule({ remoteName: 'portfolio', exposedModule: './Routes' })`, with a fallback route.
+  Renders the app shell, exchange-rate panel, and severity-filtered alerts.
+- **`portfolio` (remote):** standalone bootstrap; exposes `./Routes` through Native Federation
+  (`federation.config.js`); consumes `@star/ui`.
 - **`server`:** Express + cors; `GET /api/btc` → `{ btc }` from `@star/btc`.
 - **`@star/ui`:** standalone components + `bySeverity` pipe; the single source of visual design;
   drives the Storybook catalog.
@@ -69,8 +70,10 @@ flowchart LR
 2. **Latest Angular idioms.** Standalone components, signal inputs (`input()`), `inject()`, new
    control flow (`@if`/`@for`/`@switch`), `provide*` bootstrap — no NgModules in new code
    (see ADR-0006).
-3. **Nx-native Module Federation.** Use Nx's first-party MF generators + `withModuleFederation`
-   (see ADR-0003) — no third-party MF wrapper.
+3. **Native Federation (the newest Nx-endorsed Angular MF method).** `@nx/angular:host/remote`
+   (webpack `withModuleFederation`) is deprecated in Nx 23 / removed in v24; Nx redirects Angular
+   users to `@angular-architects/native-federation` on the esbuild `application` builder
+   (see ADR-0003) — no legacy webpack MF wrapper.
 4. **Storybook is a component catalog, not the running app.** The MF demo runs via `nx serve`; the
    deployed Storybook showcases `@star/ui` + stories (see ADR-0004).
 5. **Baseline-first, phase-by-phase delivery.** Each phase validates (typecheck → lint → test →
@@ -84,8 +87,20 @@ flowchart LR
    maps to `[Date.now(), btc]`, and the rates table appends a row.
 2. Errors are logged (error severity) via `MessageService`, which replaces its `logs` array
    immutably; `bySeverity` (pure pipe) filters them into `Alert` blocks.
-3. At route `''`, `demo` lazy-loads the `portfolio` remote bundle over MF and renders it inline.
+3. At route `''`, `demo` lazy-loads the `portfolio` remote's `./Routes` over Native Federation and
+   renders it inline; a fallback route covers the remote being unavailable.
 4. Storybook build renders `@star/ui` + shared/app stories into a static site with compodoc docs.
+
+## as-built resolutions
+
+The Phase-0 open questions below were resolved during implementation:
+
+- **MF method → Native Federation.** The Nx webpack MF generators are deprecated/removed; the
+  esbuild-based `@angular-architects/native-federation` is the newest Angular path (ADR-0003).
+- **Storybook builder → `@storybook/angular` 10 (webpack) + compodoc.** MDX and compodoc both work on
+  Angular 21; explicit `@storybook/angular:build-storybook` targets with `experimentalZoneless` are
+  used because SB10 rejects the legacy CLI build path (ADR-0004).
+- **Test runner → Jest.** Kept for spec parity; no ESM friction encountered on Angular 21 (ADR-0005).
 
 ## non-functional requirements
 
@@ -108,8 +123,4 @@ flowchart LR
 
 ## open questions
 
-- **MF builder:** webpack vs Rspack for the Nx MF apps (ADR-0003) — confirm during Phase 4 spike.
-- **Storybook Angular builder:** classic `@storybook/angular` (webpack) vs Vite-based
-  `@analogjs/storybook-angular` (ADR-0004) — confirm compodoc + MDX compatibility during Phase 7.
-- **Test runner:** Jest (parity) vs Vitest (newer Nx default) (ADR-0005) — default Jest, revisit if
-  Angular 21 + Jest ESM friction appears.
+_All Phase-0 open questions have been resolved — see **as-built resolutions** above._

@@ -19,27 +19,27 @@ this demo rebuild.
 
 All commands run from the workspace root on Node 24.13.1 / Nx 23.0.1.
 
-| Gate | Command | Result |
-| --- | --- | --- |
-| Lint (explicit) | `nx run-many -t lint` | ✅ 6/6 projects pass |
-| Lint (inferred) | `nx run-many -t "eslint:lint"` | ✅ 8/8 projects pass |
-| Unit tests | `nx run-many -t test` | ✅ 8/8 projects, **35 tests / 16 suites** pass |
-| Typecheck | via Angular `application` build + Jest ts compile | ✅ no type errors |
-| App builds | `nx run-many -t build` | ✅ 3/3 (`demo`, `portfolio`, `server`) |
-| Storybook build | `nx build-storybook demo` | ✅ static output to `dist/storybook/demo` |
+| Gate            | Command                                           | Result                                         |
+| --------------- | ------------------------------------------------- | ---------------------------------------------- |
+| Lint (explicit) | `nx run-many -t lint`                             | ✅ 6/6 projects pass                           |
+| Lint (inferred) | `nx run-many -t "eslint:lint"`                    | ✅ 8/8 projects pass                           |
+| Unit tests      | `nx run-many -t test`                             | ✅ 8/8 projects, **35 tests / 16 suites** pass |
+| Typecheck       | via Angular `application` build + Jest ts compile | ✅ no type errors                              |
+| App builds      | `nx run-many -t build`                            | ✅ 3/3 (`demo`, `portfolio`, `server`)         |
+| Storybook build | `nx build-storybook demo`                         | ✅ static output to `dist/storybook/demo`      |
 
 ## Test evidence (per project)
 
-| Project | Suites | Tests | Notes |
-| --- | --- | --- | --- |
-| `shared-types` | 1 | 3 | type/severity contracts |
-| `shared-services` | 1 | 3 | signal-based `MessageService` log |
-| `shared-data-access` | 1 | 1 | `BtcRateService` dual URL + error handling |
-| `btc` | 1 | 1 | `btc()` rate generator |
-| `ui` | 8 | 20 | 7 standalone components + `bySeverity` pipe |
-| `demo` (host) | 2 | 4 | app shell + fallback route |
-| `portfolio` (remote) | 2 | 3 | app shell + remote entry route |
-| **Total** | **16** | **35** | all passing |
+| Project              | Suites | Tests  | Notes                                       |
+| -------------------- | ------ | ------ | ------------------------------------------- |
+| `shared-types`       | 1      | 3      | type/severity contracts                     |
+| `shared-services`    | 1      | 3      | signal-based `MessageService` log           |
+| `shared-data-access` | 1      | 1      | `BtcRateService` dual URL + error handling  |
+| `btc`                | 1      | 1      | `btc()` rate generator                      |
+| `ui`                 | 8      | 20     | 7 standalone components + `bySeverity` pipe |
+| `demo` (host)        | 2      | 4      | app shell + fallback route                  |
+| `portfolio` (remote) | 2      | 3      | app shell + remote entry route              |
+| **Total**            | **16** | **35** | all passing                                 |
 
 ### Coverage parity vs. legacy
 
@@ -62,12 +62,12 @@ has no runtime), and the pipe/component specs were rewritten for signals + zonel
 
 ## Findings
 
-| # | Severity | Finding | Disposition |
-| --- | --- | --- | --- |
-| 1 | Low | `@nx/jest:jest` and `@nx/eslint:lint` executors are deprecated (removed in Nx v24). | **Accepted / tracked.** Functional today. Recommend `nx g @nx/jest:convert-to-inferred` and `@nx/eslint:convert-to-inferred` in a follow-up; deferred to avoid destabilising the demo. |
-| 2 | Info | `build` runs for 3 projects only; libraries are non-buildable. | **By design.** Libraries are validated via Jest (ts compile) and consumer app builds. |
-| 3 | Info | Storybook emits asset-size warnings (>244 KiB bundles). | **Accepted.** Expected for a Storybook manager/preview bundle; not a production app bundle. |
-| 4 | Info | Compodoc pinned to `1.2.1` (not latest `2.0.0`). | **Intentional.** `2.0.0` pulls Angular-22 devkit requiring Node ≥24.15; `1.2.1` matches the Angular-21 stack on Node 24.13 (ADR-0004). |
+| #   | Severity | Finding                                                                             | Disposition                                                                                                                                                                            |
+| --- | -------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | Low      | `@nx/jest:jest` and `@nx/eslint:lint` executors are deprecated (removed in Nx v24). | **Accepted / tracked.** Functional today. Recommend `nx g @nx/jest:convert-to-inferred` and `@nx/eslint:convert-to-inferred` in a follow-up; deferred to avoid destabilising the demo. |
+| 2   | Info     | `build` runs for 3 projects only; libraries are non-buildable.                      | **By design.** Libraries are validated via Jest (ts compile) and consumer app builds.                                                                                                  |
+| 3   | Info     | Storybook emits asset-size warnings (>244 KiB bundles).                             | **Accepted.** Expected for a Storybook manager/preview bundle; not a production app bundle.                                                                                            |
+| 4   | Info     | Compodoc pinned to `1.2.1` (not latest `2.0.0`).                                    | **Intentional.** `2.0.0` pulls Angular-22 devkit requiring Node ≥24.15; `1.2.1` matches the Angular-21 stack on Node 24.13 (ADR-0004).                                                 |
 
 No High or Critical findings. No security-critical issues identified in the changed surface.
 
