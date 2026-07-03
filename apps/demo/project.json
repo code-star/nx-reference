@@ -1,81 +1,73 @@
 {
-  "name": "portfolio",
+  "name": "demo",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "prefix": "app",
-  "sourceRoot": "apps/portfolio/src",
+  "sourceRoot": "apps/demo/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
-      "defaultConfiguration": "production",
       "options": {},
       "configurations": {
         "production": {
-          "target": "portfolio:esbuild:production"
+          "target": "demo:esbuild:production"
         },
         "development": {
-          "target": "portfolio:esbuild:development",
+          "target": "demo:esbuild:development",
           "dev": true
         }
-      }
+      },
+      "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@angular-architects/native-federation:build",
-      "continuous": true,
       "options": {
-        "target": "portfolio:serve-original:development",
+        "target": "demo:serve-original:development",
         "rebuildDelay": 500,
         "dev": true,
         "cacheExternalArtifacts": false,
         "port": 0
-      }
+      },
+      "continuous": true
     },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/portfolio/jest.config.cts",
-        "tsConfig": "apps/portfolio/tsconfig.spec.json"
+        "jestConfig": "apps/demo/jest.config.cts",
+        "tsConfig": "apps/demo/tsconfig.spec.json"
       }
     },
     "serve-static": {
       "continuous": true,
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "portfolio:build",
-        "staticFilePath": "dist/apps/portfolio/browser",
+        "buildTarget": "demo:build",
+        "staticFilePath": "dist/apps/demo/browser",
         "spa": true
       }
     },
     "esbuild": {
       "executor": "@angular/build:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/apps/portfolio",
-        "browser": "apps/portfolio/src/main.ts",
-        "tsConfig": "apps/portfolio/tsconfig.app.json",
+        "outputPath": "dist/apps/demo",
+        "browser": "apps/demo/src/main.ts",
+        "tsConfig": "apps/demo/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/portfolio/public"
+            "input": "apps/demo/public"
           }
         ],
-        "styles": [
-          "apps/portfolio/src/styles.scss"
-        ],
-        "polyfills": [
-          "es-module-shims"
-        ]
+        "styles": ["apps/demo/src/styles.scss"],
+        "polyfills": ["es-module-shims"]
       },
       "configurations": {
         "production": {
@@ -104,16 +96,16 @@
       "continuous": true,
       "executor": "@angular/build:dev-server",
       "defaultConfiguration": "development",
-      "options": {
-        "port": 4201
-      },
       "configurations": {
         "production": {
-          "buildTarget": "portfolio:esbuild:production"
+          "buildTarget": "demo:esbuild:production"
         },
         "development": {
-          "buildTarget": "portfolio:esbuild:development"
+          "buildTarget": "demo:esbuild:development"
         }
+      },
+      "options": {
+        "port": 4200
       }
     }
   }

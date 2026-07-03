@@ -1,0 +1,37 @@
+<star-app-template [title]="title">
+  <router-outlet></router-outlet>
+
+  <star-paper>
+    <h2>Exchange rates</h2>
+    <div>
+      <div>
+        <star-loading-button [loading]="loading()" (click)="getRate()"
+          >get new exchange rate</star-loading-button
+        >
+      </div>
+
+      <h3>Exchange rates</h3>
+      <star-rates-table [rates]="rates()"></star-rates-table>
+    </div>
+
+    @for (logItem of messageService.logs() | bySeverity: 'error'; track $index)
+    {
+    <div>
+      <star-alert [item]="logItem"></star-alert>
+    </div>
+    } @for (logItem of messageService.logs() | bySeverity: 'info'; track $index)
+    {
+    <div>
+      <star-alert [item]="logItem"></star-alert>
+    </div>
+    }
+  </star-paper>
+
+  <star-paper>
+    <p style="margin-top: 0">
+      A reference example monorepo with Nx + Storybook + Atomic Design in
+      Angular
+    </p>
+    <h4>Made by <a href="http://code-star.github.io">Codestar</a></h4>
+  </star-paper>
+</star-app-template>
